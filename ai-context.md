@@ -16,6 +16,32 @@ This file tracks AI-driven changes, decisions, and context for the Rebrandly Mes
 
 ## 🚀 Deployment History
 
+### **Deployment #8** - Tue, 26 Aug 2025 22:34:18 UTC
+**Branch**: `main` → `main`  
+**Commit**: `b837ded` - "Fix script loading order to resolve Views dependency error"
+
+#### 🎯 **User Request**
+> "I'm now getting an error when I try to go to different pages in the navigation: navigation.js:79 Uncaught ReferenceError: Views is not defined"
+
+#### 🔧 **AI Implementation**
+**Key Changes:**
+- Fixed script loading order in index.html
+- Moved views.js before navigation.js
+- Moved components.js before navigation.js
+- Moved app.js to load last
+
+**Technical Metrics:**
+- Total Files: 17
+- JavaScript: 113 KB
+- CSS: 17.4 KB
+- Commit: b837ded
+- Author: Brandon Keao
+
+**Technical Notes:**
+Dependency resolution issue - Navigation class depends on Views and Components classes, so they must be loaded first. Proper loading order ensures all dependencies are available when needed.
+
+---
+
 ### **Deployment #7** - Tue, 26 Aug 2025 22:30:34 UTC
 **Branch**: `main` → `main`  
 **Commit**: `60e4700` - "Restructure Campaign Builder flow with new step order"
@@ -374,5 +400,5 @@ app/
 
 *This file is automatically updated with each AI-assisted deployment to maintain development context and decision history.*
 
-**Last Updated**: Tue, 26 Aug 2025 22:30:34 UTC
+**Last Updated**: Tue, 26 Aug 2025 22:34:18 UTC
 **Next Update**: On next deployment to main branch
