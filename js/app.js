@@ -73,10 +73,13 @@ class RebrandlyApp {
             campaigns: 'Campaigns',
             contacts: 'Contacts',
             links: 'Links',
-            import: 'Import Contacts',
+            'select-contacts': 'Select Contacts',
+            'select-links': 'Select Links',
             compose: 'Compose Message',
-            'campaign-links': 'Add Links',
-            review: 'Review & Send'
+            review: 'Review & Send',
+            // Legacy support
+            import: 'Select Contacts',
+            'campaign-links': 'Select Links'
         };
         
         const titleElement = document.getElementById('pageTitle');

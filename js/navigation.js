@@ -26,17 +26,30 @@ class Navigation {
             case 'links':
                 this.loadMainLinksView();
                 break;
-            case 'import':
-                this.loadImportView();
+            case 'select-contacts':
+                this.loadSelectContactsView();
                 this.currentStep = 1;
+                break;
+            case 'select-links':
+                this.loadSelectLinksView();
+                this.currentStep = 2;
                 break;
             case 'compose':
                 this.loadComposeView();
-                this.currentStep = 2;
+                this.currentStep = 3;
+                break;
+            case 'review':
+                this.loadReviewView();
+                this.currentStep = 4;
+                break;
+            // Legacy support for old URLs
+            case 'import':
+                this.loadSelectContactsView();
+                this.currentStep = 1;
                 break;
             case 'campaign-links':
-                this.loadCampaignLinksView();
-                this.currentStep = 3;
+                this.loadSelectLinksView();
+                this.currentStep = 2;
                 break;
             case 'review':
                 this.loadReviewView();
@@ -67,25 +80,42 @@ class Navigation {
         this.bindMainLinksEvents();
     }
 
-    static loadImportView() {
+    static loadSelectContactsView() {
         const viewContainer = document.getElementById('viewContainer');
-        viewContainer.innerHTML = Views.getImportView();
+        viewContainer.innerHTML = Views.getSelectContactsView();
         this.updateProgressSteps(1);
-        this.bindImportEvents();
+        this.bindSelectContactsEvents();
+    }
+
+    static loadSelectLinksView() {
+        const viewContainer = document.getElementById('viewContainer');
+        viewContainer.innerHTML = Views.getSelectLinksView();
+        this.updateProgressSteps(2);
+        this.bindSelectLinksEvents();
+    }
+
+    // Legacy method for backward compatibility
+    static loadImportView() {
+        this.loadSelectContactsView();
     }
 
     static loadComposeView() {
         const viewContainer = document.getElementById('viewContainer');
         viewContainer.innerHTML = Views.getComposeView();
-        this.updateProgressSteps(2);
+        this.updateProgressSteps(3);
         this.bindComposeEvents();
     }
 
-    static loadCampaignLinksView() {
+    static loadReviewView() {
         const viewContainer = document.getElementById('viewContainer');
-        viewContainer.innerHTML = Views.getCampaignLinksView();
-        this.updateProgressSteps(3);
-        this.bindCampaignLinksEvents();
+        viewContainer.innerHTML = Views.getReviewView();
+        this.updateProgressSteps(4);
+        this.bindReviewEvents();
+    }
+
+    // Legacy method for backward compatibility
+    static loadCampaignLinksView() {
+        this.loadSelectLinksView();
     }
 
     static loadReviewView() {
@@ -206,6 +236,77 @@ class Navigation {
         }
     }
 
+    static bindSelectContactsEvents() {
+        // Bind file upload events for new contact import
+        const uploadArea = document.querySelector('.upload-area');
+        const fileInput = document.getElementById('csvFileInput');
+
+        if (uploadArea && fileInput) {
+            uploadArea.addEventListener('click', () => {
+                fileInput.click();
+            });
+
+            uploadArea.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                uploadArea.classList.add('drag-over');
+            });
+
+            uploadArea.addEventListener('dragleave', () => {
+                uploadArea.classList.remove('drag-over');
+            });
+
+            uploadArea.addEventListener('drop', (e) => {
+                e.preventDefault();
+                uploadArea.classList.remove('drag-over');
+                
+                const files = e.dataTransfer.files;
+                if (files.length > 0) {
+                    fileInput.files = files;
+                    const event = new Event('change', { bubbles: true });
+                    fileInput.dispatchEvent(event);
+                }
+            });
+        }
+
+        // Bind existing contacts selection
+        document.querySelectorAll('.contact-checkbox').forEach(checkbox => {
+            checkbox.addEventListener('change', this.updateSelectedContactsCount);
+        });
+
+        // Bind continue button
+        const continueBtn = document.getElementById('continueToSelectLinks');
+        if (continueBtn) {
+            continueBtn.addEventListener('click', () => {
+                if (this.validateContactSelection()) {
+                    window.RebrandlyApp.navigateToView('select-links');
+                }
+            });
+        }
+    }
+
+    static bindSelectLinksEvents() {
+        // Bind existing links selection
+        document.querySelectorAll('.link-checkbox').forEach(checkbox => {
+            checkbox.addEventListener('change', this.updateSelectedLinksCount);
+        });
+
+        // Bind create new link button
+        const createNewLinkBtn = document.getElementById('createNewLinkBtn');
+        if (createNewLinkBtn) {
+            createNewLinkBtn.addEventListener('click', () => {
+                Components.showCreateLinkModal();
+            });
+        }
+
+        // Bind continue button
+        const continueBtn = document.getElementById('continueToCompose');
+        if (continueBtn) {
+            continueBtn.addEventListener('click', () => {
+                window.RebrandlyApp.navigateToView('compose');
+            });
+        }
+    }
+
     static bindComposeEvents() {
         // Bind message composition events
         const messageTextarea = document.getElementById('messageContent');
@@ -254,11 +355,11 @@ class Navigation {
         }
 
         // Bind continue button
-        const continueBtn = document.getElementById('continueToLinks');
+        const continueBtn = document.getElementById('continueToReview');
         if (continueBtn) {
             continueBtn.addEventListener('click', () => {
                 if (this.validateComposeStep()) {
-                    window.RebrandlyApp.navigateToView('links');
+                    window.RebrandlyApp.navigateToView('review');
                 }
             });
         }
@@ -445,6 +546,37 @@ class Navigation {
 
     static getCurrentView() {
         return this.currentView;
+    }
+
+    static updateSelectedContactsCount() {
+        const selectedContacts = document.querySelectorAll('.contact-checkbox:checked');
+        const countElement = document.getElementById('selectedContactsCount');
+        if (countElement) {
+            countElement.textContent = selectedContacts.length;
+        }
+        
+        // Enable/disable continue button based on selection
+        const continueBtn = document.getElementById('continueToSelectLinks');
+        if (continueBtn) {
+            continueBtn.disabled = selectedContacts.length === 0;
+        }
+    }
+
+    static updateSelectedLinksCount() {
+        const selectedLinks = document.querySelectorAll('.link-checkbox:checked');
+        const countElement = document.getElementById('selectedLinksCount');
+        if (countElement) {
+            countElement.textContent = selectedLinks.length;
+        }
+    }
+
+    static validateContactSelection() {
+        const selectedContacts = document.querySelectorAll('.contact-checkbox:checked');
+        if (selectedContacts.length === 0) {
+            window.RebrandlyApp.showNotification('Please select at least one contact to continue', 'error');
+            return false;
+        }
+        return true;
     }
 
     static getCurrentStep() {
