@@ -238,26 +238,7 @@ class Views {
                     
                     <!-- Right Column - Analytics & Info -->
                     <div>
-                        <div class="card" style="background: #f8fafc; margin-bottom: 0;">
-                            <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 16px;">Link Performance</h3>
-                            
-                            <div class="stat-card">
-                                <div class="stat-value info">12</div>
-                                <div class="stat-label">Total Links</div>
-                            </div>
-                            
-                            <div class="stat-card">
-                                <div class="stat-value success">493</div>
-                                <div class="stat-label">Total Clicks</div>
-                            </div>
-                            
-                            <div class="stat-card">
-                                <div class="stat-value info">41.1%</div>
-                                <div class="stat-label">Avg Click Rate</div>
-                            </div>
-                        </div>
-                        
-                        <div class="card" style="background: #f0f9ff; border: 1px solid #bae6fd; margin-top: 16px;">
+                        <div class="card" style="background: #f0f9ff; border: 1px solid #bae6fd; margin-bottom: 16px;">
                             <h4 style="color: #0369a1; font-size: 14px; font-weight: 600; margin-bottom: 8px;">💡 Pro Tip</h4>
                             <p style="font-size: 13px; color: #0c4a6e; margin: 0;">
                                 Create branded short links here, then use them in your SMS campaigns. 
@@ -265,7 +246,7 @@ class Views {
                             </p>
                         </div>
                         
-                        <div class="card" style="background: #f8fafc; margin-top: 16px;">
+                        <div class="card" style="background: #f8fafc;">
                             <h4 style="font-size: 14px; font-weight: 600; margin-bottom: 12px;">Quick Actions</h4>
                             <button class="btn btn-secondary" style="width: 100%; margin-bottom: 8px;">
                                 📊 View Analytics Dashboard
