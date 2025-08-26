@@ -619,7 +619,7 @@ td {
 .link-selection-info {
     flex: 1;
     min-width: 0;
-    margin-left: 16px;
+    margin-left: 56px;
     position: relative;
 }
 
@@ -694,7 +694,7 @@ td {
     }
     
     .link-selection-info {
-        margin-left: 12px;
+        margin-left: 52px;
     }
 }
 
