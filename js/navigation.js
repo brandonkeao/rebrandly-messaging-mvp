@@ -1,0 +1,404 @@
+/**
+ * Navigation Manager
+ * Handles view switching, progress steps, and navigation state
+ */
+
+class Navigation {
+    static currentView = 'campaigns';
+    static currentStep = 1;
+
+    static showView(viewName) {
+        // Hide all views first
+        const viewContainer = document.getElementById('viewContainer');
+        if (!viewContainer) {
+            console.error('View container not found');
+            return;
+        }
+
+        // Load the appropriate view
+        switch (viewName) {
+            case 'campaigns':
+                this.loadCampaignsView();
+                break;
+            case 'contacts':
+                this.loadContactsView();
+                break;
+            case 'import':
+                this.loadImportView();
+                this.currentStep = 1;
+                break;
+            case 'compose':
+                this.loadComposeView();
+                this.currentStep = 2;
+                break;
+            case 'links':
+                this.loadLinksView();
+                this.currentStep = 3;
+                break;
+            case 'review':
+                this.loadReviewView();
+                this.currentStep = 4;
+                break;
+            default:
+                this.loadCampaignsView();
+        }
+
+        this.currentView = viewName;
+    }
+
+    static loadCampaignsView() {
+        const viewContainer = document.getElementById('viewContainer');
+        viewContainer.innerHTML = Views.getCampaignsView();
+        this.bindCampaignEvents();
+    }
+
+    static loadContactsView() {
+        const viewContainer = document.getElementById('viewContainer');
+        viewContainer.innerHTML = Views.getContactsView();
+        this.bindContactEvents();
+    }
+
+    static loadImportView() {
+        const viewContainer = document.getElementById('viewContainer');
+        viewContainer.innerHTML = Views.getImportView();
+        this.updateProgressSteps(1);
+        this.bindImportEvents();
+    }
+
+    static loadComposeView() {
+        const viewContainer = document.getElementById('viewContainer');
+        viewContainer.innerHTML = Views.getComposeView();
+        this.updateProgressSteps(2);
+        this.bindComposeEvents();
+    }
+
+    static loadLinksView() {
+        const viewContainer = document.getElementById('viewContainer');
+        viewContainer.innerHTML = Views.getLinksView();
+        this.updateProgressSteps(3);
+        this.bindLinksEvents();
+    }
+
+    static loadReviewView() {
+        const viewContainer = document.getElementById('viewContainer');
+        viewContainer.innerHTML = Views.getReviewView();
+        this.updateProgressSteps(4);
+        this.bindReviewEvents();
+    }
+
+    static updateProgressSteps(currentStep) {
+        const progressContainer = document.querySelector('.progress-container');
+        if (!progressContainer) return;
+
+        const steps = progressContainer.querySelectorAll('.step');
+        const progressLine = progressContainer.querySelector('.progress-line-active');
+
+        // Reset all steps
+        steps.forEach((step, index) => {
+            step.classList.remove('active', 'completed');
+            const stepNumber = step.querySelector('.step-number');
+            
+            if (index + 1 < currentStep) {
+                step.classList.add('completed');
+                stepNumber.textContent = '✓';
+            } else if (index + 1 === currentStep) {
+                step.classList.add('active');
+                stepNumber.textContent = index + 1;
+            } else {
+                stepNumber.textContent = index + 1;
+            }
+        });
+
+        // Update progress line
+        if (progressLine) {
+            progressLine.className = 'progress-line-active';
+            if (currentStep > 1) {
+                progressLine.classList.add(`step-${currentStep}`);
+            }
+        }
+    }
+
+    static bindCampaignEvents() {
+        // Bind campaign-specific events
+        const createCampaignBtn = document.getElementById('createCampaignBtn');
+        if (createCampaignBtn) {
+            createCampaignBtn.addEventListener('click', () => {
+                window.RebrandlyApp.navigateToView('import');
+            });
+        }
+
+        // Bind campaign item clicks
+        document.querySelectorAll('.campaign-item').forEach(item => {
+            item.addEventListener('click', (e) => {
+                const campaignId = item.getAttribute('data-campaign-id');
+                this.openCampaign(campaignId);
+            });
+        });
+    }
+
+    static bindContactEvents() {
+        // Bind contact-specific events
+        const importContactsBtn = document.getElementById('importContactsBtn');
+        if (importContactsBtn) {
+            importContactsBtn.addEventListener('click', () => {
+                window.RebrandlyApp.navigateToView('import');
+            });
+        }
+
+        // Bind search functionality
+        const searchInput = document.getElementById('contactSearch');
+        if (searchInput) {
+            searchInput.addEventListener('input', (e) => {
+                this.filterContacts(e.target.value);
+            });
+        }
+    }
+
+    static bindImportEvents() {
+        // Bind file upload events
+        const uploadArea = document.querySelector('.upload-area');
+        const fileInput = document.getElementById('csvFileInput');
+
+        if (uploadArea && fileInput) {
+            uploadArea.addEventListener('click', () => {
+                fileInput.click();
+            });
+
+            uploadArea.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                uploadArea.classList.add('drag-over');
+            });
+
+            uploadArea.addEventListener('dragleave', () => {
+                uploadArea.classList.remove('drag-over');
+            });
+
+            uploadArea.addEventListener('drop', (e) => {
+                e.preventDefault();
+                uploadArea.classList.remove('drag-over');
+                
+                const files = e.dataTransfer.files;
+                if (files.length > 0) {
+                    fileInput.files = files;
+                    const event = new Event('change', { bubbles: true });
+                    fileInput.dispatchEvent(event);
+                }
+            });
+        }
+
+        // Bind continue button
+        const continueBtn = document.getElementById('continueToCompose');
+        if (continueBtn) {
+            continueBtn.addEventListener('click', () => {
+                if (this.validateImportStep()) {
+                    window.RebrandlyApp.navigateToView('compose');
+                }
+            });
+        }
+    }
+
+    static bindComposeEvents() {
+        // Bind message composition events
+        const messageTextarea = document.getElementById('messageContent');
+        const charCounter = document.getElementById('charCounter');
+
+        if (messageTextarea && charCounter) {
+            messageTextarea.addEventListener('input', () => {
+                const length = messageTextarea.value.length;
+                const maxLength = 160;
+                charCounter.textContent = `${length}/${maxLength} characters`;
+                
+                // Update counter color based on length
+                charCounter.className = 'char-counter';
+                if (length > maxLength * 0.9) {
+                    charCounter.classList.add('warning');
+                }
+                if (length > maxLength) {
+                    charCounter.classList.add('error');
+                }
+            });
+        }
+
+        // Bind variable pill clicks
+        document.querySelectorAll('.variable-pill').forEach(pill => {
+            pill.addEventListener('click', () => {
+                const variable = pill.textContent.trim();
+                if (messageTextarea && variable.startsWith('{{')) {
+                    const cursorPos = messageTextarea.selectionStart;
+                    const textBefore = messageTextarea.value.substring(0, cursorPos);
+                    const textAfter = messageTextarea.value.substring(cursorPos);
+                    messageTextarea.value = textBefore + variable + textAfter;
+                    messageTextarea.focus();
+                    messageTextarea.setSelectionRange(cursorPos + variable.length, cursorPos + variable.length);
+                    
+                    // Trigger input event to update character counter
+                    messageTextarea.dispatchEvent(new Event('input'));
+                }
+            });
+        });
+
+        // Bind preview updates
+        if (messageTextarea) {
+            messageTextarea.addEventListener('input', () => {
+                this.updateMessagePreview();
+            });
+        }
+
+        // Bind continue button
+        const continueBtn = document.getElementById('continueToLinks');
+        if (continueBtn) {
+            continueBtn.addEventListener('click', () => {
+                if (this.validateComposeStep()) {
+                    window.RebrandlyApp.navigateToView('links');
+                }
+            });
+        }
+    }
+
+    static bindLinksEvents() {
+        // Bind link management events
+        const addLinkBtn = document.getElementById('addLinkBtn');
+        if (addLinkBtn) {
+            addLinkBtn.addEventListener('click', () => {
+                Components.showAddLinkModal();
+            });
+        }
+
+        // Bind continue button
+        const continueBtn = document.getElementById('continueToReview');
+        if (continueBtn) {
+            continueBtn.addEventListener('click', () => {
+                window.RebrandlyApp.navigateToView('review');
+            });
+        }
+    }
+
+    static bindReviewEvents() {
+        // Bind review and send events
+        const sendBtn = document.getElementById('sendCampaignBtn');
+        if (sendBtn) {
+            sendBtn.addEventListener('click', () => {
+                this.sendCampaign();
+            });
+        }
+
+        const testSendBtn = document.getElementById('testSendBtn');
+        if (testSendBtn) {
+            testSendBtn.addEventListener('click', () => {
+                this.sendTestMessage();
+            });
+        }
+    }
+
+    static validateImportStep() {
+        const campaignData = window.RebrandlyApp.getCampaignData();
+        if (!campaignData.contacts || campaignData.contacts.length === 0) {
+            window.RebrandlyApp.showNotification('Please import contacts before continuing', 'error');
+            return false;
+        }
+        return true;
+    }
+
+    static validateComposeStep() {
+        const messageContent = document.getElementById('messageContent');
+        if (!messageContent || !messageContent.value.trim()) {
+            window.RebrandlyApp.showNotification('Please enter a message before continuing', 'error');
+            return false;
+        }
+        
+        if (messageContent.value.length > 160) {
+            window.RebrandlyApp.showNotification('Message must be 160 characters or less', 'error');
+            return false;
+        }
+        
+        return true;
+    }
+
+    static updateMessagePreview() {
+        const messageContent = document.getElementById('messageContent');
+        const previewBubble = document.querySelector('.message-bubble');
+        
+        if (messageContent && previewBubble) {
+            let message = messageContent.value;
+            
+            // Replace variables with sample data
+            message = message.replace(/\{\{name\}\}/g, 'Maria');
+            message = message.replace(/\{\{company\}\}/g, 'Acme Corp');
+            message = message.replace(/\{\{email\}\}/g, 'maria@acme.com');
+            
+            // Convert URLs to links
+            message = message.replace(/(https?:\/\/[^\s]+)/g, '<a href="#" class="message-link">$1</a>');
+            message = message.replace(/(rbly\.co\/[^\s]+)/g, '<a href="#" class="message-link">$1</a>');
+            
+            previewBubble.innerHTML = message || 'Your message will appear here...';
+        }
+    }
+
+    static filterContacts(searchTerm) {
+        const contactRows = document.querySelectorAll('.contact-row');
+        const term = searchTerm.toLowerCase();
+        
+        contactRows.forEach(row => {
+            const text = row.textContent.toLowerCase();
+            if (text.includes(term)) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    }
+
+    static openCampaign(campaignId) {
+        console.log('Opening campaign:', campaignId);
+        // This would load campaign data and navigate to appropriate step
+        window.RebrandlyApp.showNotification('Campaign opened', 'info');
+    }
+
+    static sendCampaign() {
+        // Validate all steps before sending
+        const campaignData = window.RebrandlyApp.getCampaignData();
+        
+        if (!campaignData.contacts || campaignData.contacts.length === 0) {
+            window.RebrandlyApp.showNotification('No contacts to send to', 'error');
+            return;
+        }
+        
+        if (!campaignData.message) {
+            window.RebrandlyApp.showNotification('No message content', 'error');
+            return;
+        }
+        
+        // Show confirmation dialog
+        if (confirm(`Send campaign to ${campaignData.contacts.length} contacts?`)) {
+            // This would send to backend
+            console.log('Sending campaign:', campaignData);
+            window.RebrandlyApp.showNotification('Campaign sent successfully!', 'success');
+            
+            // Navigate back to campaigns
+            setTimeout(() => {
+                window.RebrandlyApp.navigateToView('campaigns');
+            }, 2000);
+        }
+    }
+
+    static sendTestMessage() {
+        const campaignData = window.RebrandlyApp.getCampaignData();
+        
+        if (!campaignData.message) {
+            window.RebrandlyApp.showNotification('No message content', 'error');
+            return;
+        }
+        
+        // This would send test message to current user
+        console.log('Sending test message:', campaignData.message);
+        window.RebrandlyApp.showNotification('Test message sent to your phone', 'success');
+    }
+
+    static getCurrentView() {
+        return this.currentView;
+    }
+
+    static getCurrentStep() {
+        return this.currentStep;
+    }
+}

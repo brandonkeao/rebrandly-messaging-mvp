@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rebrandly Messaging MVP</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/views.css">
+</head>
+<body>
+    <!-- Left Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <div class="logo-icon">R</div>
+                <div>
+                    <div class="logo-text">Rebrandly</div>
+                    <div class="logo-subtitle">Messaging MVP</div>
+                </div>
+            </div>
+        </div>
+        
+        <nav class="nav-menu">
+            <div class="nav-section">
+                <div class="nav-section-title">Main</div>
+                <a class="nav-item active" data-view="campaigns">
+                    <span class="nav-icon">📨</span>
+                    <span>Campaigns</span>
+                    <span class="nav-badge">3</span>
+                </a>
+                <a class="nav-item" data-view="contacts">
+                    <span class="nav-icon">👥</span>
+                    <span>Contacts</span>
+                </a>
+            </div>
+            
+            <div class="nav-section">
+                <div class="nav-section-title">Campaign Builder</div>
+                <a class="nav-item" data-view="import">
+                    <span class="nav-icon">📤</span>
+                    <span>1. Import Contacts</span>
+                </a>
+                <a class="nav-item" data-view="compose">
+                    <span class="nav-icon">✍️</span>
+                    <span>2. Compose Message</span>
+                </a>
+                <a class="nav-item disabled">
+                    <span class="nav-icon">🔗</span>
+                    <span>3. Add Links</span>
+                </a>
+                <a class="nav-item disabled">
+                    <span class="nav-icon">🚀</span>
+                    <span>4. Review & Send</span>
+                </a>
+            </div>
+        </nav>
+    </aside>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Header -->
+        <header class="top-header">
+            <h1 class="header-title" id="pageTitle">Campaigns</h1>
+            <div class="header-actions">
+                <button class="btn btn-secondary">Save Draft</button>
+                <button class="btn btn-primary">Continue →</button>
+            </div>
+        </header>
+        
+        <!-- Content Container -->
+        <div class="content-container">
+            <div class="container">
+                <!-- Views will be loaded here -->
+                <div id="viewContainer"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/views.js"></script>
+    <script src="js/components.js"></script>
+</body>
+</html>
