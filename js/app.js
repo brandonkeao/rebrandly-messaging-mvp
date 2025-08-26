@@ -104,7 +104,7 @@ class RebrandlyApp {
     loadInitialView() {
         // Check URL hash for initial view
         const hash = window.location.hash.substring(1);
-        const initialView = hash || 'campaigns';
+        const initialView = hash || 'getting-started';
         this.navigateToView(initialView);
     }
 

@@ -17,6 +17,9 @@ class Navigation {
 
         // Load the appropriate view
         switch (viewName) {
+            case 'getting-started':
+                this.loadGettingStartedView();
+                break;
             case 'campaigns':
                 this.loadCampaignsView();
                 break;
@@ -56,10 +59,16 @@ class Navigation {
                 this.currentStep = 4;
                 break;
             default:
-                this.loadCampaignsView();
+                this.loadGettingStartedView();
         }
 
         this.currentView = viewName;
+    }
+
+    static loadGettingStartedView() {
+        const viewContainer = document.getElementById('viewContainer');
+        viewContainer.innerHTML = Views.getGettingStartedView();
+        this.bindGettingStartedEvents();
     }
 
     static loadCampaignsView() {
@@ -363,6 +372,12 @@ class Navigation {
                 }
             });
         }
+    }
+
+    static bindGettingStartedEvents() {
+        // Getting Started events are handled by inline onclick handlers
+        // No additional binding needed as buttons use window.RebrandlyApp.navigateToView()
+        console.log('Getting Started view loaded');
     }
 
     static bindMainLinksEvents() {

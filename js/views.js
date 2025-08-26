@@ -4,6 +4,197 @@
  */
 
 class Views {
+    static getGettingStartedView() {
+        return `
+            <div class="getting-started-container">
+                <!-- Hero Section -->
+                <div class="hero-section">
+                    <div class="hero-content">
+                        <h1 class="hero-title">📱 Rebrandly Messaging MVP</h1>
+                        <p class="hero-subtitle">Create personalized SMS campaigns with branded short links</p>
+                        <div class="hero-badges">
+                            <span class="badge badge-primary">SMS Marketing</span>
+                            <span class="badge badge-success">Link Tracking</span>
+                            <span class="badge badge-info">Campaign Builder</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Overview Section -->
+                <div class="overview-section">
+                    <div class="card">
+                        <h2 class="section-title">🎯 What This Tool Does</h2>
+                        <p class="section-description">
+                            This messaging platform helps you create and send personalized SMS campaigns using your branded short links. 
+                            Perfect for marketing campaigns, product launches, event promotions, and customer engagement.
+                        </p>
+                        
+                        <div class="feature-grid">
+                            <div class="feature-item">
+                                <div class="feature-icon">📋</div>
+                                <h3>Contact Management</h3>
+                                <p>Import and organize your contact lists with CSV support</p>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">🔗</div>
+                                <h3>Link Integration</h3>
+                                <p>Use your existing Rebrandly short links in campaigns</p>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">✏️</div>
+                                <h3>Message Composer</h3>
+                                <p>Create personalized messages with dynamic placeholders</p>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">📊</div>
+                                <h3>Campaign Tracking</h3>
+                                <p>Monitor delivery status and link click analytics</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step-by-Step Guide -->
+                <div class="guide-section">
+                    <div class="card">
+                        <h2 class="section-title">🚀 How to Create Your First Campaign</h2>
+                        
+                        <div class="steps-container">
+                            <div class="step-item">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <h3>Select Contacts</h3>
+                                    <p>Choose recipients from your contact list or import new contacts via CSV file. You can select individual contacts or entire groups.</p>
+                                    <div class="step-actions">
+                                        <button class="btn btn-outline" onclick="window.RebrandlyApp.navigateToView('contacts')">
+                                            👥 Manage Contacts
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="step-item">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <h3>Select Links</h3>
+                                    <p>Choose which Rebrandly short links to include in your campaign. Links will be automatically inserted into your messages.</p>
+                                    <div class="step-actions">
+                                        <button class="btn btn-outline" onclick="window.RebrandlyApp.navigateToView('links')">
+                                            🔗 View Links
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="step-item">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <h3>Compose Message</h3>
+                                    <p>Write your SMS message using personalization tokens like {name} and {company}. Preview how messages will look for different contacts.</p>
+                                    <div class="step-features">
+                                        <span class="feature-tag">📝 Rich Text Editor</span>
+                                        <span class="feature-tag">🔤 Personalization</span>
+                                        <span class="feature-tag">👀 Live Preview</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="step-item">
+                                <div class="step-number">4</div>
+                                <div class="step-content">
+                                    <h3>Review & Send</h3>
+                                    <p>Review your campaign details, preview messages, and schedule or send immediately. Track delivery and engagement in real-time.</p>
+                                    <div class="step-features">
+                                        <span class="feature-tag">⏰ Scheduling</span>
+                                        <span class="feature-tag">📊 Analytics</span>
+                                        <span class="feature-tag">📱 SMS Delivery</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="quick-actions-section">
+                    <div class="card">
+                        <h2 class="section-title">⚡ Quick Actions</h2>
+                        <div class="quick-actions-grid">
+                            <button class="quick-action-btn" onclick="window.RebrandlyApp.navigateToView('select-contacts')">
+                                <div class="action-icon">🚀</div>
+                                <div class="action-text">
+                                    <h3>Start New Campaign</h3>
+                                    <p>Begin creating your SMS campaign</p>
+                                </div>
+                            </button>
+                            
+                            <button class="quick-action-btn" onclick="window.RebrandlyApp.navigateToView('contacts')">
+                                <div class="action-icon">👥</div>
+                                <div class="action-text">
+                                    <h3>Manage Contacts</h3>
+                                    <p>View and organize your contact lists</p>
+                                </div>
+                            </button>
+                            
+                            <button class="quick-action-btn" onclick="window.RebrandlyApp.navigateToView('links')">
+                                <div class="action-icon">🔗</div>
+                                <div class="action-text">
+                                    <h3>Manage Links</h3>
+                                    <p>Create and organize short links</p>
+                                </div>
+                            </button>
+                            
+                            <button class="quick-action-btn" onclick="window.RebrandlyApp.navigateToView('campaigns')">
+                                <div class="action-icon">📊</div>
+                                <div class="action-text">
+                                    <h3>View Campaigns</h3>
+                                    <p>Check campaign performance</p>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tips Section -->
+                <div class="tips-section">
+                    <div class="card">
+                        <h2 class="section-title">💡 Pro Tips</h2>
+                        <div class="tips-grid">
+                            <div class="tip-item">
+                                <div class="tip-icon">📋</div>
+                                <div class="tip-content">
+                                    <h4>CSV Import Format</h4>
+                                    <p>Use columns: name, company, email, phone for best results</p>
+                                </div>
+                            </div>
+                            <div class="tip-item">
+                                <div class="tip-icon">🔤</div>
+                                <div class="tip-content">
+                                    <h4>Personalization Tokens</h4>
+                                    <p>Use {name}, {company}, {email} to personalize messages</p>
+                                </div>
+                            </div>
+                            <div class="tip-item">
+                                <div class="tip-icon">📱</div>
+                                <div class="tip-content">
+                                    <h4>SMS Best Practices</h4>
+                                    <p>Keep messages under 160 characters for single SMS</p>
+                                </div>
+                            </div>
+                            <div class="tip-item">
+                                <div class="tip-icon">⏰</div>
+                                <div class="tip-content">
+                                    <h4>Timing Matters</h4>
+                                    <p>Send during business hours for better engagement</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
     static getCampaignsView() {
         return `
             <div class="campaign-stats">
