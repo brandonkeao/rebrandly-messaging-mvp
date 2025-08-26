@@ -72,9 +72,10 @@ class RebrandlyApp {
         const titles = {
             campaigns: 'Campaigns',
             contacts: 'Contacts',
+            links: 'Links',
             import: 'Import Contacts',
             compose: 'Compose Message',
-            links: 'Add Links',
+            'campaign-links': 'Add Links',
             review: 'Review & Send'
         };
         

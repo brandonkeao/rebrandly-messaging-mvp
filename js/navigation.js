@@ -23,6 +23,9 @@ class Navigation {
             case 'contacts':
                 this.loadContactsView();
                 break;
+            case 'links':
+                this.loadMainLinksView();
+                break;
             case 'import':
                 this.loadImportView();
                 this.currentStep = 1;
@@ -31,8 +34,8 @@ class Navigation {
                 this.loadComposeView();
                 this.currentStep = 2;
                 break;
-            case 'links':
-                this.loadLinksView();
+            case 'campaign-links':
+                this.loadCampaignLinksView();
                 this.currentStep = 3;
                 break;
             case 'review':
@@ -58,6 +61,12 @@ class Navigation {
         this.bindContactEvents();
     }
 
+    static loadMainLinksView() {
+        const viewContainer = document.getElementById('viewContainer');
+        viewContainer.innerHTML = Views.getMainLinksView();
+        this.bindMainLinksEvents();
+    }
+
     static loadImportView() {
         const viewContainer = document.getElementById('viewContainer');
         viewContainer.innerHTML = Views.getImportView();
@@ -72,11 +81,11 @@ class Navigation {
         this.bindComposeEvents();
     }
 
-    static loadLinksView() {
+    static loadCampaignLinksView() {
         const viewContainer = document.getElementById('viewContainer');
-        viewContainer.innerHTML = Views.getLinksView();
+        viewContainer.innerHTML = Views.getCampaignLinksView();
         this.updateProgressSteps(3);
-        this.bindLinksEvents();
+        this.bindCampaignLinksEvents();
     }
 
     static loadReviewView() {
@@ -255,8 +264,48 @@ class Navigation {
         }
     }
 
-    static bindLinksEvents() {
-        // Bind link management events
+    static bindMainLinksEvents() {
+        // Bind main links management events
+        const createLinkBtn = document.getElementById('createLinkBtn');
+        if (createLinkBtn) {
+            createLinkBtn.addEventListener('click', () => {
+                Components.showCreateLinkModal();
+            });
+        }
+
+        // Bind link action buttons
+        document.querySelectorAll('.link-edit-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const linkId = e.target.closest('.link-item').getAttribute('data-link-id');
+                Components.showEditLinkModal(linkId);
+            });
+        });
+
+        document.querySelectorAll('.link-copy-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const shortUrl = e.target.closest('.link-item').querySelector('.link-short').textContent;
+                Components.copyToClipboard(shortUrl);
+            });
+        });
+
+        document.querySelectorAll('.link-delete-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const linkId = e.target.closest('.link-item').getAttribute('data-link-id');
+                this.deleteLink(linkId);
+            });
+        });
+
+        // Bind search functionality
+        const searchInput = document.getElementById('linkSearch');
+        if (searchInput) {
+            searchInput.addEventListener('input', (e) => {
+                this.filterLinks(e.target.value);
+            });
+        }
+    }
+
+    static bindCampaignLinksEvents() {
+        // Bind campaign link management events
         const addLinkBtn = document.getElementById('addLinkBtn');
         if (addLinkBtn) {
             addLinkBtn.addEventListener('click', () => {
@@ -400,5 +449,41 @@ class Navigation {
 
     static getCurrentStep() {
         return this.currentStep;
+    }
+
+    static filterLinks(searchTerm) {
+        const linkItems = document.querySelectorAll('.link-item');
+        const term = searchTerm.toLowerCase();
+        
+        linkItems.forEach(item => {
+            const text = item.textContent.toLowerCase();
+            if (text.includes(term)) {
+                item.style.display = '';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    }
+
+    static deleteLink(linkId) {
+        Components.showConfirmDialog(
+            'Are you sure you want to delete this link? This action cannot be undone.',
+            () => {
+                // Remove from UI
+                const linkItem = document.querySelector(`[data-link-id="${linkId}"]`);
+                if (linkItem) {
+                    linkItem.remove();
+                }
+                
+                // Remove from app data
+                const appData = window.RebrandlyApp.getCampaignData();
+                if (appData.links) {
+                    appData.links = appData.links.filter(link => link.id !== linkId);
+                    window.RebrandlyApp.updateCampaignData({ links: appData.links });
+                }
+                
+                window.RebrandlyApp.showNotification('Link deleted successfully', 'success');
+            }
+        );
     }
 }

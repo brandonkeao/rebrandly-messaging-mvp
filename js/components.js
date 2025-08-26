@@ -114,6 +114,191 @@ class Components {
         });
     }
 
+    static showCreateLinkModal() {
+        const modal = this.createModal('Create New Link', `
+            <form id="createLinkForm">
+                <div class="form-group">
+                    <label class="form-label">Original URL *</label>
+                    <input type="url" class="form-input" name="originalUrl" placeholder="https://example.com/your-page" required>
+                    <small style="color: var(--text-secondary); font-size: 12px;">Enter the full URL you want to shorten</small>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Custom Short Link (optional)</label>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <span style="color: var(--text-secondary); font-weight: 500;">rbly.co/</span>
+                        <input type="text" class="form-input" name="customSlug" placeholder="my-custom-link" style="flex: 1;">
+                    </div>
+                    <small style="color: var(--text-secondary); font-size: 12px;">Leave blank for auto-generated short link</small>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Title (optional)</label>
+                    <input type="text" class="form-input" name="title" placeholder="Link title for easy identification">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Tags (optional)</label>
+                    <input type="text" class="form-input" name="tags" placeholder="campaign, product, marketing">
+                    <small style="color: var(--text-secondary); font-size: 12px;">Separate tags with commas</small>
+                </div>
+                
+                <div style="background: #f0f9ff; border: 1px solid #bae6fd; border-radius: 8px; padding: 12px; margin: 16px 0;">
+                    <div style="font-size: 12px; color: #0369a1; font-weight: 500; margin-bottom: 4px;">🔗 Rebrandly API Integration</div>
+                    <div style="font-size: 11px; color: #0c4a6e;">This will create a real shortened link using your Rebrandly account with full analytics tracking.</div>
+                </div>
+                
+                <div class="button-group right">
+                    <button type="button" class="btn btn-secondary" onclick="Components.closeModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Create Link</button>
+                </div>
+            </form>
+        `);
+
+        // Handle form submission
+        const form = modal.querySelector('#createLinkForm');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+            
+            this.createRebrandlyLink(data);
+        });
+    }
+
+    static showEditLinkModal(linkId) {
+        // Get existing link data (in real app, this would come from API)
+        const existingLink = {
+            id: linkId,
+            originalUrl: 'https://rebrandly.com/products/demo-2024',
+            customSlug: 'demo-2024',
+            title: 'Product Demo 2024',
+            tags: 'product, demo'
+        };
+
+        const modal = this.createModal('Edit Link', `
+            <form id="editLinkForm">
+                <div class="form-group">
+                    <label class="form-label">Original URL *</label>
+                    <input type="url" class="form-input" name="originalUrl" value="${existingLink.originalUrl}" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Custom Short Link</label>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <span style="color: var(--text-secondary); font-weight: 500;">rbly.co/</span>
+                        <input type="text" class="form-input" name="customSlug" value="${existingLink.customSlug}" style="flex: 1;">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Title</label>
+                    <input type="text" class="form-input" name="title" value="${existingLink.title}">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Tags</label>
+                    <input type="text" class="form-input" name="tags" value="${existingLink.tags}">
+                </div>
+                
+                <div class="button-group right">
+                    <button type="button" class="btn btn-secondary" onclick="Components.closeModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Update Link</button>
+                </div>
+            </form>
+        `);
+
+        // Handle form submission
+        const form = modal.querySelector('#editLinkForm');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+            
+            this.updateRebrandlyLink(linkId, data);
+        });
+    }
+
+    static createRebrandlyLink(data) {
+        // Show loading state
+        const submitBtn = document.querySelector('#createLinkForm button[type="submit"]');
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = 'Creating...';
+        submitBtn.disabled = true;
+
+        // Simulate API call to Rebrandly
+        setTimeout(() => {
+            // In real implementation, this would call the Rebrandly API
+            const newLink = {
+                id: Date.now().toString(),
+                originalUrl: data.originalUrl,
+                shortUrl: `rbly.co/${data.customSlug || this.generateRandomSlug()}`,
+                title: data.title || 'Untitled Link',
+                tags: data.tags ? data.tags.split(',').map(t => t.trim()) : [],
+                clicks: 0,
+                createdAt: new Date().toISOString()
+            };
+
+            // Add to app data
+            const appData = window.RebrandlyApp.getCampaignData();
+            if (!appData.links) appData.links = [];
+            appData.links.unshift(newLink);
+            window.RebrandlyApp.updateCampaignData({ links: appData.links });
+
+            // Close modal and show success
+            this.closeModal();
+            window.RebrandlyApp.showNotification('Link created successfully!', 'success');
+            
+            // Refresh the links view if we're on it
+            if (window.RebrandlyApp.getCurrentView() === 'links') {
+                window.RebrandlyApp.navigateToView('links');
+            }
+        }, 1500); // Simulate API delay
+    }
+
+    static updateRebrandlyLink(linkId, data) {
+        // Show loading state
+        const submitBtn = document.querySelector('#editLinkForm button[type="submit"]');
+        submitBtn.textContent = 'Updating...';
+        submitBtn.disabled = true;
+
+        // Simulate API call
+        setTimeout(() => {
+            // Update app data
+            const appData = window.RebrandlyApp.getCampaignData();
+            if (appData.links) {
+                const linkIndex = appData.links.findIndex(link => link.id === linkId);
+                if (linkIndex !== -1) {
+                    appData.links[linkIndex] = {
+                        ...appData.links[linkIndex],
+                        originalUrl: data.originalUrl,
+                        shortUrl: `rbly.co/${data.customSlug}`,
+                        title: data.title,
+                        tags: data.tags ? data.tags.split(',').map(t => t.trim()) : []
+                    };
+                    window.RebrandlyApp.updateCampaignData({ links: appData.links });
+                }
+            }
+
+            this.closeModal();
+            window.RebrandlyApp.showNotification('Link updated successfully!', 'success');
+            
+            // Refresh the links view
+            if (window.RebrandlyApp.getCurrentView() === 'links') {
+                window.RebrandlyApp.navigateToView('links');
+            }
+        }, 1000);
+    }
+
+    static generateRandomSlug() {
+        const chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
+        let result = '';
+        for (let i = 0; i < 8; i++) {
+            result += chars.charAt(Math.floor(Math.random() * chars.length));
+        }
+        return result;
+    }
+
     static createModal(title, content) {
         // Remove existing modal if any
         this.closeModal();

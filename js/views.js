@@ -147,6 +147,142 @@ class Views {
         `;
     }
 
+    static getMainLinksView() {
+        return `
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Link Management</h2>
+                    <button class="btn btn-primary" id="createLinkBtn">
+                        + Create New Link
+                    </button>
+                </div>
+                
+                <div class="two-column">
+                    <!-- Left Column - Link List -->
+                    <div>
+                        <div style="display: flex; gap: 12px; margin-bottom: 20px; align-items: center;">
+                            <input type="text" class="form-input" id="linkSearch" placeholder="Search links..." style="flex: 1; max-width: 300px;">
+                            <select class="form-input" style="width: auto;">
+                                <option>All Links</option>
+                                <option>Active</option>
+                                <option>Archived</option>
+                            </select>
+                        </div>
+                        
+                        <div class="links-list">
+                            <div class="link-item" data-link-id="1">
+                                <div class="link-icon">🔗</div>
+                                <div class="link-details">
+                                    <div class="link-original">https://rebrandly.com/products/demo-2024</div>
+                                    <div class="link-short">rbly.co/demo-2024</div>
+                                    <div style="font-size: 12px; color: var(--text-secondary); margin-top: 4px;">
+                                        Created 2 days ago • 47 clicks
+                                    </div>
+                                </div>
+                                <div class="link-actions" style="display: flex; gap: 8px;">
+                                    <button class="btn btn-secondary link-copy-btn" style="padding: 6px 12px; font-size: 12px;">Copy</button>
+                                    <button class="btn btn-secondary link-edit-btn" style="padding: 6px 12px; font-size: 12px;">Edit</button>
+                                    <button class="btn btn-secondary link-delete-btn" style="padding: 6px 12px; font-size: 12px; color: var(--error-color);">Delete</button>
+                                </div>
+                            </div>
+                            
+                            <div class="link-item" data-link-id="2">
+                                <div class="link-icon">🔗</div>
+                                <div class="link-details">
+                                    <div class="link-original">https://rebrandly.com/pricing</div>
+                                    <div class="link-short">rbly.co/pricing</div>
+                                    <div style="font-size: 12px; color: var(--text-secondary); margin-top: 4px;">
+                                        Created 1 week ago • 123 clicks
+                                    </div>
+                                </div>
+                                <div class="link-actions" style="display: flex; gap: 8px;">
+                                    <button class="btn btn-secondary link-copy-btn" style="padding: 6px 12px; font-size: 12px;">Copy</button>
+                                    <button class="btn btn-secondary link-edit-btn" style="padding: 6px 12px; font-size: 12px;">Edit</button>
+                                    <button class="btn btn-secondary link-delete-btn" style="padding: 6px 12px; font-size: 12px; color: var(--error-color);">Delete</button>
+                                </div>
+                            </div>
+                            
+                            <div class="link-item" data-link-id="3">
+                                <div class="link-icon">🔗</div>
+                                <div class="link-details">
+                                    <div class="link-original">https://rebrandly.com/blog/sms-marketing-guide</div>
+                                    <div class="link-short">rbly.co/sms-guide</div>
+                                    <div style="font-size: 12px; color: var(--text-secondary); margin-top: 4px;">
+                                        Created 2 weeks ago • 89 clicks
+                                    </div>
+                                </div>
+                                <div class="link-actions" style="display: flex; gap: 8px;">
+                                    <button class="btn btn-secondary link-copy-btn" style="padding: 6px 12px; font-size: 12px;">Copy</button>
+                                    <button class="btn btn-secondary link-edit-btn" style="padding: 6px 12px; font-size: 12px;">Edit</button>
+                                    <button class="btn btn-secondary link-delete-btn" style="padding: 6px 12px; font-size: 12px; color: var(--error-color);">Delete</button>
+                                </div>
+                            </div>
+                            
+                            <div class="link-item" data-link-id="4">
+                                <div class="link-icon">🔗</div>
+                                <div class="link-details">
+                                    <div class="link-original">https://rebrandly.com/features/analytics</div>
+                                    <div class="link-short">rbly.co/analytics</div>
+                                    <div style="font-size: 12px; color: var(--text-secondary); margin-top: 4px;">
+                                        Created 3 weeks ago • 234 clicks
+                                    </div>
+                                </div>
+                                <div class="link-actions" style="display: flex; gap: 8px;">
+                                    <button class="btn btn-secondary link-copy-btn" style="padding: 6px 12px; font-size: 12px;">Copy</button>
+                                    <button class="btn btn-secondary link-edit-btn" style="padding: 6px 12px; font-size: 12px;">Edit</button>
+                                    <button class="btn btn-secondary link-delete-btn" style="padding: 6px 12px; font-size: 12px; color: var(--error-color);">Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Right Column - Analytics & Info -->
+                    <div>
+                        <div class="card" style="background: #f8fafc; margin-bottom: 0;">
+                            <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 16px;">Link Performance</h3>
+                            
+                            <div class="stat-card">
+                                <div class="stat-value info">12</div>
+                                <div class="stat-label">Total Links</div>
+                            </div>
+                            
+                            <div class="stat-card">
+                                <div class="stat-value success">493</div>
+                                <div class="stat-label">Total Clicks</div>
+                            </div>
+                            
+                            <div class="stat-card">
+                                <div class="stat-value info">41.1%</div>
+                                <div class="stat-label">Avg Click Rate</div>
+                            </div>
+                        </div>
+                        
+                        <div class="card" style="background: #f0f9ff; border: 1px solid #bae6fd; margin-top: 16px;">
+                            <h4 style="color: #0369a1; font-size: 14px; font-weight: 600; margin-bottom: 8px;">💡 Pro Tip</h4>
+                            <p style="font-size: 13px; color: #0c4a6e; margin: 0;">
+                                Create branded short links here, then use them in your SMS campaigns. 
+                                All clicks are automatically tracked with detailed analytics.
+                            </p>
+                        </div>
+                        
+                        <div class="card" style="background: #f8fafc; margin-top: 16px;">
+                            <h4 style="font-size: 14px; font-weight: 600; margin-bottom: 12px;">Quick Actions</h4>
+                            <button class="btn btn-secondary" style="width: 100%; margin-bottom: 8px;">
+                                📊 View Analytics Dashboard
+                            </button>
+                            <button class="btn btn-secondary" style="width: 100%; margin-bottom: 8px;">
+                                📤 Export Link Data
+                            </button>
+                            <button class="btn btn-secondary" style="width: 100%;">
+                                ⚙️ Link Settings
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
     static getImportView() {
         return `
             <!-- Progress Steps -->
@@ -375,7 +511,7 @@ class Views {
         `;
     }
 
-    static getLinksView() {
+    static getCampaignLinksView() {
         return `
             <!-- Progress Steps -->
             <div class="progress-container">
