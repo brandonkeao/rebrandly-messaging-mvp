@@ -77,6 +77,10 @@ class RebrandlyApp {
             'select-links': 'Select Links',
             compose: 'Compose Message',
             review: 'Review & Send',
+            // Settings views
+            'link-management': 'Link Management Settings',
+            'sms-messaging': 'SMS Messaging Settings',
+            'contact-list': 'Contact List Settings',
             // Legacy support
             import: 'Select Contacts',
             'campaign-links': 'Select Links'
