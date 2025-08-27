@@ -1,0 +1,368 @@
+/**
+ * Website Design System Colors
+ * Based on Rebrandly website semantic color system
+ */
+
+:root {
+  /* ==========================================================================
+     SEMANTIC COLOR SYSTEM - From Website Design
+     ========================================================================== */
+
+  /* Text Colors */
+  --color-text-primary: #000000;
+  --color-text-secondary: #2F3437;
+  --color-text-on-dark: #FFFFFF;
+  --color-text-blue: #1F68F9;
+  --color-text-blue-on-dark: #80AAFF;
+  --color-text-yellow: #FFBC00;
+
+  /* Background Colors */
+  --color-bg-white: #FFFFFF;
+  --color-bg-beige-01: #F5F1F0;
+  --color-bg-beige-02: #E0D5D2;
+  --color-bg-blue-01: #E5EEFF;
+  --color-bg-blue-02: #CCDEFF;
+  --color-bg-blue-03: #80AAFF;
+  --color-bg-blue-04: #1F68F9;
+  --color-bg-teal-01: #DBF0F0;
+  --color-bg-yellow-01: #FFF1CC;
+  --color-bg-charcoal-01: #F1F2F3;
+  --color-bg-charcoal-02: #E3E5E8;
+  --color-bg-charcoal-03: #2F3437;
+
+  /* Button Colors */
+  --color-btn-yellow: #FFBC00;
+  --color-btn-charcoal: #232729;
+  --color-btn-white: #FFFFFF;
+  --color-btn-blue-01: #1F68F9;
+  --color-btn-blue-02: #012B7E;
+  --color-btn-purple: #A248EA;
+  --color-btn-pink: #E83095;
+  --color-btn-teal: #3A928D;
+
+  /* Border Colors */
+  --color-border-btn: #232729;
+  --color-border-charcoal: #BAC0C4;
+  --color-border-blue: #B2CCFF;
+  --color-border-teal: #A3DBD8;
+  --color-border-yellow: #FFDEB0;
+
+  /* ==========================================================================
+     WEB APP SEMANTIC MAPPINGS
+     ========================================================================== */
+
+  /* Primary App Colors */
+  --color-primary: var(--color-btn-blue-01);
+  --color-primary-hover: var(--color-btn-blue-02);
+  --color-primary-gradient: linear-gradient(135deg, var(--color-btn-blue-01) 0%, var(--color-btn-blue-02) 100%);
+  
+  /* Accent Colors */
+  --color-accent: var(--color-btn-yellow);
+  --color-accent-hover: #E6A600;
+  
+  /* Semantic Colors for App States */
+  --color-success: var(--color-btn-teal);
+  --color-success-bg: var(--color-bg-teal-01);
+  --color-success-border: var(--color-border-teal);
+  
+  --color-warning: var(--color-text-yellow);
+  --color-warning-bg: var(--color-bg-yellow-01);
+  --color-warning-border: var(--color-border-yellow);
+  
+  --color-error: var(--color-btn-pink);
+  --color-error-bg: #FEE2E2;
+  --color-error-border: #FECACA;
+  
+  --color-info: var(--color-text-blue);
+  --color-info-bg: var(--color-bg-blue-01);
+  --color-info-border: var(--color-border-blue);
+
+  /* Surface Colors */
+  --color-surface: var(--color-bg-white);
+  --color-surface-subtle: var(--color-bg-charcoal-01);
+  --color-surface-muted: var(--color-bg-charcoal-02);
+  --color-background: var(--color-bg-charcoal-01);
+
+  /* Text Mappings */
+  --color-text-primary-app: var(--color-text-primary);
+  --color-text-secondary-app: var(--color-text-secondary);
+  --color-text-muted: #6B7280;
+  --color-text-inverse: var(--color-text-on-dark);
+
+  /* Border Mappings */
+  --color-border: var(--color-border-charcoal);
+  --color-border-light: #E5E7EB;
+  --color-border-strong: var(--color-border-btn);
+
+  /* ==========================================================================
+     LEGACY COMPATIBILITY - Map old variables to new system
+     ========================================================================== */
+
+  /* Keep existing variables working */
+  --color-primary-start: var(--color-primary);
+  --color-primary-end: var(--color-primary-hover);
+  --color-white: var(--color-bg-white);
+  --color-neutral-0: var(--color-bg-white);
+  --color-neutral-50: var(--color-bg-charcoal-01);
+  --color-neutral-100: var(--color-bg-charcoal-02);
+  --color-neutral-200: var(--color-border-charcoal);
+  --color-neutral-600: var(--color-text-secondary);
+  --color-neutral-900: var(--color-text-primary);
+}
+
+/* ==========================================================================
+   WEBSITE-STYLE BUTTON SYSTEM
+   ========================================================================== */
+
+/* Primary Yellow CTA Button (Website Style) */
+.btn-website-primary {
+  background: var(--color-btn-yellow);
+  color: var(--color-text-primary);
+  border: 2px solid var(--color-border-btn);
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.btn-website-primary:hover {
+  background: var(--color-accent-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255, 188, 0, 0.3);
+}
+
+/* Secondary Charcoal Button */
+.btn-website-secondary {
+  background: var(--color-btn-charcoal);
+  color: var(--color-text-on-dark);
+  border: 2px solid var(--color-btn-charcoal);
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.btn-website-secondary:hover {
+  background: #1A1D1F;
+  transform: translateY(-1px);
+}
+
+/* Blue Button */
+.btn-website-blue {
+  background: var(--color-btn-blue-01);
+  color: var(--color-text-on-dark);
+  border: 2px solid var(--color-btn-blue-01);
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.btn-website-blue:hover {
+  background: var(--color-btn-blue-02);
+  border-color: var(--color-btn-blue-02);
+  transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   WEBSITE-STYLE FORM ELEMENTS
+   ========================================================================== */
+
+.form-website .form-input,
+.form-website .form-textarea,
+.form-website .form-select {
+  border: 2px solid var(--color-border-charcoal);
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 16px;
+  background: var(--color-bg-white);
+  color: var(--color-text-primary);
+  transition: all 0.2s ease;
+}
+
+.form-website .form-input:focus,
+.form-website .form-textarea:focus,
+.form-website .form-select:focus {
+  border-color: var(--color-btn-blue-01);
+  box-shadow: 0 0 0 3px var(--color-bg-blue-01);
+  outline: none;
+}
+
+/* ==========================================================================
+   WEBSITE-STYLE CARDS
+   ========================================================================== */
+
+.card-website {
+  background: var(--color-bg-white);
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  border: 1px solid var(--color-border-charcoal);
+  transition: all 0.2s ease;
+}
+
+.card-website:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+.card-website-icon {
+  width: 48px;
+  height: 48px;
+  background: var(--color-bg-blue-01);
+  border-radius: 12px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+
+.card-website-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.card-website-description {
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+  margin-bottom: 0;
+}
+
+/* ==========================================================================
+   WEBSITE-STYLE NAVIGATION
+   ========================================================================== */
+
+.nav-website {
+  background: var(--color-bg-white);
+  border-bottom: 1px solid var(--color-border-charcoal);
+}
+
+.nav-website .nav-item {
+  color: var(--color-text-secondary);
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.nav-website .nav-item:hover {
+  color: var(--color-text-blue);
+  background: var(--color-bg-blue-01);
+}
+
+.nav-website .nav-item.active {
+  background: var(--color-bg-blue-01);
+  color: var(--color-text-blue);
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   WEBSITE-STYLE STATUS INDICATORS
+   ========================================================================== */
+
+.status-website-success {
+  background: var(--color-success-bg);
+  color: var(--color-success);
+  border: 1px solid var(--color-success-border);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.status-website-warning {
+  background: var(--color-warning-bg);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-warning-border);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.status-website-error {
+  background: var(--color-error-bg);
+  color: var(--color-error);
+  border: 1px solid var(--color-error-border);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.status-website-info {
+  background: var(--color-info-bg);
+  color: var(--color-info);
+  border: 1px solid var(--color-info-border);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* ==========================================================================
+   WEBSITE-STYLE SECTIONS
+   ========================================================================== */
+
+.section-website {
+  padding: 80px 0;
+}
+
+.section-website-hero {
+  padding: 120px 0;
+  background: var(--color-bg-white);
+}
+
+.section-website-dark {
+  background: var(--color-bg-charcoal-03);
+  color: var(--color-text-on-dark);
+}
+
+.section-website-light {
+  background: var(--color-bg-charcoal-01);
+}
+
+/* ==========================================================================
+   RESPONSIVE ADJUSTMENTS
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .section-website {
+    padding: 40px 0;
+  }
+  
+  .section-website-hero {
+    padding: 60px 0;
+  }
+  
+  .card-website {
+    padding: 24px;
+  }
+  
+  .btn-website-primary,
+  .btn-website-secondary,
+  .btn-website-blue {
+    width: 100%;
+    justify-content: center;
+  }
+}

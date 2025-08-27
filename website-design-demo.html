@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Design System Demo - Rebrandly Messaging MVP</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/views.css">
+    <link rel="stylesheet" href="css/design-system.css">
+    <link rel="stylesheet" href="css/color-system-v2.css">
+    <link rel="stylesheet" href="css/website-color-system.css">
+    <link rel="stylesheet" href="css/website-typography.css">
+    <link rel="stylesheet" href="css/buttons.css">
+    <link rel="stylesheet" href="css/forms.css">
+    <link rel="stylesheet" href="css/navigation.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/app-overrides.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container" style="padding: var(--space-lg);">
+        <!-- Hero Section -->
+        <div class="section-website-hero text-center">
+            <h1 class="hero-title">Website Design System Implementation</h1>
+            <p class="hero-subtitle">Rebrandly's website design system adapted for web application interfaces with semantic colors, modern typography, and professional styling.</p>
+            <div class="flex gap-md justify-center flex-wrap">
+                <button class="btn-website-primary">Get Started</button>
+                <button class="btn-website-secondary">Learn More</button>
+            </div>
+        </div>
+
+        <!-- Color System Section -->
+        <div class="section-website">
+            <h2 class="section-title text-center">Semantic Color System</h2>
+            <p class="section-subtitle text-center">Colors extracted from the Rebrandly website design system</p>
+            
+            <div class="grid grid-cols-4 gap-md mb-xl">
+                <!-- Text Colors -->
+                <div class="card-website">
+                    <div class="card-website-title">Text Colors</div>
+                    <div style="background: var(--color-text-primary); height: 40px; border-radius: 8px; margin-bottom: 8px;"></div>
+                    <div class="small-text">Primary: #000000</div>
+                    <div style="background: var(--color-text-secondary); height: 40px; border-radius: 8px; margin: 8px 0;"></div>
+                    <div class="small-text">Secondary: #2F3437</div>
+                    <div style="background: var(--color-text-blue); height: 40px; border-radius: 8px; margin: 8px 0;"></div>
+                    <div class="small-text">Blue: #1F68F9</div>
+                </div>
+
+                <!-- Button Colors -->
+                <div class="card-website">
+                    <div class="card-website-title">Button Colors</div>
+                    <div style="background: var(--color-btn-yellow); height: 40px; border-radius: 8px; margin-bottom: 8px;"></div>
+                    <div class="small-text">Yellow: #FFBC00</div>
+                    <div style="background: var(--color-btn-charcoal); height: 40px; border-radius: 8px; margin: 8px 0;"></div>
+                    <div class="small-text">Charcoal: #232729</div>
+                    <div style="background: var(--color-btn-blue-01); height: 40px; border-radius: 8px; margin: 8px 0;"></div>
+                    <div class="small-text">Blue: #1F68F9</div>
+                </div>
+
+                <!-- Background Colors -->
+                <div class="card-website">
+                    <div class="card-website-title">Backgrounds</div>
+                    <div style="background: var(--color-bg-blue-01); height: 40px; border-radius: 8px; margin-bottom: 8px; border: 1px solid var(--color-border-charcoal);"></div>
+                    <div class="small-text">Blue Light: #E5EEFF</div>
+                    <div style="background: var(--color-bg-yellow-01); height: 40px; border-radius: 8px; margin: 8px 0; border: 1px solid var(--color-border-charcoal);"></div>
+                    <div class="small-text">Yellow Light: #FFF1CC</div>
+                    <div style="background: var(--color-bg-teal-01); height: 40px; border-radius: 8px; margin: 8px 0; border: 1px solid var(--color-border-charcoal);"></div>
+                    <div class="small-text">Teal Light: #DBF0F0</div>
+                </div>
+
+                <!-- Border Colors -->
+                <div class="card-website">
+                    <div class="card-website-title">Border Colors</div>
+                    <div style="background: var(--color-border-charcoal); height: 40px; border-radius: 8px; margin-bottom: 8px;"></div>
+                    <div class="small-text">Charcoal: #BAC0C4</div>
+                    <div style="background: var(--color-border-blue); height: 40px; border-radius: 8px; margin: 8px 0;"></div>
+                    <div class="small-text">Blue: #B2CCFF</div>
+                    <div style="background: var(--color-border-yellow); height: 40px; border-radius: 8px; margin: 8px 0;"></div>
+                    <div class="small-text">Yellow: #FFDEB0</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Typography Section -->
+        <div class="section-website-light">
+            <div class="container">
+                <h2 class="section-title text-center">Typography System</h2>
+                <p class="section-subtitle text-center">Website-inspired typography hierarchy adapted for web applications</p>
+                
+                <div class="grid grid-cols-2 gap-lg">
+                    <div class="card-website">
+                        <h3 class="card-website-title">Website Typography</h3>
+                        <h1 class="hero-title" style="font-size: 32px; margin-bottom: 16px;">Hero Title</h1>
+                        <h2 class="section-title" style="font-size: 24px; margin-bottom: 12px;">Section Title</h2>
+                        <h3 class="card-title">Card Title</h3>
+                        <p class="body-text">Regular body text with proper line height and spacing for optimal readability.</p>
+                        <p class="small-text">Small text for metadata and secondary information.</p>
+                    </div>
+                    
+                    <div class="card-website">
+                        <h3 class="card-website-title">App-Adapted Typography</h3>
+                        <h1 class="app-title-website">App Title</h1>
+                        <h2 class="app-section-title-website">Section Title</h2>
+                        <div class="data-label-website">Data Label</div>
+                        <div class="data-value-website">Data Value</div>
+                        <p class="body-secondary">Secondary body text for descriptions and supporting information.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Button System Section -->
+        <div class="section-website">
+            <h2 class="section-title text-center">Button System</h2>
+            <p class="section-subtitle text-center">Website-style buttons with hover effects and proper accessibility</p>
+            
+            <div class="text-center mb-lg">
+                <div class="flex gap-md justify-center flex-wrap mb-md">
+                    <button class="btn-website-primary">Primary Yellow</button>
+                    <button class="btn-website-secondary">Secondary Charcoal</button>
+                    <button class="btn-website-blue">Blue Action</button>
+                </div>
+                <div class="flex gap-sm justify-center flex-wrap">
+                    <button class="btn-website-primary" style="padding: 8px 16px; font-size: 14px;">Small Primary</button>
+                    <button class="btn-website-secondary" style="padding: 8px 16px; font-size: 14px;">Small Secondary</button>
+                    <button class="btn-website-blue" style="padding: 8px 16px; font-size: 14px;">Small Blue</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card System Section -->
+        <div class="section-website-light">
+            <div class="container">
+                <h2 class="section-title text-center">Card System</h2>
+                <p class="section-subtitle text-center">Website-style cards with icons, hover effects, and proper spacing</p>
+                
+                <div class="grid grid-cols-3 gap-lg">
+                    <div class="card-website">
+                        <div class="card-website-icon">📊</div>
+                        <h3 class="card-website-title">Campaign Analytics</h3>
+                        <p class="card-website-description">Track your campaign performance with detailed analytics and insights.</p>
+                    </div>
+                    
+                    <div class="card-website">
+                        <div class="card-website-icon">👥</div>
+                        <h3 class="card-website-title">Contact Management</h3>
+                        <p class="card-website-description">Organize and manage your contacts with powerful segmentation tools.</p>
+                    </div>
+                    
+                    <div class="card-website">
+                        <div class="card-website-icon">🔗</div>
+                        <h3 class="card-website-title">Link Shortening</h3>
+                        <p class="card-website-description">Create branded short links that drive engagement and track clicks.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Status System Section -->
+        <div class="section-website">
+            <h2 class="section-title text-center">Status Indicators</h2>
+            <p class="section-subtitle text-center">Semantic status colors for application states</p>
+            
+            <div class="grid grid-cols-2 gap-md">
+                <div class="status-website-success">
+                    <strong>✅ Success:</strong> Campaign sent successfully to 156 contacts
+                </div>
+                <div class="status-website-warning">
+                    <strong>⚠️ Warning:</strong> Some contacts may not receive messages
+                </div>
+                <div class="status-website-error">
+                    <strong>❌ Error:</strong> Failed to send campaign due to invalid contacts
+                </div>
+                <div class="status-website-info">
+                    <strong>ℹ️ Info:</strong> Campaign scheduled for tomorrow at 9:00 AM
+                </div>
+            </div>
+        </div>
+
+        <!-- Form System Section -->
+        <div class="section-website-light">
+            <div class="container">
+                <h2 class="section-title text-center">Form System</h2>
+                <p class="section-subtitle text-center">Website-style form elements with proper focus states</p>
+                
+                <div class="grid grid-cols-2 gap-lg">
+                    <form class="form-website">
+                        <div class="form-group">
+                            <label class="form-label">Campaign Name</label>
+                            <input type="text" class="form-input" placeholder="Enter campaign name" value="Summer Product Launch">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Target Audience</label>
+                            <select class="form-select">
+                                <option>All Contacts</option>
+                                <option>Premium Customers</option>
+                                <option>New Subscribers</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Message</label>
+                            <textarea class="form-textarea" rows="4" placeholder="Enter your message...">Check out our amazing summer deals! Get 30% off all products.</textarea>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" class="btn-website-secondary">Save Draft</button>
+                            <button type="submit" class="btn-website-primary">Send Campaign</button>
+                        </div>
+                    </form>
+                    
+                    <div>
+                        <h3 class="app-section-title-website">Form Features</h3>
+                        <ul style="list-style: disc; margin-left: 20px; color: var(--color-text-secondary);">
+                            <li>Website-style borders and focus states</li>
+                            <li>Proper color contrast for accessibility</li>
+                            <li>Consistent spacing and typography</li>
+                            <li>Hover and focus animations</li>
+                            <li>Mobile-responsive design</li>
+                        </ul>
+                        
+                        <h4 class="app-section-title-website" style="margin-top: 24px;">Color Usage</h4>
+                        <div class="small-text">
+                            <div style="margin-bottom: 8px;">
+                                <span style="display: inline-block; width: 16px; height: 16px; background: var(--color-btn-blue-01); border-radius: 3px; margin-right: 8px; vertical-align: middle;"></span>
+                                Focus: Blue (#1F68F9)
+                            </div>
+                            <div style="margin-bottom: 8px;">
+                                <span style="display: inline-block; width: 16px; height: 16px; background: var(--color-border-charcoal); border-radius: 3px; margin-right: 8px; vertical-align: middle;"></span>
+                                Border: Charcoal (#BAC0C4)
+                            </div>
+                            <div>
+                                <span style="display: inline-block; width: 16px; height: 16px; background: var(--color-bg-white); border: 1px solid var(--color-border-charcoal); border-radius: 3px; margin-right: 8px; vertical-align: middle;"></span>
+                                Background: White (#FFFFFF)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dark Section Example -->
+        <div class="section-website-dark">
+            <div class="container text-center">
+                <h2 class="section-title text-on-dark">Performance Metrics</h2>
+                <p class="section-subtitle text-on-dark">Real-time campaign statistics</p>
+                
+                <div class="grid grid-cols-4 gap-md">
+                    <div>
+                        <div class="metric-value-website">1.5M+</div>
+                        <div class="metric-label-website">Messages Sent</div>
+                    </div>
+                    <div>
+                        <div class="metric-value-website">89%</div>
+                        <div class="metric-label-website">Delivery Rate</div>
+                    </div>
+                    <div>
+                        <div class="metric-value-website">34%</div>
+                        <div class="metric-label-website">Click Rate</div>
+                    </div>
+                    <div>
+                        <div class="metric-value-website">500K+</div>
+                        <div class="metric-label-website">Active Users</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Implementation Notes -->
+        <div class="section-website">
+            <h2 class="section-title text-center">Implementation Notes</h2>
+            <div class="grid grid-cols-2 gap-lg">
+                <div class="card-website">
+                    <h3 class="card-website-title">✨ Key Features</h3>
+                    <ul style="list-style: disc; margin-left: 20px; color: var(--color-text-secondary); line-height: 1.6;">
+                        <li>Exact color matching from website design</li>
+                        <li>Website typography hierarchy adapted for apps</li>
+                        <li>Semantic color system with proper naming</li>
+                        <li>Hover effects and smooth transitions</li>
+                        <li>Mobile-responsive design patterns</li>
+                        <li>Accessibility-compliant contrast ratios</li>
+                    </ul>
+                </div>
+                
+                <div class="card-website">
+                    <h3 class="card-website-title">🎯 Design Principles</h3>
+                    <ul style="list-style: disc; margin-left: 20px; color: var(--color-text-secondary); line-height: 1.6;">
+                        <li>Professional SaaS appearance</li>
+                        <li>Consistent with Rebrandly brand</li>
+                        <li>Optimized for task-oriented interfaces</li>
+                        <li>Scalable component system</li>
+                        <li>Performance-optimized CSS</li>
+                        <li>Cross-browser compatibility</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,306 @@
+/**
+ * Website Typography System
+ * Based on Rebrandly website design hierarchy
+ */
+
+:root {
+  /* ==========================================================================
+     WEBSITE TYPOGRAPHY SCALE
+     ========================================================================== */
+
+  /* Font Sizes - Website Scale */
+  --font-size-hero: 48px;
+  --font-size-section-title: 32px;
+  --font-size-card-title: 20px;
+  --font-size-body-large: 18px;
+  --font-size-body: 16px;
+  --font-size-small: 14px;
+  --font-size-tiny: 12px;
+
+  /* Font Weights - Website Style */
+  --font-weight-bold: 700;
+  --font-weight-semibold: 600;
+  --font-weight-medium: 500;
+  --font-weight-regular: 400;
+
+  /* Line Heights - Website Optimized */
+  --line-height-hero: 1.1;
+  --line-height-title: 1.2;
+  --line-height-body: 1.5;
+  --line-height-compact: 1.4;
+}
+
+/* ==========================================================================
+   WEBSITE TYPOGRAPHY CLASSES
+   ========================================================================== */
+
+/* Hero Typography */
+.hero-title {
+  font-size: var(--font-size-hero);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  line-height: var(--line-height-hero);
+  margin-bottom: 24px;
+  letter-spacing: -0.02em;
+}
+
+.hero-subtitle {
+  font-size: var(--font-size-body-large);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-body);
+  margin-bottom: 32px;
+  max-width: 600px;
+}
+
+/* Section Typography */
+.section-title {
+  font-size: var(--font-size-section-title);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  line-height: var(--line-height-title);
+  margin-bottom: 16px;
+  letter-spacing: -0.01em;
+}
+
+.section-subtitle {
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-body);
+  margin-bottom: 32px;
+}
+
+/* Card Typography */
+.card-title {
+  font-size: var(--font-size-card-title);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  line-height: var(--line-height-title);
+  margin-bottom: 12px;
+}
+
+.card-description {
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-body);
+  margin-bottom: 0;
+}
+
+/* Body Typography */
+.body-large {
+  font-size: var(--font-size-body-large);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text-primary);
+  line-height: var(--line-height-body);
+}
+
+.body-text {
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text-primary);
+  line-height: var(--line-height-body);
+}
+
+.body-secondary {
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-body);
+}
+
+.small-text {
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-compact);
+}
+
+.tiny-text {
+  font-size: var(--font-size-tiny);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-compact);
+}
+
+/* ==========================================================================
+   WEB APP ADAPTED TYPOGRAPHY
+   ========================================================================== */
+
+/* App-specific typography that maintains website feel but works for apps */
+.app-title-website {
+  font-size: var(--font-size-section-title);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  line-height: var(--line-height-title);
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
+}
+
+.app-subtitle-website {
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-body);
+  margin-bottom: 24px;
+}
+
+.app-section-title-website {
+  font-size: var(--font-size-card-title);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  line-height: var(--line-height-title);
+  margin-bottom: 16px;
+}
+
+/* Data Typography for App Context */
+.data-label-website {
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.data-value-website {
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  line-height: var(--line-height-compact);
+}
+
+.data-value-large-website {
+  font-size: var(--font-size-card-title);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  line-height: var(--line-height-title);
+}
+
+/* Metric Typography (for dashboard) */
+.metric-value-website {
+  font-size: var(--font-size-hero);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-yellow);
+  line-height: var(--line-height-hero);
+  margin-bottom: 8px;
+}
+
+.metric-label-website {
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-on-dark);
+  line-height: var(--line-height-compact);
+}
+
+/* ==========================================================================
+   ACCENT TYPOGRAPHY
+   ========================================================================== */
+
+/* Yellow accent text (like website) */
+.text-accent {
+  color: var(--color-text-yellow);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* Blue accent text */
+.text-blue {
+  color: var(--color-text-blue);
+  font-weight: var(--font-weight-medium);
+}
+
+/* Text on dark backgrounds */
+.text-on-dark {
+  color: var(--color-text-on-dark);
+}
+
+/* ==========================================================================
+   LINK STYLES
+   ========================================================================== */
+
+.link-website {
+  color: var(--color-text-blue);
+  text-decoration: none;
+  font-weight: var(--font-weight-medium);
+  transition: color 0.2s ease;
+}
+
+.link-website:hover {
+  color: var(--color-btn-blue-02);
+  text-decoration: underline;
+}
+
+.link-on-dark {
+  color: var(--color-text-blue-on-dark);
+  text-decoration: none;
+  font-weight: var(--font-weight-medium);
+  transition: color 0.2s ease;
+}
+
+.link-on-dark:hover {
+  color: var(--color-bg-blue-02);
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   RESPONSIVE TYPOGRAPHY
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 32px;
+  }
+  
+  .section-title {
+    font-size: 24px;
+  }
+  
+  .card-title {
+    font-size: 18px;
+  }
+  
+  .app-title-website {
+    font-size: 24px;
+  }
+  
+  .metric-value-website {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 28px;
+  }
+  
+  .section-title {
+    font-size: 20px;
+  }
+  
+  .app-title-website {
+    font-size: 20px;
+  }
+}
+
+/* ==========================================================================
+   UTILITY CLASSES
+   ========================================================================== */
+
+.font-bold { font-weight: var(--font-weight-bold); }
+.font-semibold { font-weight: var(--font-weight-semibold); }
+.font-medium { font-weight: var(--font-weight-medium); }
+.font-regular { font-weight: var(--font-weight-regular); }
+
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.text-uppercase { text-transform: uppercase; }
+.text-lowercase { text-transform: lowercase; }
+.text-capitalize { text-transform: capitalize; }
+
+.letter-tight { letter-spacing: -0.02em; }
+.letter-normal { letter-spacing: 0; }
+.letter-wide { letter-spacing: 0.05em; }
