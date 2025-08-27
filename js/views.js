@@ -351,7 +351,7 @@ class Views {
                     
                     <div class="contact-row">
                         <div style="display: flex; align-items: center; gap: 12px;">
-                            <div class="contact-avatar-small">M</div>
+                            <div class="contact-avatar-small contact-avatar-primary">M</div>
                             <span>Maria Thomas</span>
                         </div>
                         <div>Acme Corp</div>
@@ -364,7 +364,7 @@ class Views {
                     
                     <div class="contact-row">
                         <div style="display: flex; align-items: center; gap: 12px;">
-                            <div class="contact-avatar-small">B</div>
+                            <div class="contact-avatar-small contact-avatar-info">B</div>
                             <span>Brandon Keao</span>
                         </div>
                         <div>Tech Solutions</div>
@@ -377,7 +377,7 @@ class Views {
                     
                     <div class="contact-row">
                         <div style="display: flex; align-items: center; gap: 12px;">
-                            <div class="contact-avatar-small">A</div>
+                            <div class="contact-avatar-small contact-avatar-success">A</div>
                             <span>Alison Charles</span>
                         </div>
                         <div>Marketing Inc</div>
@@ -390,7 +390,7 @@ class Views {
                     
                     <div class="contact-row">
                         <div style="display: flex; align-items: center; gap: 12px;">
-                            <div class="contact-avatar-small">G</div>
+                            <div class="contact-avatar-small contact-avatar-warning">G</div>
                             <span>Grace Thompson</span>
                         </div>
                         <div>Digital Marketing Pro</div>
@@ -403,7 +403,7 @@ class Views {
                     
                     <div class="contact-row">
                         <div style="display: flex; align-items: center; gap: 12px;">
-                            <div class="contact-avatar-small">H</div>
+                            <div class="contact-avatar-small contact-avatar-error">H</div>
                             <span>Henry Rodriguez</span>
                         </div>
                         <div>E-commerce Solutions</div>
@@ -416,7 +416,7 @@ class Views {
                     
                     <div class="contact-row">
                         <div style="display: flex; align-items: center; gap: 12px;">
-                            <div class="contact-avatar-small">I</div>
+                            <div class="contact-avatar-small contact-avatar-neutral">I</div>
                             <span>Isabella Chen</span>
                         </div>
                         <div>Cloud Systems Inc</div>
@@ -429,7 +429,7 @@ class Views {
                     
                     <div class="contact-row">
                         <div style="display: flex; align-items: center; gap: 12px;">
-                            <div class="contact-avatar-small">J</div>
+                            <div class="contact-avatar-small contact-avatar-primary-dark">J</div>
                             <span>Jack Anderson</span>
                         </div>
                         <div>Retail Dynamics</div>
