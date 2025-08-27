@@ -1,0 +1,521 @@
+/**
+ * Navigation System - Design System Implementation
+ * Complete navigation component system following design specifications
+ */
+
+/* ==========================================================================
+   SIDEBAR NAVIGATION
+   ========================================================================== */
+
+.sidebar {
+  width: 240px;
+  background: var(--color-surface);
+  border-right: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: var(--z-fixed);
+  overflow-y: auto;
+  transition: transform var(--transition-base);
+}
+
+/* ==========================================================================
+   SIDEBAR HEADER
+   ========================================================================== */
+
+.sidebar-header {
+  padding: var(--space-md);
+  border-bottom: 1px solid var(--color-border-light);
+  flex-shrink: 0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.logo-icon {
+  width: 40px;
+  height: 40px;
+  background: var(--color-primary-gradient);
+  color: var(--color-white);
+  border-radius: var(--radius-base);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  flex-shrink: 0;
+}
+
+.logo-text {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  line-height: var(--line-height-tight);
+}
+
+.logo-subtitle {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-tight);
+}
+
+/* ==========================================================================
+   NAVIGATION MENU
+   ========================================================================== */
+
+.nav-menu {
+  flex: 1;
+  padding: var(--space-sm) 0;
+  overflow-y: auto;
+}
+
+.nav-section {
+  margin-bottom: var(--space-lg);
+}
+
+.nav-section:last-child {
+  margin-bottom: 0;
+}
+
+.nav-section-title {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0 var(--space-md);
+  margin-bottom: var(--space-sm);
+}
+
+/* ==========================================================================
+   NAVIGATION ITEMS
+   ========================================================================== */
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 12px var(--space-md);
+  margin: 0 var(--space-sm);
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  border-radius: var(--radius-base);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-base);
+  transition: all var(--transition-base);
+  cursor: pointer;
+  position: relative;
+  min-height: 44px; /* Accessibility: minimum touch target */
+}
+
+.nav-item:hover {
+  background-color: var(--color-gray-50);
+  color: var(--color-text-primary);
+}
+
+.nav-item:focus-visible {
+  outline: 2px solid var(--color-primary-start);
+  outline-offset: 2px;
+}
+
+.nav-item.active {
+  background: var(--color-primary-gradient);
+  color: var(--color-white);
+  font-weight: var(--font-weight-medium);
+}
+
+.nav-item.active:hover {
+  background: var(--color-primary-gradient);
+  color: var(--color-white);
+}
+
+.nav-item.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   NAVIGATION ICONS
+   ========================================================================== */
+
+.nav-icon {
+  font-size: var(--font-size-lg);
+  width: 20px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   NAVIGATION BADGES
+   ========================================================================== */
+
+.nav-badge {
+  background-color: var(--color-error);
+  color: var(--color-white);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  padding: 2px var(--space-xs);
+  border-radius: var(--radius-full);
+  min-width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+}
+
+.nav-item.active .nav-badge {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: var(--color-white);
+}
+
+/* ==========================================================================
+   PROGRESS STEPS NAVIGATION
+   ========================================================================== */
+
+.progress-nav {
+  padding: var(--space-md);
+  border-bottom: 1px solid var(--color-border-light);
+  background: var(--color-gray-50);
+}
+
+.progress-steps {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  margin-bottom: var(--space-sm);
+}
+
+.progress-line {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  right: 16px;
+  height: 2px;
+  background: var(--color-border);
+  z-index: 1;
+}
+
+.progress-line-active {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  height: 2px;
+  background: var(--color-primary-gradient);
+  z-index: 2;
+  transition: width var(--transition-slow);
+}
+
+.progress-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 3;
+  flex: 1;
+  max-width: 120px;
+}
+
+.step-indicator {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  color: var(--color-text-muted);
+  transition: all var(--transition-base);
+  margin-bottom: var(--space-xs);
+}
+
+.step-indicator.active {
+  background: var(--color-primary-gradient);
+  border-color: var(--color-primary-start);
+  color: var(--color-white);
+}
+
+.step-indicator.completed {
+  background: var(--color-success);
+  border-color: var(--color-success);
+  color: var(--color-white);
+}
+
+.step-indicator.completed::before {
+  content: '✓';
+  font-size: var(--font-size-sm);
+}
+
+.step-label {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  text-align: center;
+  line-height: var(--line-height-tight);
+  max-width: 100px;
+}
+
+.progress-step.active .step-label {
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+.progress-step.completed .step-label {
+  color: var(--color-success);
+}
+
+/* ==========================================================================
+   MOBILE NAVIGATION
+   ========================================================================== */
+
+.mobile-header {
+  display: none;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  padding: var(--space-sm) var(--space-md);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-fixed);
+  height: 60px;
+}
+
+.mobile-header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.hamburger-menu {
+  display: none;
+  background: none;
+  border: none;
+  padding: var(--space-xs);
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  transition: background-color var(--transition-base);
+}
+
+.hamburger-menu:hover {
+  background-color: var(--color-gray-50);
+}
+
+.hamburger-menu:focus-visible {
+  outline: 2px solid var(--color-primary-start);
+  outline-offset: 2px;
+}
+
+.hamburger-icon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.hamburger-line {
+  width: 20px;
+  height: 2px;
+  background: var(--color-text-primary);
+  border-radius: 1px;
+  transition: all var(--transition-base);
+}
+
+.hamburger-menu.active .hamburger-line:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger-menu.active .hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-menu.active .hamburger-line:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -6px);
+}
+
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: var(--z-modal-backdrop);
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.sidebar-overlay.active {
+  opacity: 1;
+}
+
+/* ==========================================================================
+   BREADCRUMB NAVIGATION
+   ========================================================================== */
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-md);
+}
+
+.breadcrumb-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.breadcrumb-item:not(:last-child)::after {
+  content: '/';
+  color: var(--color-text-muted);
+  margin-left: var(--space-xs);
+}
+
+.breadcrumb-link {
+  color: var(--color-text-muted);
+  text-decoration: none;
+  transition: color var(--transition-base);
+}
+
+.breadcrumb-link:hover {
+  color: var(--color-primary-start);
+}
+
+.breadcrumb-current {
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+/* ==========================================================================
+   RESPONSIVE NAVIGATION
+   ========================================================================== */
+
+@media (max-width: 767px) {
+  .sidebar {
+    transform: translateX(-100%);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .sidebar.open {
+    transform: translateX(0);
+  }
+  
+  .mobile-header {
+    display: block;
+  }
+  
+  .hamburger-menu {
+    display: flex;
+  }
+  
+  .sidebar-overlay {
+    display: block;
+  }
+  
+  .main-content {
+    margin-left: 0;
+    padding-top: 60px; /* Account for mobile header */
+  }
+  
+  .nav-section-title {
+    padding: 0 var(--space-sm);
+  }
+  
+  .nav-item {
+    margin: 0 var(--space-xs);
+    padding: var(--space-sm);
+  }
+  
+  .progress-nav {
+    padding: var(--space-sm);
+  }
+  
+  .progress-steps {
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+  }
+  
+  .progress-step {
+    flex: 0 0 auto;
+    max-width: none;
+  }
+  
+  .step-label {
+    font-size: 10px;
+    max-width: 60px;
+  }
+}
+
+@media (min-width: 768px) {
+  .main-content {
+    margin-left: 240px;
+  }
+}
+
+/* ==========================================================================
+   ACCESSIBILITY ENHANCEMENTS
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .sidebar,
+  .nav-item,
+  .step-indicator,
+  .progress-line-active,
+  .hamburger-line,
+  .sidebar-overlay {
+    transition: none;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .nav-item.active {
+    border: 2px solid currentColor;
+  }
+  
+  .step-indicator {
+    border-width: 3px;
+  }
+}
+
+/* Focus management for keyboard navigation */
+.nav-item:focus,
+.hamburger-menu:focus {
+  outline: 2px solid var(--color-primary-start);
+  outline-offset: 2px;
+}
+
+/* Skip link for accessibility */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: var(--color-primary-start);
+  color: var(--color-white);
+  padding: var(--space-xs) var(--space-sm);
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  z-index: var(--z-tooltip);
+  transition: top var(--transition-base);
+}
+
+.skip-link:focus {
+  top: 6px;
+}
