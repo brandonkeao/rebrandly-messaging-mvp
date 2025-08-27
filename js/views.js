@@ -330,7 +330,6 @@ class Views {
                 </div>
                 
                 <div class="contact-filters">
-                    <input type="text" class="form-input contact-search" id="contactSearch" placeholder="Search contacts...">
                     <select class="form-input">
                         <option>All Lists</option>
                         <option>Customers</option>
