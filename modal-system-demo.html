@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal System Demo - Rebrandly Messaging</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/views.css">
+    <link rel="stylesheet" href="css/design-system.css">
+    <link rel="stylesheet" href="css/color-system-v2.css">
+    <link rel="stylesheet" href="css/website-color-system.css">
+    <link rel="stylesheet" href="css/website-typography.css">
+    <link rel="stylesheet" href="css/workflow-design-system.css">
+    <link rel="stylesheet" href="css/buttons.css">
+    <link rel="stylesheet" href="css/forms.css">
+    <link rel="stylesheet" href="css/navigation.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/app-overrides.css">
+    <link rel="stylesheet" href="css/accessibility-fixes.css">
+    <link rel="stylesheet" href="css/brand-customization.css">
+    <link rel="stylesheet" href="css/getting-started-improvements.css">
+    <link rel="stylesheet" href="css/header-alignment.css">
+    <link rel="stylesheet" href="css/modal-system.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container" style="padding: var(--space-lg);">
+        <h1 class="hero-title">Modal System Demo</h1>
+        <p class="hero-subtitle">Comprehensive modal, dialog, and notification system</p>
+
+        <!-- Basic Modals -->
+        <section class="section-website">
+            <h2 class="section-title">Basic Modals</h2>
+            <div class="grid grid-cols-2 gap-lg">
+                <div class="card-website">
+                    <h3 class="card-website-title">Modal Sizes</h3>
+                    <div class="flex gap-sm flex-wrap">
+                        <button class="btn-website-primary" onclick="showBasicModal('sm')">Small</button>
+                        <button class="btn-website-primary" onclick="showBasicModal('md')">Medium</button>
+                        <button class="btn-website-primary" onclick="showBasicModal('lg')">Large</button>
+                        <button class="btn-website-primary" onclick="showBasicModal('xl')">Extra Large</button>
+                    </div>
+                </div>
+                
+                <div class="card-website">
+                    <h3 class="card-website-title">Modal Features</h3>
+                    <div class="flex gap-sm flex-wrap">
+                        <button class="btn-website-secondary" onclick="showModalWithFooter()">With Footer</button>
+                        <button class="btn-website-secondary" onclick="showModalNoClose()">No Close Button</button>
+                        <button class="btn-website-secondary" onclick="showScrollableModal()">Scrollable Content</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Confirmation Dialogs -->
+        <section class="section-website-light">
+            <div class="container">
+                <h2 class="section-title">Confirmation Dialogs</h2>
+                <div class="grid grid-cols-2 gap-lg">
+                    <div class="card-website">
+                        <h3 class="card-website-title">Dialog Types</h3>
+                        <div class="flex gap-sm flex-wrap">
+                            <button class="btn-website-primary" onclick="showWarningDialog()">Warning</button>
+                            <button class="btn-website-secondary" onclick="showDangerDialog()">Danger</button>
+                            <button class="btn-website-blue" onclick="showInfoDialog()">Info</button>
+                            <button style="background: var(--color-success-500); color: white;" onclick="showSuccessDialog()">Success</button>
+                        </div>
+                    </div>
+                    
+                    <div class="card-website">
+                        <h3 class="card-website-title">Common Actions</h3>
+                        <div class="flex gap-sm flex-wrap">
+                            <button class="btn-website-secondary" onclick="deleteConfirmation()">Delete Item</button>
+                            <button class="btn-website-primary" onclick="saveConfirmation()">Save Changes</button>
+                            <button class="btn-website-blue" onclick="sendConfirmation()">Send Campaign</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Form Modals -->
+        <section class="section-website">
+            <h2 class="section-title">Form Modals</h2>
+            <div class="grid grid-cols-2 gap-lg">
+                <div class="card-website">
+                    <h3 class="card-website-title">Form Examples</h3>
+                    <div class="flex gap-sm flex-wrap">
+                        <button class="btn-website-primary" onclick="showContactForm()">Add Contact</button>
+                        <button class="btn-website-primary" onclick="showLinkForm()">Add Link</button>
+                        <button class="btn-website-primary" onclick="showCampaignForm()">New Campaign</button>
+                    </div>
+                </div>
+                
+                <div class="card-website">
+                    <h3 class="card-website-title">Advanced Forms</h3>
+                    <div class="flex gap-sm flex-wrap">
+                        <button class="btn-website-secondary" onclick="showLoginForm()">Login Form</button>
+                        <button class="btn-website-secondary" onclick="showSettingsForm()">Settings</button>
+                        <button class="btn-website-secondary" onclick="showFeedbackForm()">Feedback</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Toast Notifications -->
+        <section class="section-website-light">
+            <div class="container">
+                <h2 class="section-title">Toast Notifications</h2>
+                <div class="grid grid-cols-2 gap-lg">
+                    <div class="card-website">
+                        <h3 class="card-website-title">Notification Types</h3>
+                        <div class="flex gap-sm flex-wrap">
+                            <button class="btn-website-primary" onclick="showSuccessToast()">Success</button>
+                            <button class="btn-website-secondary" onclick="showWarningToast()">Warning</button>
+                            <button class="btn-website-secondary" onclick="showErrorToast()">Error</button>
+                            <button class="btn-website-blue" onclick="showInfoToast()">Info</button>
+                        </div>
+                    </div>
+                    
+                    <div class="card-website">
+                        <h3 class="card-website-title">Toast Features</h3>
+                        <div class="flex gap-sm flex-wrap">
+                            <button class="btn-website-primary" onclick="showPersistentToast()">Persistent</button>
+                            <button class="btn-website-secondary" onclick="showQuickToast()">Quick (2s)</button>
+                            <button class="btn-website-secondary" onclick="showMultipleToasts()">Multiple</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Utility Methods -->
+        <section class="section-website">
+            <h2 class="section-title">Utility Methods</h2>
+            <div class="card-website">
+                <h3 class="card-website-title">Promise-based Dialogs</h3>
+                <div class="flex gap-sm flex-wrap">
+                    <button class="btn-website-primary" onclick="testConfirmPromise()">Confirm Promise</button>
+                    <button class="btn-website-secondary" onclick="testAlertPromise()">Alert Promise</button>
+                    <button class="btn-website-blue" onclick="testChainedDialogs()">Chained Dialogs</button>
+                </div>
+                <div id="promiseResults" style="margin-top: var(--space-md); padding: var(--space-sm); background: var(--color-neutral-100); border-radius: var(--radius-base); display: none;">
+                    <strong>Result:</strong> <span id="resultText"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Implementation -->
+        <section class="section-website-light">
+            <div class="container">
+                <h2 class="section-title">Technical Implementation</h2>
+                <div class="card-website">
+                    <h3 class="card-website-title">Modal System Features</h3>
+                    <div class="grid grid-cols-2 gap-md">
+                        <div>
+                            <h4 style="font-size: 16px; font-weight: 600; margin-bottom: 8px;">Core Features:</h4>
+                            <ul style="list-style: disc; margin-left: 20px; font-size: 14px; color: var(--color-text-secondary); line-height: 1.6;">
+                                <li>Multiple modal sizes (sm, md, lg, xl, fullscreen)</li>
+                                <li>Backdrop blur and overlay effects</li>
+                                <li>Focus management and keyboard trapping</li>
+                                <li>Escape key and overlay click to close</li>
+                                <li>Smooth animations and transitions</li>
+                                <li>Body scroll prevention</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 style="font-size: 16px; font-weight: 600; margin-bottom: 8px;">Accessibility:</h4>
+                            <ul style="list-style: disc; margin-left: 20px; font-size: 14px; color: var(--color-text-secondary); line-height: 1.6;">
+                                <li>ARIA attributes (role, aria-modal, aria-labelledby)</li>
+                                <li>Focus trap within modal content</li>
+                                <li>Keyboard navigation support</li>
+                                <li>Screen reader announcements</li>
+                                <li>High contrast mode support</li>
+                                <li>Reduced motion preferences</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <h4 style="font-size: 16px; font-weight: 600; margin: 16px 0 8px 0;">Usage Examples:</h4>
+                    <div style="background: var(--color-neutral-100); padding: var(--space-md); border-radius: var(--radius-base); font-family: monospace; font-size: 14px;">
+<pre style="margin: 0; color: var(--color-text-primary);">// Basic modal
+showModal({
+  title: 'My Modal',
+  content: '<p>Modal content here</p>',
+  size: 'md'
+});
+
+// Confirmation dialog
+showConfirmDialog({
+  title: 'Delete Item',
+  message: 'Are you sure you want to delete this item?',
+  type: 'danger',
+  onConfirm: () => console.log('Confirmed'),
+  onCancel: () => console.log('Cancelled')
+});
+
+// Form modal
+showFormModal({
+  title: 'Add Contact',
+  fields: [
+    { name: 'name', label: 'Name', required: true },
+    { name: 'email', label: 'Email', type: 'email' }
+  ],
+  onSubmit: (data) => console.log('Form data:', data)
+});
+
+// Toast notification
+showToast({
+  title: 'Success!',
+  message: 'Operation completed successfully',
+  type: 'success',
+  duration: 5000
+});</pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/modal-system.js"></script>
+    <script>
+        // Demo functions for basic modals
+        function showBasicModal(size) {
+            showModal({
+                title: `${size.toUpperCase()} Modal`,
+                content: `
+                    <p>This is a <strong>${size}</strong> sized modal.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+                `,
+                size: size
+            });
+        }
+
+        function showModalWithFooter() {
+            showModal({
+                title: 'Modal with Footer',
+                content: '<p>This modal has custom footer buttons.</p>',
+                footer: `
+                    <button class="btn-website-secondary">Cancel</button>
+                    <button class="btn-website-primary">Save Changes</button>
+                `,
+                size: 'md'
+            });
+        }
+
+        function showModalNoClose() {
+            const modal = showModal({
+                title: 'No Close Button',
+                content: `
+                    <p>This modal has no close button in the header.</p>
+                    <p>You can still close it by clicking the button below or pressing Escape.</p>
+                    <button class="btn-website-primary" onclick="window.ModalSystem.closeModal(this.closest('.modal-overlay'))">Close Modal</button>
+                `,
+                showClose: false,
+                size: 'md'
+            });
+        }
+
+        function showScrollableModal() {
+            let content = '<h3>Scrollable Content</h3>';
+            for (let i = 1; i <= 20; i++) {
+                content += `<p>This is paragraph ${i}. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>`;
+            }
+            
+            showModal({
+                title: 'Scrollable Modal',
+                content: content,
+                size: 'md'
+            });
+        }
+
+        // Demo functions for confirmation dialogs
+        function showWarningDialog() {
+            showConfirmDialog({
+                title: 'Warning',
+                message: 'This action may have unintended consequences. Do you want to continue?',
+                type: 'warning',
+                onConfirm: () => showToast({ title: 'Confirmed', message: 'Warning dialog confirmed', type: 'info' }),
+                onCancel: () => showToast({ title: 'Cancelled', message: 'Warning dialog cancelled', type: 'info' })
+            });
+        }
+
+        function showDangerDialog() {
+            showConfirmDialog({
+                title: 'Dangerous Action',
+                message: 'This action cannot be undone. Are you absolutely sure?',
+                type: 'danger',
+                confirmText: 'Yes, Delete',
+                onConfirm: () => showToast({ title: 'Deleted', message: 'Item has been deleted', type: 'success' })
+            });
+        }
+
+        function showInfoDialog() {
+            showConfirmDialog({
+                title: 'Information',
+                message: 'This is an informational dialog with some important details.',
+                type: 'info',
+                confirmText: 'Got it',
+                cancelText: ''
+            });
+        }
+
+        function showSuccessDialog() {
+            showConfirmDialog({
+                title: 'Success!',
+                message: 'Your operation has been completed successfully.',
+                type: 'success',
+                confirmText: 'Awesome!',
+                cancelText: ''
+            });
+        }
+
+        // Common action dialogs
+        function deleteConfirmation() {
+            showConfirmDialog({
+                title: 'Delete Contact',
+                message: 'Are you sure you want to delete "John Doe"? This action cannot be undone.',
+                type: 'danger',
+                confirmText: 'Delete',
+                onConfirm: () => showToast({ title: 'Deleted', message: 'Contact has been deleted', type: 'success' })
+            });
+        }
+
+        function saveConfirmation() {
+            showConfirmDialog({
+                title: 'Save Changes',
+                message: 'You have unsaved changes. Do you want to save them before leaving?',
+                type: 'warning',
+                confirmText: 'Save',
+                cancelText: 'Discard',
+                onConfirm: () => showToast({ title: 'Saved', message: 'Changes have been saved', type: 'success' })
+            });
+        }
+
+        function sendConfirmation() {
+            showConfirmDialog({
+                title: 'Send Campaign',
+                message: 'Send SMS campaign to 1,234 contacts? This will use 1,234 SMS credits.',
+                type: 'info',
+                confirmText: 'Send Now',
+                onConfirm: () => showToast({ title: 'Sending', message: 'Campaign is being sent...', type: 'info' })
+            });
+        }
+
+        // Form modal demos
+        function showContactForm() {
+            showFormModal({
+                title: 'Add New Contact',
+                fields: [
+                    { name: 'name', label: 'Full Name', required: true },
+                    { name: 'company', label: 'Company' },
+                    { name: 'email', label: 'Email Address', type: 'email', required: true },
+                    { name: 'phone', label: 'Phone Number', type: 'tel' }
+                ],
+                onSubmit: (data) => {
+                    showToast({ 
+                        title: 'Contact Added', 
+                        message: `${data.name} has been added to your contacts`, 
+                        type: 'success' 
+                    });
+                }
+            });
+        }
+
+        function showLinkForm() {
+            showFormModal({
+                title: 'Create Short Link',
+                fields: [
+                    { name: 'url', label: 'Destination URL', type: 'url', required: true, placeholder: 'https://example.com' },
+                    { name: 'title', label: 'Link Title', required: true },
+                    { name: 'description', label: 'Description', type: 'textarea' }
+                ],
+                onSubmit: (data) => {
+                    showToast({ 
+                        title: 'Link Created', 
+                        message: `Short link created: yrbrand.co/${Math.random().toString(36).substr(2, 8)}`, 
+                        type: 'success' 
+                    });
+                }
+            });
+        }
+
+        function showCampaignForm() {
+            showFormModal({
+                title: 'Create New Campaign',
+                fields: [
+                    { name: 'name', label: 'Campaign Name', required: true },
+                    { name: 'message', label: 'Message', type: 'textarea', required: true, placeholder: 'Enter your SMS message...' },
+                    { name: 'schedule', label: 'Send Time', type: 'datetime-local' }
+                ],
+                onSubmit: (data) => {
+                    showToast({ 
+                        title: 'Campaign Created', 
+                        message: `Campaign "${data.name}" has been created`, 
+                        type: 'success' 
+                    });
+                }
+            });
+        }
+
+        function showLoginForm() {
+            showFormModal({
+                title: 'Login to Your Account',
+                fields: [
+                    { name: 'email', label: 'Email', type: 'email', required: true },
+                    { name: 'password', label: 'Password', type: 'password', required: true }
+                ],
+                submitText: 'Login',
+                onSubmit: (data) => {
+                    showToast({ 
+                        title: 'Login Successful', 
+                        message: 'Welcome back!', 
+                        type: 'success' 
+                    });
+                }
+            });
+        }
+
+        function showSettingsForm() {
+            showFormModal({
+                title: 'Account Settings',
+                fields: [
+                    { name: 'name', label: 'Display Name', value: 'John Doe' },
+                    { name: 'email', label: 'Email', type: 'email', value: 'john@example.com' },
+                    { name: 'notifications', label: 'Email Notifications', type: 'checkbox' },
+                    { name: 'timezone', label: 'Timezone', value: 'UTC-8' }
+                ],
+                submitText: 'Save Settings',
+                onSubmit: (data) => {
+                    showToast({ 
+                        title: 'Settings Saved', 
+                        message: 'Your account settings have been updated', 
+                        type: 'success' 
+                    });
+                }
+            });
+        }
+
+        function showFeedbackForm() {
+            showFormModal({
+                title: 'Send Feedback',
+                fields: [
+                    { name: 'subject', label: 'Subject', required: true },
+                    { name: 'message', label: 'Your Feedback', type: 'textarea', required: true, placeholder: 'Tell us what you think...' },
+                    { name: 'email', label: 'Your Email', type: 'email', placeholder: 'Optional - for follow-up' }
+                ],
+                submitText: 'Send Feedback',
+                onSubmit: (data) => {
+                    showToast({ 
+                        title: 'Feedback Sent', 
+                        message: 'Thank you for your feedback!', 
+                        type: 'success' 
+                    });
+                }
+            });
+        }
+
+        // Toast notification demos
+        function showSuccessToast() {
+            showToast({
+                title: 'Success!',
+                message: 'Your operation completed successfully',
+                type: 'success'
+            });
+        }
+
+        function showWarningToast() {
+            showToast({
+                title: 'Warning',
+                message: 'Please check your input and try again',
+                type: 'warning'
+            });
+        }
+
+        function showErrorToast() {
+            showToast({
+                title: 'Error',
+                message: 'Something went wrong. Please try again later.',
+                type: 'error'
+            });
+        }
+
+        function showInfoToast() {
+            showToast({
+                title: 'Info',
+                message: 'Your campaign is being processed',
+                type: 'info'
+            });
+        }
+
+        function showPersistentToast() {
+            showToast({
+                title: 'Persistent Notification',
+                message: 'This notification will stay until you close it',
+                type: 'info',
+                duration: 0
+            });
+        }
+
+        function showQuickToast() {
+            showToast({
+                title: 'Quick Toast',
+                message: 'This will disappear in 2 seconds',
+                type: 'success',
+                duration: 2000
+            });
+        }
+
+        function showMultipleToasts() {
+            const types = ['success', 'warning', 'error', 'info'];
+            types.forEach((type, index) => {
+                setTimeout(() => {
+                    showToast({
+                        title: `${type.charAt(0).toUpperCase() + type.slice(1)} Toast`,
+                        message: `This is toast notification #${index + 1}`,
+                        type: type
+                    });
+                }, index * 500);
+            });
+        }
+
+        // Utility method demos
+        async function testConfirmPromise() {
+            const result = await window.ModalSystem.confirm('Do you want to proceed with this action?', 'Confirm Action');
+            document.getElementById('promiseResults').style.display = 'block';
+            document.getElementById('resultText').textContent = result ? 'User confirmed' : 'User cancelled';
+        }
+
+        async function testAlertPromise() {
+            await window.ModalSystem.alert('This is an alert message', 'Alert', 'info');
+            document.getElementById('promiseResults').style.display = 'block';
+            document.getElementById('resultText').textContent = 'Alert was acknowledged';
+        }
+
+        async function testChainedDialogs() {
+            const step1 = await window.ModalSystem.confirm('Start the process?', 'Step 1');
+            if (step1) {
+                const step2 = await window.ModalSystem.confirm('Continue to step 2?', 'Step 2');
+                if (step2) {
+                    await window.ModalSystem.alert('Process completed successfully!', 'Success', 'success');
+                    document.getElementById('promiseResults').style.display = 'block';
+                    document.getElementById('resultText').textContent = 'All steps completed';
+                } else {
+                    document.getElementById('promiseResults').style.display = 'block';
+                    document.getElementById('resultText').textContent = 'Stopped at step 2';
+                }
+            } else {
+                document.getElementById('promiseResults').style.display = 'block';
+                document.getElementById('resultText').textContent = 'Cancelled at step 1';
+            }
+        }
+    </script>
+</body>
+</html>
