@@ -10,7 +10,7 @@ class Views {
                 <!-- Hero Section -->
                 <div class="hero-section">
                     <div class="hero-content">
-                        <h1 class="hero-title">📱 Rebrandly Messaging MVP</h1>
+                        <h1 class="hero-title">📱 Rebrandly Messaging</h1>
                         <p class="hero-subtitle">Create personalized SMS campaigns with branded short links</p>
                         <div class="hero-badges">
                             <span class="badge badge-primary">SMS Marketing</span>
@@ -24,7 +24,7 @@ class Views {
                 <div class="overview-section">
                     <div class="card">
                         <h2 class="section-title">🎯 What This Tool Does</h2>
-                        <p class="section-description">
+                        <p class="section-description" style="margin-bottom: var(--space-lg);">
                             This messaging platform helps you create and send personalized SMS campaigns using your branded short links. 
                             Perfect for marketing campaigns, product launches, event promotions, and customer engagement.
                         </p>
