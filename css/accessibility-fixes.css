@@ -1,0 +1,346 @@
+/**
+ * Accessibility Fixes - Contrast and Color Corrections
+ * Ensures WCAG AA compliance with proper contrast ratios
+ */
+
+/* ==========================================================================
+   CONTRAST RATIO FIXES
+   ========================================================================== */
+
+/* Fix dark backgrounds with proper light text */
+.btn-website-secondary,
+.btn-secondary {
+  background: var(--color-btn-charcoal); /* #232729 - Dark */
+  color: #FFFFFF !important; /* White text for dark background */
+  border: 2px solid var(--color-btn-charcoal);
+}
+
+.btn-website-secondary:hover,
+.btn-secondary:hover {
+  background: #1A1D1F; /* Darker on hover */
+  color: #FFFFFF !important; /* Maintain white text */
+}
+
+/* Fix navigation active states */
+.nav-item.active {
+  background: var(--color-bg-blue-01) !important; /* Light blue background */
+  color: var(--color-text-primary) !important; /* Dark text for light background */
+}
+
+.nav-website .nav-item.active {
+  background: var(--color-bg-blue-01) !important; /* Light blue background */
+  color: var(--color-text-primary) !important; /* Dark text for light background */
+}
+
+/* Fix step icons with proper contrast */
+.step-icon {
+  color: #FFFFFF !important; /* White text on colored backgrounds */
+  font-weight: 600;
+}
+
+.step-icon.create {
+  background: var(--color-step-create); /* Purple background */
+  color: #FFFFFF !important; /* White text */
+}
+
+.step-icon.customize {
+  background: var(--color-step-customize); /* Teal background */
+  color: #FFFFFF !important; /* White text */
+}
+
+.step-icon.share {
+  background: var(--color-step-share); /* Pink background */
+  color: #FFFFFF !important; /* White text */
+}
+
+.step-icon.track {
+  background: var(--color-step-track); /* Blue background */
+  color: #FFFFFF !important; /* White text */
+}
+
+/* Fix social icons */
+.social-icon {
+  color: #FFFFFF !important; /* White text on colored backgrounds */
+  font-weight: 500;
+}
+
+.social-icon.linkedin {
+  background: var(--color-linkedin);
+  color: #FFFFFF !important;
+}
+
+.social-icon.facebook {
+  background: var(--color-facebook);
+  color: #FFFFFF !important;
+}
+
+.social-icon.twitter {
+  background: var(--color-twitter);
+  color: #FFFFFF !important;
+}
+
+.social-icon.instagram {
+  background: var(--color-instagram);
+  color: #FFFFFF !important;
+}
+
+.social-icon.tiktok {
+  background: var(--color-tiktok);
+  color: #FFFFFF !important;
+}
+
+.social-icon.mastodon {
+  background: var(--color-mastodon);
+  color: #FFFFFF !important;
+}
+
+/* Fix dark section text */
+.section-website-dark {
+  background: var(--color-bg-charcoal-03); /* Dark background */
+  color: #FFFFFF !important; /* White text */
+}
+
+.section-website-dark .section-title {
+  color: #FFFFFF !important; /* White headings on dark background */
+}
+
+.section-website-dark .section-subtitle {
+  color: #E5E7EB !important; /* Light gray text on dark background */
+}
+
+.section-website-dark .metric-label-website {
+  color: #E5E7EB !important; /* Light text for labels on dark background */
+}
+
+/* Fix status indicators */
+.status-website-success {
+  background: var(--color-success-bg); /* Light green background */
+  color: var(--color-success-800) !important; /* Dark green text */
+  border: 1px solid var(--color-success-border);
+}
+
+.status-website-warning {
+  background: var(--color-warning-bg); /* Light yellow background */
+  color: var(--color-warning-800) !important; /* Dark amber text */
+  border: 1px solid var(--color-warning-border);
+}
+
+.status-website-error {
+  background: var(--color-error-bg); /* Light red background */
+  color: var(--color-error-800) !important; /* Dark red text */
+  border: 1px solid var(--color-error-border);
+}
+
+.status-website-info {
+  background: var(--color-info-bg); /* Light blue background */
+  color: var(--color-info-800) !important; /* Dark blue text */
+  border: 1px solid var(--color-info-border);
+}
+
+/* ==========================================================================
+   NAVIGATION CONTRAST FIXES
+   ========================================================================== */
+
+/* Fix sidebar navigation */
+.nav-website .nav-item {
+  color: var(--color-text-secondary) !important; /* Dark text on light background */
+}
+
+.nav-website .nav-item:hover {
+  color: var(--color-text-primary) !important; /* Darker text on hover */
+  background: var(--color-bg-blue-01);
+}
+
+/* Fix navigation badges */
+.nav-badge {
+  background-color: var(--color-error); /* Red background */
+  color: #FFFFFF !important; /* White text */
+}
+
+.nav-item.active .nav-badge {
+  background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent white */
+  color: var(--color-text-primary) !important; /* Dark text */
+}
+
+/* ==========================================================================
+   FORM ELEMENT CONTRAST FIXES
+   ========================================================================== */
+
+/* Fix form labels */
+.form-label {
+  color: var(--color-text-primary) !important; /* Dark text on light backgrounds */
+}
+
+/* Fix form inputs */
+.form-input,
+.form-textarea,
+.form-select {
+  background: var(--color-bg-white); /* White background */
+  color: var(--color-text-primary) !important; /* Dark text */
+  border: 2px solid var(--color-border-charcoal);
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: var(--color-text-muted) !important; /* Medium gray placeholder */
+}
+
+/* Fix form URL builder */
+.form-url-prefix {
+  background: var(--color-bg-charcoal-01); /* Light gray background */
+  color: var(--color-text-secondary) !important; /* Dark text */
+}
+
+.form-url-input {
+  color: var(--color-text-primary) !important; /* Dark text */
+}
+
+/* ==========================================================================
+   CARD AND CONTENT CONTRAST FIXES
+   ========================================================================== */
+
+/* Fix card titles and content */
+.card-website-title,
+.workflow-card-title,
+.analytics-title {
+  color: var(--color-text-primary) !important; /* Dark text on light backgrounds */
+}
+
+.card-website-description,
+.card-description {
+  color: var(--color-text-secondary) !important; /* Medium dark text */
+}
+
+/* Fix data labels and values */
+.data-label-website,
+.metric-label {
+  color: var(--color-text-secondary) !important; /* Dark text on light backgrounds */
+}
+
+.data-value-website,
+.metric-value {
+  color: var(--color-text-primary) !important; /* Dark text on light backgrounds */
+}
+
+/* Fix metric values on dark backgrounds */
+.metric-value-website {
+  color: var(--color-text-yellow) !important; /* Yellow text on dark background */
+}
+
+/* ==========================================================================
+   TEXT COLOR UTILITIES
+   ========================================================================== */
+
+/* Text on light backgrounds */
+.text-on-light {
+  color: var(--color-text-primary) !important;
+}
+
+/* Text on dark backgrounds */
+.text-on-dark {
+  color: #FFFFFF !important;
+}
+
+/* Secondary text on light backgrounds */
+.text-secondary-on-light {
+  color: var(--color-text-secondary) !important;
+}
+
+/* Secondary text on dark backgrounds */
+.text-secondary-on-dark {
+  color: #E5E7EB !important;
+}
+
+/* ==========================================================================
+   ACCESSIBILITY ENHANCEMENTS
+   ========================================================================== */
+
+/* Ensure focus indicators have proper contrast */
+.btn:focus-visible,
+.form-input:focus,
+.form-textarea:focus,
+.form-select:focus,
+.nav-item:focus-visible {
+  outline: 2px solid var(--color-primary-start);
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .btn-website-secondary,
+  .btn-secondary {
+    border-width: 3px;
+    font-weight: 600;
+  }
+  
+  .nav-item.active {
+    border: 2px solid var(--color-primary-start);
+  }
+  
+  .step-icon {
+    border: 2px solid #FFFFFF;
+  }
+}
+
+/* ==========================================================================
+   SPECIFIC COMPONENT FIXES
+   ========================================================================== */
+
+/* Fix progress bars */
+.progress-fill {
+  background: var(--color-chart-primary); /* Blue fill */
+}
+
+.progress-label {
+  color: var(--color-text-secondary) !important; /* Dark text on light backgrounds */
+}
+
+/* Fix chart containers */
+.chart-container {
+  background: var(--color-bg-charcoal-01); /* Light background */
+  color: var(--color-text-secondary) !important; /* Dark text */
+}
+
+/* Fix workflow step descriptions */
+.step-description {
+  color: var(--color-text-secondary) !important; /* Dark text on light backgrounds */
+}
+
+.workflow-step.active .step-description {
+  color: var(--color-text-primary) !important; /* Darker text when active */
+}
+
+/* ==========================================================================
+   RESPONSIVE ACCESSIBILITY
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* Ensure mobile text remains accessible */
+  .mobile-header {
+    background: var(--color-surface);
+    color: var(--color-text-primary) !important;
+  }
+  
+  .hamburger-line {
+    background: var(--color-text-primary) !important;
+  }
+}
+
+/* ==========================================================================
+   PRINT ACCESSIBILITY
+   ========================================================================== */
+
+@media print {
+  /* Ensure printed content has proper contrast */
+  .btn-website-secondary,
+  .btn-secondary {
+    background: #000000 !important;
+    color: #FFFFFF !important;
+    border: 2px solid #000000 !important;
+  }
+  
+  .step-icon {
+    background: #000000 !important;
+    color: #FFFFFF !important;
+  }
+}
