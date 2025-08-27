@@ -387,6 +387,58 @@ class Views {
                             <button class="btn btn-secondary" style="padding: 6px 12px; font-size: 12px;">Edit</button>
                         </div>
                     </div>
+                    
+                    <div class="contact-row">
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <div class="contact-avatar-small">G</div>
+                            <span>Grace Thompson</span>
+                        </div>
+                        <div>Digital Marketing Pro</div>
+                        <div>grace@digitalmarketing.com</div>
+                        <div style="color: var(--success-color);">+1 (555) 456-7890</div>
+                        <div>
+                            <button class="btn btn-secondary" style="padding: 6px 12px; font-size: 12px;">Edit</button>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-row">
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <div class="contact-avatar-small">H</div>
+                            <span>Henry Rodriguez</span>
+                        </div>
+                        <div>E-commerce Solutions</div>
+                        <div>henry@ecommerce.com</div>
+                        <div style="color: var(--success-color);">+1 (555) 567-8901</div>
+                        <div>
+                            <button class="btn btn-secondary" style="padding: 6px 12px; font-size: 12px;">Edit</button>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-row">
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <div class="contact-avatar-small">I</div>
+                            <span>Isabella Chen</span>
+                        </div>
+                        <div>Cloud Systems Inc</div>
+                        <div>isabella@cloudsystems.com</div>
+                        <div style="color: var(--success-color);">+1 (555) 678-9012</div>
+                        <div>
+                            <button class="btn btn-secondary" style="padding: 6px 12px; font-size: 12px;">Edit</button>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-row">
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <div class="contact-avatar-small">J</div>
+                            <span>Jack Anderson</span>
+                        </div>
+                        <div>Retail Dynamics</div>
+                        <div>jack@retaildynamics.com</div>
+                        <div style="color: var(--success-color);">+1 (555) 789-0123</div>
+                        <div>
+                            <button class="btn btn-secondary" style="padding: 6px 12px; font-size: 12px;">Edit</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         `;
