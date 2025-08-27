@@ -1268,4 +1268,569 @@ class Views {
             </div>
         `;
     }
+
+    static getLinkManagementView() {
+        return `
+            <div class="settings-container">
+                <div class="view-header">
+                    <h1 class="heading-1">Link Management Settings</h1>
+                    <p class="view-description">Configure your Rebrandly integration and link management preferences</p>
+                </div>
+
+                <!-- Connection Status -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Rebrandly Connection</h2>
+                        <div class="connection-status disconnected">
+                            <span class="status-indicator"></span>
+                            <span class="status-text">Not Connected</span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <p class="card-description">Connect your Rebrandly account to automatically sync your branded short links and enable advanced link management features.</p>
+                        
+                        <div class="form-group">
+                            <label for="apiKey" class="form-label">Rebrandly API Key</label>
+                            <div class="input-group">
+                                <input type="password" id="apiKey" class="form-input" placeholder="Enter your Rebrandly API key">
+                                <button class="btn-secondary" onclick="toggleApiKeyVisibility()">Show</button>
+                            </div>
+                            <div class="form-help">
+                                <a href="https://developers.rebrandly.com/docs/api-key-authentication" target="_blank" class="help-link">
+                                    How to get your API key →
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="workspace" class="form-label">Workspace (Optional)</label>
+                            <select id="workspace" class="form-select">
+                                <option value="">Select workspace...</option>
+                                <option value="default">Default Workspace</option>
+                            </select>
+                        </div>
+
+                        <div class="form-actions">
+                            <button class="btn-primary" onclick="connectRebrandly()">Connect Account</button>
+                            <button class="btn-secondary" onclick="testConnection()">Test Connection</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Link Sync Settings -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Link Synchronization</h2>
+                    </div>
+                    <div class="card-content">
+                        <div class="settings-grid">
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h3 class="setting-title">Auto-sync Links</h3>
+                                    <p class="setting-description">Automatically import new links from your Rebrandly account</p>
+                                </div>
+                                <div class="setting-control">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="autoSync">
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h3 class="setting-title">Sync Frequency</h3>
+                                    <p class="setting-description">How often to check for new links</p>
+                                </div>
+                                <div class="setting-control">
+                                    <select class="form-select" id="syncFrequency">
+                                        <option value="realtime">Real-time</option>
+                                        <option value="hourly">Every hour</option>
+                                        <option value="daily" selected>Daily</option>
+                                        <option value="weekly">Weekly</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h3 class="setting-title">Link Categories</h3>
+                                    <p class="setting-description">Import links from specific categories only</p>
+                                </div>
+                                <div class="setting-control">
+                                    <button class="btn-secondary" onclick="manageLinkCategories()">Manage Categories</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Usage Analytics -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Link Usage Analytics</h2>
+                    </div>
+                    <div class="card-content">
+                        <div class="analytics-summary">
+                            <div class="metric-card">
+                                <div class="metric-value">0</div>
+                                <div class="metric-label">Links Synced</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">0</div>
+                                <div class="metric-label">Used in Campaigns</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">0</div>
+                                <div class="metric-label">Total Clicks</div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button class="btn-secondary" onclick="syncNow()">Sync Now</button>
+                            <button class="btn-secondary" onclick="viewLinkAnalytics()">View Detailed Analytics</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
+    static getSmsMessagingView() {
+        return `
+            <div class="settings-container">
+                <div class="view-header">
+                    <h1 class="heading-1">SMS Messaging Settings</h1>
+                    <p class="view-description">Configure your SMS provider and messaging preferences</p>
+                </div>
+
+                <!-- Provider Selection -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">SMS Provider</h2>
+                        <div class="connection-status disconnected">
+                            <span class="status-indicator"></span>
+                            <span class="status-text">No Provider Connected</span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <p class="card-description">Choose and configure your SMS messaging provider to enable campaign sending.</p>
+                        
+                        <div class="provider-grid">
+                            <div class="provider-card" data-provider="twilio">
+                                <div class="provider-logo">
+                                    <div class="provider-icon">📱</div>
+                                </div>
+                                <h3 class="provider-name">Twilio</h3>
+                                <p class="provider-description">Industry-leading SMS platform with global reach</p>
+                                <div class="provider-features">
+                                    <span class="feature-tag">Global Coverage</span>
+                                    <span class="feature-tag">High Deliverability</span>
+                                    <span class="feature-tag">Analytics</span>
+                                </div>
+                                <button class="btn-primary provider-connect" onclick="connectProvider('twilio')">Connect</button>
+                            </div>
+
+                            <div class="provider-card" data-provider="messagebird">
+                                <div class="provider-logo">
+                                    <div class="provider-icon">🐦</div>
+                                </div>
+                                <h3 class="provider-name">MessageBird</h3>
+                                <p class="provider-description">European-focused SMS platform with competitive pricing</p>
+                                <div class="provider-features">
+                                    <span class="feature-tag">EU Compliant</span>
+                                    <span class="feature-tag">Cost Effective</span>
+                                    <span class="feature-tag">Multi-channel</span>
+                                </div>
+                                <button class="btn-secondary provider-connect" onclick="connectProvider('messagebird')">Connect</button>
+                            </div>
+
+                            <div class="provider-card" data-provider="sendgrid">
+                                <div class="provider-logo">
+                                    <div class="provider-icon">📧</div>
+                                </div>
+                                <h3 class="provider-name">SendGrid</h3>
+                                <p class="provider-description">Email and SMS platform with unified dashboard</p>
+                                <div class="provider-features">
+                                    <span class="feature-tag">Unified Platform</span>
+                                    <span class="feature-tag">Email + SMS</span>
+                                    <span class="feature-tag">Templates</span>
+                                </div>
+                                <button class="btn-secondary provider-connect" onclick="connectProvider('sendgrid')">Connect</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Messaging Configuration -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Messaging Configuration</h2>
+                    </div>
+                    <div class="card-content">
+                        <div class="settings-grid">
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h3 class="setting-title">Default Sender ID</h3>
+                                    <p class="setting-description">The name or number that appears as the sender</p>
+                                </div>
+                                <div class="setting-control">
+                                    <input type="text" class="form-input" placeholder="e.g., YourBrand or +1234567890" id="senderId">
+                                </div>
+                            </div>
+
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h3 class="setting-title">Message Encoding</h3>
+                                    <p class="setting-description">Character encoding for international messages</p>
+                                </div>
+                                <div class="setting-control">
+                                    <select class="form-select" id="encoding">
+                                        <option value="gsm7">GSM 7-bit (160 chars)</option>
+                                        <option value="unicode">Unicode (70 chars)</option>
+                                        <option value="auto" selected>Auto-detect</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h3 class="setting-title">Delivery Reports</h3>
+                                    <p class="setting-description">Track message delivery status</p>
+                                </div>
+                                <div class="setting-control">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="deliveryReports" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h3 class="setting-title">Opt-out Handling</h3>
+                                    <p class="setting-description">Automatically handle STOP/UNSUBSCRIBE replies</p>
+                                </div>
+                                <div class="setting-control">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="optOutHandling" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Compliance & Limits -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Compliance & Rate Limits</h2>
+                    </div>
+                    <div class="card-content">
+                        <div class="compliance-info">
+                            <div class="info-item">
+                                <h3 class="info-title">📋 Compliance Requirements</h3>
+                                <ul class="compliance-list">
+                                    <li>All contacts must have opted-in to receive messages</li>
+                                    <li>Include clear opt-out instructions in campaigns</li>
+                                    <li>Respect local regulations (GDPR, TCPA, etc.)</li>
+                                    <li>Maintain consent records for audit purposes</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="info-item">
+                                <h3 class="info-title">⚡ Rate Limits</h3>
+                                <div class="limit-settings">
+                                    <div class="form-group">
+                                        <label class="form-label">Messages per minute</label>
+                                        <input type="number" class="form-input" value="10" min="1" max="100" id="rateLimit">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Daily message limit</label>
+                                        <input type="number" class="form-input" value="1000" min="1" id="dailyLimit">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
+    static getContactListView() {
+        return `
+            <div class="settings-container">
+                <div class="view-header">
+                    <h1 class="heading-1">Contact List Settings</h1>
+                    <p class="view-description">Connect external platforms and configure contact synchronization</p>
+                </div>
+
+                <!-- Connected Platforms -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Connected Platforms</h2>
+                        <button class="btn-primary" onclick="addNewIntegration()">Add Integration</button>
+                    </div>
+                    <div class="card-content">
+                        <div class="integration-list">
+                            <!-- HubSpot Integration -->
+                            <div class="integration-item">
+                                <div class="integration-info">
+                                    <div class="integration-logo">
+                                        <div class="platform-icon hubspot">🔶</div>
+                                    </div>
+                                    <div class="integration-details">
+                                        <h3 class="integration-name">HubSpot CRM</h3>
+                                        <p class="integration-description">Sync contacts and track engagement in your CRM</p>
+                                        <div class="integration-status disconnected">
+                                            <span class="status-indicator"></span>
+                                            <span class="status-text">Not Connected</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="integration-actions">
+                                    <button class="btn-primary" onclick="connectPlatform('hubspot')">Connect</button>
+                                    <button class="btn-secondary" onclick="configurePlatform('hubspot')">Configure</button>
+                                </div>
+                            </div>
+
+                            <!-- Salesforce Integration -->
+                            <div class="integration-item">
+                                <div class="integration-info">
+                                    <div class="integration-logo">
+                                        <div class="platform-icon salesforce">☁️</div>
+                                    </div>
+                                    <div class="integration-details">
+                                        <h3 class="integration-name">Salesforce</h3>
+                                        <p class="integration-description">Enterprise CRM integration with advanced segmentation</p>
+                                        <div class="integration-status disconnected">
+                                            <span class="status-indicator"></span>
+                                            <span class="status-text">Not Connected</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="integration-actions">
+                                    <button class="btn-primary" onclick="connectPlatform('salesforce')">Connect</button>
+                                    <button class="btn-secondary" onclick="configurePlatform('salesforce')">Configure</button>
+                                </div>
+                            </div>
+
+                            <!-- Mailchimp Integration -->
+                            <div class="integration-item">
+                                <div class="integration-info">
+                                    <div class="integration-logo">
+                                        <div class="platform-icon mailchimp">🐵</div>
+                                    </div>
+                                    <div class="integration-details">
+                                        <h3 class="integration-name">Mailchimp</h3>
+                                        <p class="integration-description">Email marketing platform with audience management</p>
+                                        <div class="integration-status disconnected">
+                                            <span class="status-indicator"></span>
+                                            <span class="status-text">Not Connected</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="integration-actions">
+                                    <button class="btn-primary" onclick="connectPlatform('mailchimp')">Connect</button>
+                                    <button class="btn-secondary" onclick="configurePlatform('mailchimp')">Configure</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sync Configuration -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Synchronization Settings</h2>
+                    </div>
+                    <div class="card-content">
+                        <div class="settings-grid">
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h3 class="setting-title">Auto-sync Contacts</h3>
+                                    <p class="setting-description">Automatically import new contacts from connected platforms</p>
+                                </div>
+                                <div class="setting-control">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="autoSyncContacts" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h3 class="setting-title">Sync Direction</h3>
+                                    <p class="setting-description">How contact data flows between platforms</p>
+                                </div>
+                                <div class="setting-control">
+                                    <select class="form-select" id="syncDirection">
+                                        <option value="import">Import Only (Platform → Rebrandly)</option>
+                                        <option value="export">Export Only (Rebrandly → Platform)</option>
+                                        <option value="bidirectional" selected>Bidirectional Sync</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h3 class="setting-title">Sync Frequency</h3>
+                                    <p class="setting-description">How often to check for contact updates</p>
+                                </div>
+                                <div class="setting-control">
+                                    <select class="form-select" id="contactSyncFrequency">
+                                        <option value="realtime">Real-time</option>
+                                        <option value="hourly" selected>Every hour</option>
+                                        <option value="daily">Daily</option>
+                                        <option value="weekly">Weekly</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h3 class="setting-title">Duplicate Handling</h3>
+                                    <p class="setting-description">How to handle duplicate contacts across platforms</p>
+                                </div>
+                                <div class="setting-control">
+                                    <select class="form-select" id="duplicateHandling">
+                                        <option value="merge" selected>Merge duplicates</option>
+                                        <option value="skip">Skip duplicates</option>
+                                        <option value="create">Create separate entries</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Field Mapping -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Field Mapping</h2>
+                        <p class="card-subtitle">Map contact fields between Rebrandly and external platforms</p>
+                    </div>
+                    <div class="card-content">
+                        <div class="field-mapping-table">
+                            <div class="mapping-header">
+                                <div class="mapping-col">Rebrandly Field</div>
+                                <div class="mapping-col">External Platform Field</div>
+                                <div class="mapping-col">Sync Status</div>
+                            </div>
+                            
+                            <div class="mapping-row">
+                                <div class="mapping-col">
+                                    <strong>Name</strong>
+                                </div>
+                                <div class="mapping-col">
+                                    <select class="form-select">
+                                        <option value="">Select field...</option>
+                                        <option value="firstname" selected>First Name</option>
+                                        <option value="fullname">Full Name</option>
+                                        <option value="displayname">Display Name</option>
+                                    </select>
+                                </div>
+                                <div class="mapping-col">
+                                    <span class="sync-status active">Active</span>
+                                </div>
+                            </div>
+
+                            <div class="mapping-row">
+                                <div class="mapping-col">
+                                    <strong>Company</strong>
+                                </div>
+                                <div class="mapping-col">
+                                    <select class="form-select">
+                                        <option value="">Select field...</option>
+                                        <option value="company" selected>Company</option>
+                                        <option value="organization">Organization</option>
+                                        <option value="employer">Employer</option>
+                                    </select>
+                                </div>
+                                <div class="mapping-col">
+                                    <span class="sync-status active">Active</span>
+                                </div>
+                            </div>
+
+                            <div class="mapping-row">
+                                <div class="mapping-col">
+                                    <strong>Email</strong>
+                                </div>
+                                <div class="mapping-col">
+                                    <select class="form-select">
+                                        <option value="">Select field...</option>
+                                        <option value="email" selected>Email</option>
+                                        <option value="primary_email">Primary Email</option>
+                                        <option value="work_email">Work Email</option>
+                                    </select>
+                                </div>
+                                <div class="mapping-col">
+                                    <span class="sync-status active">Active</span>
+                                </div>
+                            </div>
+
+                            <div class="mapping-row">
+                                <div class="mapping-col">
+                                    <strong>Phone</strong>
+                                </div>
+                                <div class="mapping-col">
+                                    <select class="form-select">
+                                        <option value="">Select field...</option>
+                                        <option value="phone" selected>Phone</option>
+                                        <option value="mobile">Mobile</option>
+                                        <option value="work_phone">Work Phone</option>
+                                    </select>
+                                </div>
+                                <div class="mapping-col">
+                                    <span class="sync-status active">Active</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button class="btn-primary" onclick="saveFieldMapping()">Save Mapping</button>
+                            <button class="btn-secondary" onclick="testSync()">Test Sync</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sync History -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Recent Sync Activity</h2>
+                    </div>
+                    <div class="card-content">
+                        <div class="sync-history">
+                            <div class="sync-item">
+                                <div class="sync-info">
+                                    <div class="sync-platform">HubSpot</div>
+                                    <div class="sync-details">Last sync: Never</div>
+                                </div>
+                                <div class="sync-status">
+                                    <span class="status-badge pending">Pending Setup</span>
+                                </div>
+                            </div>
+                            
+                            <div class="sync-item">
+                                <div class="sync-info">
+                                    <div class="sync-platform">Salesforce</div>
+                                    <div class="sync-details">Last sync: Never</div>
+                                </div>
+                                <div class="sync-status">
+                                    <span class="status-badge pending">Pending Setup</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="empty-state">
+                            <p>No sync activity yet. Connect a platform to get started.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
 }

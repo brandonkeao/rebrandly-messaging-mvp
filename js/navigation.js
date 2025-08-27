@@ -51,6 +51,19 @@ class Navigation {
                 this.loadReviewView();
                 this.currentStep = 4;
                 break;
+            // Settings views
+            case 'link-management':
+                this.loadLinkManagementView();
+                this.currentStep = 0; // Settings don't have steps
+                break;
+            case 'sms-messaging':
+                this.loadSmsMessagingView();
+                this.currentStep = 0;
+                break;
+            case 'contact-list':
+                this.loadContactListView();
+                this.currentStep = 0;
+                break;
             // Legacy support for old URLs
             case 'import':
                 this.loadSelectContactsView();
@@ -676,5 +689,157 @@ class Navigation {
                 window.RebrandlyApp.showNotification('Link deleted successfully', 'success');
             }
         );
+    }
+
+    // Settings View Loaders
+    static loadLinkManagementView() {
+        const viewContainer = document.getElementById('viewContainer');
+        viewContainer.innerHTML = Views.getLinkManagementView();
+        this.updateProgressSteps(0); // No progress steps for settings
+        this.bindLinkManagementEvents();
+    }
+
+    static loadSmsMessagingView() {
+        const viewContainer = document.getElementById('viewContainer');
+        viewContainer.innerHTML = Views.getSmsMessagingView();
+        this.updateProgressSteps(0);
+        this.bindSmsMessagingEvents();
+    }
+
+    static loadContactListView() {
+        const viewContainer = document.getElementById('viewContainer');
+        viewContainer.innerHTML = Views.getContactListView();
+        this.updateProgressSteps(0);
+        this.bindContactListEvents();
+    }
+
+    // Settings Event Binding Methods
+    static bindLinkManagementEvents() {
+        // API Key visibility toggle
+        window.toggleApiKeyVisibility = () => {
+            const apiKeyInput = document.getElementById('apiKey');
+            const toggleBtn = apiKeyInput.nextElementSibling;
+            
+            if (apiKeyInput.type === 'password') {
+                apiKeyInput.type = 'text';
+                toggleBtn.textContent = 'Hide';
+            } else {
+                apiKeyInput.type = 'password';
+                toggleBtn.textContent = 'Show';
+            }
+        };
+
+        // Connect Rebrandly account
+        window.connectRebrandly = () => {
+            const apiKey = document.getElementById('apiKey').value;
+            if (!apiKey) {
+                window.RebrandlyApp.showNotification('Please enter your API key', 'error');
+                return;
+            }
+            
+            // Simulate connection process
+            window.RebrandlyApp.showNotification('Connecting to Rebrandly...', 'info');
+            setTimeout(() => {
+                const statusElement = document.querySelector('.connection-status');
+                statusElement.className = 'connection-status connected';
+                statusElement.innerHTML = '<span class="status-indicator"></span><span class="status-text">Connected</span>';
+                window.RebrandlyApp.showNotification('Successfully connected to Rebrandly!', 'success');
+            }, 2000);
+        };
+
+        // Test connection
+        window.testConnection = () => {
+            window.RebrandlyApp.showNotification('Testing connection...', 'info');
+            setTimeout(() => {
+                window.RebrandlyApp.showNotification('Connection test successful!', 'success');
+            }, 1500);
+        };
+
+        // Sync now
+        window.syncNow = () => {
+            window.RebrandlyApp.showNotification('Syncing links...', 'info');
+            setTimeout(() => {
+                // Update metrics
+                document.querySelector('.metric-card:nth-child(1) .metric-value').textContent = '24';
+                document.querySelector('.metric-card:nth-child(2) .metric-value').textContent = '8';
+                document.querySelector('.metric-card:nth-child(3) .metric-value').textContent = '156';
+                window.RebrandlyApp.showNotification('Links synced successfully!', 'success');
+            }, 2000);
+        };
+
+        // Manage link categories
+        window.manageLinkCategories = () => {
+            window.RebrandlyApp.showNotification('Link categories management coming soon!', 'info');
+        };
+
+        // View link analytics
+        window.viewLinkAnalytics = () => {
+            window.RebrandlyApp.navigateToView('analytics-components-demo');
+        };
+    }
+
+    static bindSmsMessagingEvents() {
+        // Connect SMS provider
+        window.connectProvider = (provider) => {
+            window.RebrandlyApp.showNotification(`Connecting to ${provider}...`, 'info');
+            
+            // Simulate connection process
+            setTimeout(() => {
+                const statusElement = document.querySelector('.connection-status');
+                statusElement.className = 'connection-status connected';
+                statusElement.innerHTML = `<span class="status-indicator"></span><span class="status-text">Connected to ${provider}</span>`;
+                
+                // Update provider card
+                const providerCard = document.querySelector(`[data-provider="${provider}"]`);
+                providerCard.classList.add('connected');
+                
+                window.RebrandlyApp.showNotification(`Successfully connected to ${provider}!`, 'success');
+            }, 2000);
+        };
+    }
+
+    static bindContactListEvents() {
+        // Add new integration
+        window.addNewIntegration = () => {
+            window.RebrandlyApp.showNotification('Integration marketplace coming soon!', 'info');
+        };
+
+        // Connect platform
+        window.connectPlatform = (platform) => {
+            window.RebrandlyApp.showNotification(`Connecting to ${platform}...`, 'info');
+            
+            setTimeout(() => {
+                // Find the integration item and update its status
+                const integrationItems = document.querySelectorAll('.integration-item');
+                integrationItems.forEach(item => {
+                    const name = item.querySelector('.integration-name').textContent.toLowerCase();
+                    if (name.includes(platform.toLowerCase())) {
+                        const statusElement = item.querySelector('.integration-status');
+                        statusElement.className = 'integration-status connected';
+                        statusElement.innerHTML = '<span class="status-indicator"></span><span class="status-text">Connected</span>';
+                    }
+                });
+                
+                window.RebrandlyApp.showNotification(`Successfully connected to ${platform}!`, 'success');
+            }, 2000);
+        };
+
+        // Configure platform
+        window.configurePlatform = (platform) => {
+            window.RebrandlyApp.showNotification(`${platform} configuration panel coming soon!`, 'info');
+        };
+
+        // Save field mapping
+        window.saveFieldMapping = () => {
+            window.RebrandlyApp.showNotification('Field mapping saved successfully!', 'success');
+        };
+
+        // Test sync
+        window.testSync = () => {
+            window.RebrandlyApp.showNotification('Testing sync configuration...', 'info');
+            setTimeout(() => {
+                window.RebrandlyApp.showNotification('Sync test completed successfully!', 'success');
+            }, 2000);
+        };
     }
 }
