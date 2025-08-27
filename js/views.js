@@ -1270,11 +1270,6 @@ class Views {
     static getLinkManagementView() {
         return `
             <div class="settings-container">
-                <div class="view-header">
-                    <h1 class="heading-1">Link Management Settings</h1>
-                    <p class="view-description">Configure your Rebrandly integration and link management preferences</p>
-                </div>
-
                 <!-- Connection Status -->
                 <div class="card">
                     <div class="card-header">
@@ -1397,11 +1392,6 @@ class Views {
     static getSmsMessagingView() {
         return `
             <div class="settings-container">
-                <div class="view-header">
-                    <h1 class="heading-1">SMS Messaging Settings</h1>
-                    <p class="view-description">Configure your SMS provider and messaging preferences</p>
-                </div>
-
                 <!-- Provider Selection -->
                 <div class="card">
                     <div class="card-header">
@@ -1560,11 +1550,6 @@ class Views {
     static getContactListView() {
         return `
             <div class="settings-container">
-                <div class="view-header">
-                    <h1 class="heading-1">Contact List Settings</h1>
-                    <p class="view-description">Connect external platforms and configure contact synchronization</p>
-                </div>
-
                 <!-- Connected Platforms -->
                 <div class="card">
                     <div class="card-header">
