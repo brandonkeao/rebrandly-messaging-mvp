@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App View Sample - Rebrandly Messaging MVP</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/views.css">
+    <link rel="stylesheet" href="css/design-system.css">
+    <link rel="stylesheet" href="css/buttons.css">
+    <link rel="stylesheet" href="css/forms.css">
+    <link rel="stylesheet" href="css/navigation.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/app-overrides.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container" style="padding: var(--space-lg);">
+        <h1 class="app-heading-1">Phase 1: App-Specific Design System</h1>
+        
+        <!-- App Toolbar Example -->
+        <div class="app-toolbar">
+            <div class="app-toolbar-left">
+                <h2 class="app-heading-2">Campaign Dashboard</h2>
+            </div>
+            <div class="app-toolbar-right">
+                <div class="form-inline">
+                    <div class="form-group">
+                        <input type="search" class="form-input" placeholder="Search campaigns...">
+                    </div>
+                    <button class="btn btn-primary btn-sm">New Campaign</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Metrics Row -->
+        <div class="app-section">
+            <div class="data-label">Campaign Performance</div>
+            <div class="grid grid-cols-4 gap-md">
+                <div class="metric-card">
+                    <div class="metric-value">24</div>
+                    <div class="metric-label">Active Campaigns</div>
+                    <div class="metric-change positive">+12% this month</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">1,247</div>
+                    <div class="metric-label">Messages Sent</div>
+                    <div class="metric-change positive">+8% this week</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">89%</div>
+                    <div class="metric-label">Delivery Rate</div>
+                    <div class="metric-change negative">-2% this week</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">34%</div>
+                    <div class="metric-label">Click Rate</div>
+                    <div class="metric-change positive">+5% this week</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="app-divider"></div>
+
+        <!-- Data List Example -->
+        <div class="app-section">
+            <div class="app-toolbar">
+                <div class="app-toolbar-left">
+                    <h3 class="app-heading-3">Recent Campaigns</h3>
+                </div>
+                <div class="app-toolbar-right">
+                    <div class="btn-group-compact">
+                        <button class="btn btn-ghost btn-xs">All</button>
+                        <button class="btn btn-ghost btn-xs active">Active</button>
+                        <button class="btn btn-ghost btn-xs">Draft</button>
+                        <button class="btn btn-ghost btn-xs">Sent</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="data-list">
+                <div class="data-list-item">
+                    <div class="data-list-item-content">
+                        <div class="data-list-item-title">Summer Product Launch</div>
+                        <div class="data-list-item-subtitle">
+                            <span class="meta-text">Created 2 days ago • 156 contacts • Ready to send</span>
+                        </div>
+                    </div>
+                    <div class="data-list-item-actions">
+                        <button class="btn btn-ghost btn-xs">Edit</button>
+                        <button class="btn btn-primary btn-xs">Send</button>
+                    </div>
+                </div>
+
+                <div class="data-list-item">
+                    <div class="data-list-item-content">
+                        <div class="data-list-item-title">Customer Feedback Survey</div>
+                        <div class="data-list-item-subtitle">
+                            <span class="meta-text">Sent 1 week ago • 89 contacts • 67% opened</span>
+                        </div>
+                    </div>
+                    <div class="data-list-item-actions">
+                        <button class="btn btn-ghost btn-xs">View Results</button>
+                        <button class="btn btn-ghost btn-xs">Duplicate</button>
+                    </div>
+                </div>
+
+                <div class="data-list-item">
+                    <div class="data-list-item-content">
+                        <div class="data-list-item-title">Welcome Series - Part 3</div>
+                        <div class="data-list-item-subtitle">
+                            <span class="meta-text">Draft • 234 contacts • Last edited yesterday</span>
+                        </div>
+                    </div>
+                    <div class="data-list-item-actions">
+                        <button class="btn btn-secondary btn-xs">Continue</button>
+                        <button class="btn btn-ghost btn-xs">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="app-divider"></div>
+
+        <!-- Compact Form Example -->
+        <div class="app-section">
+            <h3 class="app-heading-3">Quick Campaign Setup</h3>
+            <form class="form-compact" style="max-width: 600px;">
+                <div class="form-row">
+                    <div class="form-group flex-1">
+                        <label class="form-label required">Campaign Name</label>
+                        <input type="text" class="form-input" placeholder="Enter campaign name">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Type</label>
+                        <select class="form-select">
+                            <option>Promotional</option>
+                            <option>Newsletter</option>
+                            <option>Survey</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Message</label>
+                    <textarea class="form-textarea" rows="3" placeholder="Enter your message..."></textarea>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary btn-sm">Save Draft</button>
+                    <button type="submit" class="btn btn-primary btn-sm">Create Campaign</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Comparison Section -->
+        <div class="app-divider"></div>
+        <div class="app-section">
+            <h3 class="app-heading-3">Design System Comparison</h3>
+            <div class="grid grid-cols-2 gap-lg">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Original Design System</h4>
+                    </div>
+                    <div class="card-content">
+                        <h1 class="heading-1">Large Marketing Header</h1>
+                        <p class="text-base mb-lg">This uses the original design system with marketing-focused spacing and typography. Notice the large header and generous spacing.</p>
+                        <button class="btn btn-primary">Large Marketing Button</button>
+                    </div>
+                </div>
+
+                <div class="card-compact">
+                    <div class="card-header">
+                        <h4 class="app-heading-3">App-Optimized Design</h4>
+                    </div>
+                    <div class="card-content">
+                        <h2 class="app-heading-1">Efficient App Header</h2>
+                        <p class="text-sm mb-sm">This uses app-specific overrides with tighter spacing and smaller typography optimized for task-oriented interfaces.</p>
+                        <button class="btn btn-primary btn-sm">Compact App Button</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

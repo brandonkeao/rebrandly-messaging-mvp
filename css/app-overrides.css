@@ -1,0 +1,359 @@
+/**
+ * App-Specific Design System Overrides
+ * Adapts the design system for web application context
+ */
+
+/* ==========================================================================
+   APP-SPECIFIC SPACING ADJUSTMENTS
+   ========================================================================== */
+
+/* Reduce content spacing for app density */
+.content-container {
+  padding: var(--space-md) var(--space-lg);
+}
+
+/* Compact card variants for data display */
+.card-compact {
+  padding: var(--space-md);
+  margin-bottom: var(--space-sm);
+}
+
+.card-compact .card-header {
+  margin-bottom: var(--space-sm);
+  padding-bottom: var(--space-xs);
+}
+
+.card-compact .card-actions {
+  margin-top: var(--space-sm);
+  padding-top: var(--space-xs);
+}
+
+/* Tighter form spacing for app efficiency */
+.form-compact .form-group {
+  margin-bottom: var(--space-sm);
+}
+
+.form-compact .form-input,
+.form-compact .form-textarea,
+.form-compact .form-select {
+  padding: var(--space-xs) var(--space-sm);
+  min-height: 36px;
+}
+
+.form-compact .form-label {
+  margin-bottom: 4px;
+  font-size: var(--font-size-xs);
+}
+
+/* Inline forms for filters and quick actions */
+.form-inline {
+  display: flex;
+  align-items: end;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+.form-inline .form-group {
+  margin-bottom: 0;
+  flex: 0 0 auto;
+}
+
+.form-inline .form-group.flex-1 {
+  flex: 1;
+  min-width: 200px;
+}
+
+/* ==========================================================================
+   APP-SPECIFIC TYPOGRAPHY
+   ========================================================================== */
+
+/* Smaller headings appropriate for app context */
+.app-heading-1 {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-sm);
+  line-height: var(--line-height-tight);
+}
+
+.app-heading-2 {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-xs);
+  line-height: var(--line-height-tight);
+}
+
+.app-heading-3 {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-xs);
+  line-height: var(--line-height-base);
+}
+
+/* Data labels for app interfaces */
+.data-label {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.data-value {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-normal);
+  color: var(--color-text-primary);
+  line-height: var(--line-height-base);
+}
+
+.data-value-large {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+/* Micro typography for metadata */
+.meta-text {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-base);
+}
+
+/* ==========================================================================
+   APP-SPECIFIC BUTTON VARIANTS
+   ========================================================================== */
+
+/* Small buttons for table actions and compact interfaces */
+.btn-xs {
+  padding: 4px var(--space-xs);
+  font-size: var(--font-size-xs);
+  min-height: 28px;
+  border-radius: var(--radius-sm);
+}
+
+/* Compact button group for app toolbars */
+.btn-group-compact .btn {
+  padding: var(--space-xs) var(--space-sm);
+  font-size: var(--font-size-xs);
+}
+
+/* Icon-only buttons for compact interfaces */
+.btn-icon-xs {
+  padding: 4px;
+  min-width: 28px;
+  min-height: 28px;
+}
+
+/* ==========================================================================
+   APP-SPECIFIC COMPONENT VARIANTS
+   ========================================================================== */
+
+/* Compact navigation for app context */
+.nav-item-compact {
+  padding: var(--space-xs) var(--space-sm);
+  margin: 0 var(--space-xs);
+  font-size: var(--font-size-sm);
+  min-height: 36px;
+}
+
+.nav-section-compact .nav-section-title {
+  padding: 0 var(--space-sm);
+  margin-bottom: var(--space-xs);
+  font-size: 10px;
+}
+
+/* Compact progress steps */
+.progress-steps-compact .step-indicator {
+  width: 24px;
+  height: 24px;
+  font-size: var(--font-size-xs);
+}
+
+.progress-steps-compact .step-label {
+  font-size: 10px;
+  max-width: 80px;
+}
+
+/* ==========================================================================
+   DATA DISPLAY COMPONENTS
+   ========================================================================== */
+
+/* Simple data list for app content */
+.data-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.data-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-sm);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-base);
+  transition: all var(--transition-base);
+}
+
+.data-list-item:hover {
+  border-color: var(--color-border);
+  box-shadow: var(--shadow-xs);
+}
+
+.data-list-item-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.data-list-item-title {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  margin-bottom: 2px;
+}
+
+.data-list-item-subtitle {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+
+.data-list-item-actions {
+  display: flex;
+  gap: var(--space-xs);
+  flex-shrink: 0;
+}
+
+/* Metric cards for dashboard */
+.metric-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-base);
+  padding: var(--space-md);
+  text-align: center;
+  transition: all var(--transition-base);
+}
+
+.metric-card:hover {
+  border-color: var(--color-border);
+  box-shadow: var(--shadow-sm);
+}
+
+.metric-value {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  line-height: var(--line-height-tight);
+  margin-bottom: var(--space-xs);
+}
+
+.metric-label {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-medium);
+}
+
+.metric-change {
+  font-size: var(--font-size-xs);
+  margin-top: var(--space-xs);
+}
+
+.metric-change.positive {
+  color: var(--color-success);
+}
+
+.metric-change.negative {
+  color: var(--color-error);
+}
+
+/* ==========================================================================
+   RESPONSIVE ADJUSTMENTS FOR APPS
+   ========================================================================== */
+
+@media (max-width: 767px) {
+  .content-container {
+    padding: var(--space-sm);
+  }
+  
+  .card-compact {
+    padding: var(--space-sm);
+  }
+  
+  .form-inline {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .form-inline .form-group {
+    width: 100%;
+  }
+  
+  .data-list-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-xs);
+  }
+  
+  .data-list-item-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+  
+  .metric-card {
+    padding: var(--space-sm);
+  }
+  
+  .metric-value {
+    font-size: var(--font-size-2xl);
+  }
+}
+
+/* ==========================================================================
+   UTILITY CLASSES FOR APPS
+   ========================================================================== */
+
+.app-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.app-toolbar-left,
+.app-toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.app-section {
+  margin-bottom: var(--space-lg);
+}
+
+.app-section:last-child {
+  margin-bottom: 0;
+}
+
+.app-divider {
+  height: 1px;
+  background: var(--color-border-light);
+  margin: var(--space-md) 0;
+}
+
+.text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.text-wrap {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
