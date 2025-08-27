@@ -8,6 +8,8 @@ class Navigation {
     static currentStep = 1;
 
     static showView(viewName) {
+        console.log('Navigation.showView called with:', viewName);
+        
         // Hide all views first
         const viewContainer = document.getElementById('viewContainer');
         if (!viewContainer) {
@@ -18,18 +20,20 @@ class Navigation {
         // Load the appropriate view
         switch (viewName) {
             case 'getting-started':
+                console.log('Loading getting started view');
                 this.loadGettingStartedView();
                 break;
             case 'links':
+                console.log('Loading links view');
                 this.loadLinksView();
                 break;
+            case 'campaigns':
+                console.log('Loading campaigns view');
                 this.loadCampaignsView();
                 break;
             case 'contacts':
+                console.log('Loading contacts view');
                 this.loadContactsView();
-                break;
-            case 'links':
-                this.loadMainLinksView();
                 break;
             case 'select-contacts':
                 this.loadSelectContactsView();
@@ -92,9 +96,29 @@ class Navigation {
     }
 
     static loadCampaignsView() {
+        console.log('loadCampaignsView called');
         const viewContainer = document.getElementById('viewContainer');
-        viewContainer.innerHTML = Views.getCampaignsView();
-        this.bindCampaignEvents();
+        if (!viewContainer) {
+            console.error('View container not found in loadCampaignsView');
+            return;
+        }
+        
+        try {
+            const campaignsHTML = Views.getCampaignsView();
+            console.log('Got campaigns HTML, length:', campaignsHTML.length);
+            viewContainer.innerHTML = campaignsHTML;
+            
+            // Update page title
+            const pageTitle = document.getElementById('pageTitle');
+            if (pageTitle) {
+                pageTitle.textContent = 'Campaigns';
+            }
+            
+            this.bindCampaignEvents();
+            console.log('Campaigns view loaded successfully');
+        } catch (error) {
+            console.error('Error loading campaigns view:', error);
+        }
     }
 
     static loadContactsView() {
