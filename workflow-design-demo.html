@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workflow Design System - Rebrandly Messaging MVP</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/views.css">
+    <link rel="stylesheet" href="css/design-system.css">
+    <link rel="stylesheet" href="css/color-system-v2.css">
+    <link rel="stylesheet" href="css/website-color-system.css">
+    <link rel="stylesheet" href="css/website-typography.css">
+    <link rel="stylesheet" href="css/workflow-design-system.css">
+    <link rel="stylesheet" href="css/buttons.css">
+    <link rel="stylesheet" href="css/forms.css">
+    <link rel="stylesheet" href="css/navigation.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/app-overrides.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container" style="padding: var(--space-lg);">
+        <!-- Header -->
+        <div class="text-center mb-xl">
+            <h1 class="hero-title">Everything you need for <span class="text-blue">link management</span></h1>
+            <p class="hero-subtitle">From solo creators to global enterprises, Rebrandly is easy to start and seamless to scale.</p>
+        </div>
+
+        <!-- Workflow Steps Navigation -->
+        <div class="workflow-steps mb-xl">
+            <a href="#create" class="workflow-step active">
+                <div class="step-icon create">↗</div>
+                <div class="step-content">
+                    <div class="step-title">Create</div>
+                    <div class="step-description">Build your campaign foundation</div>
+                </div>
+            </a>
+            
+            <a href="#customize" class="workflow-step">
+                <div class="step-icon customize">↗</div>
+                <div class="step-content">
+                    <div class="step-title">Customize</div>
+                    <div class="step-description">Configure advanced settings</div>
+                </div>
+            </a>
+            
+            <a href="#share" class="workflow-step">
+                <div class="step-icon share">↗</div>
+                <div class="step-content">
+                    <div class="step-title">Share</div>
+                    <div class="step-description">Distribute across channels</div>
+                </div>
+            </a>
+            
+            <a href="#track" class="workflow-step">
+                <div class="step-icon track">↗</div>
+                <div class="step-content">
+                    <div class="step-title">Track</div>
+                    <div class="step-description">Monitor performance</div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Create Section -->
+        <section id="create" class="section-website bg-step-create">
+            <div class="container">
+                <h2 class="section-title text-center">Create</h2>
+                <div class="workflow-content">
+                    <!-- Create Features -->
+                    <div class="workflow-card">
+                        <div class="workflow-card-header">
+                            <div class="step-icon create" style="width: 32px; height: 32px; font-size: 16px;">↗</div>
+                            <h3 class="workflow-card-title">Campaign Builder</h3>
+                        </div>
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                            <li style="display: flex; align-items: center; gap: var(--space-xs); margin-bottom: var(--space-xs); color: var(--color-text-secondary);">
+                                <span style="color: var(--color-step-create);">✓</span> Select target audience
+                            </li>
+                            <li style="display: flex; align-items: center; gap: var(--space-xs); margin-bottom: var(--space-xs); color: var(--color-text-secondary);">
+                                <span style="color: var(--color-step-create);">✓</span> Choose message template
+                            </li>
+                            <li style="display: flex; align-items: center; gap: var(--space-xs); margin-bottom: var(--space-xs); color: var(--color-text-secondary);">
+                                <span style="color: var(--color-step-create);">✓</span> Set campaign schedule
+                            </li>
+                            <li style="display: flex; align-items: center; gap: var(--space-xs); color: var(--color-text-secondary);">
+                                <span style="color: var(--color-step-create);">✓</span> Configure delivery settings
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Create Form -->
+                    <div class="workflow-form">
+                        <div class="form-section">
+                            <h4 class="form-section-title">
+                                <span style="color: var(--color-step-create);">📝</span>
+                                Campaign Details
+                            </h4>
+                            <div class="form-group">
+                                <label class="form-label">Campaign Name</label>
+                                <input type="text" class="form-input" placeholder="Summer Product Launch" value="Summer Product Launch">
+                            </div>
+                            <div class="form-control-group">
+                                <div class="form-group">
+                                    <label class="form-label">Target Audience</label>
+                                    <select class="form-select">
+                                        <option>All Contacts</option>
+                                        <option>Premium Customers</option>
+                                        <option>New Subscribers</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Send Time</label>
+                                    <input type="time" class="form-input" value="09:00">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button class="btn-website-secondary">Save Draft</button>
+                            <button class="btn-website-primary">Continue to Customize</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Customize Section -->
+        <section id="customize" class="section-website bg-step-customize">
+            <div class="container">
+                <h2 class="section-title text-center">Customize</h2>
+                <div class="workflow-content">
+                    <!-- Customize Features -->
+                    <div class="workflow-card">
+                        <div class="workflow-card-header">
+                            <div class="step-icon customize" style="width: 32px; height: 32px; font-size: 16px;">↗</div>
+                            <h3 class="workflow-card-title">Advanced Settings</h3>
+                        </div>
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                            <li style="display: flex; align-items: center; gap: var(--space-xs); margin-bottom: var(--space-xs); color: var(--color-text-secondary);">
+                                <span style="color: var(--color-step-customize);">✓</span> Route audiences to different destinations
+                            </li>
+                            <li style="display: flex; align-items: center; gap: var(--space-xs); margin-bottom: var(--space-xs); color: var(--color-text-secondary);">
+                                <span style="color: var(--color-step-customize);">✓</span> Automatically apply UTM parameters
+                            </li>
+                            <li style="display: flex; align-items: center; gap: var(--space-xs); margin-bottom: var(--space-xs); color: var(--color-text-secondary);">
+                                <span style="color: var(--color-step-customize);">✓</span> Set links to auto-expire
+                            </li>
+                            <li style="display: flex; align-items: center; gap: var(--space-xs); color: var(--color-text-secondary);">
+                                <span style="color: var(--color-step-customize);">✓</span> Password-protect your links
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Customize Form -->
+                    <div class="workflow-form">
+                        <div class="form-section">
+                            <h4 class="form-section-title">
+                                <span style="color: var(--color-step-customize);">🔧</span>
+                                Link Configuration
+                            </h4>
+                            <div class="form-group">
+                                <label class="form-label">Destination URL</label>
+                                <input type="url" class="form-input" placeholder="https://www.rebrandly.com/news/5" value="https://www.rebrandly.com/news/5">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Branded Domain</label>
+                                <div class="form-url-builder">
+                                    <div class="form-url-prefix">yrbrand.co</div>
+                                    <input type="text" class="form-url-input" placeholder="blog" value="summer-launch">
+                                </div>
+                            </div>
+                            <div class="form-control-group">
+                                <div class="form-group">
+                                    <label class="form-label">UTM Source</label>
+                                    <input type="text" class="form-input" placeholder="newsletter" value="email">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">UTM Campaign</label>
+                                    <input type="text" class="form-input" placeholder="summer2024" value="summer-launch">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button class="btn-website-secondary">Back to Create</button>
+                            <button class="btn-website-primary">Continue to Share</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Share Section -->
+        <section id="share" class="section-website bg-step-share">
+            <div class="container">
+                <h2 class="section-title text-center">Share</h2>
+                <div class="workflow-content">
+                    <!-- Share Features -->
+                    <div class="workflow-card">
+                        <div class="workflow-card-header">
+                            <div class="step-icon share" style="width: 32px; height: 32px; font-size: 16px;">↗</div>
+                            <h3 class="workflow-card-title">Distribution Channels</h3>
+                        </div>
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                            <li style="display: flex; align-items: center; gap: var(--space-xs); margin-bottom: var(--space-xs); color: var(--color-text-secondary);">
+                                <span style="color: var(--color-step-share);">✓</span> Use AI for smart scheduling & social previews
+                            </li>
+                            <li style="display: flex; align-items: center; gap: var(--space-xs); margin-bottom: var(--space-xs); color: var(--color-text-secondary);">
+                                <span style="color: var(--color-step-share);">✓</span> Share to social media, SMS, & email
+                            </li>
+                            <li style="display: flex; align-items: center; gap: var(--space-xs); margin-bottom: var(--space-xs); color: var(--color-text-secondary);">
+                                <span style="color: var(--color-step-share);">✓</span> Connect your favorite integrations
+                            </li>
+                            <li style="display: flex; align-items: center; gap: var(--space-xs); color: var(--color-text-secondary);">
+                                <span style="color: var(--color-step-share);">✓</span> Edit link destinations after sending
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Share Options -->
+                    <div class="workflow-form">
+                        <div class="form-section">
+                            <h4 class="form-section-title">
+                                <span style="color: var(--color-step-share);">📤</span>
+                                Share with
+                            </h4>
+                            <div class="social-grid">
+                                <div class="social-item">
+                                    <div class="social-icon linkedin">in</div>
+                                    <div class="social-name">LinkedIn</div>
+                                </div>
+                                <div class="social-item">
+                                    <div class="social-icon facebook">f</div>
+                                    <div class="social-name">Facebook</div>
+                                </div>
+                                <div class="social-item">
+                                    <div class="social-icon twitter">𝕏</div>
+                                    <div class="social-name">X</div>
+                                </div>
+                                <div class="social-item">
+                                    <div class="social-icon instagram">📷</div>
+                                    <div class="social-name">Instagram</div>
+                                </div>
+                                <div class="social-item">
+                                    <div class="social-icon tiktok">🎵</div>
+                                    <div class="social-name">TikTok</div>
+                                </div>
+                                <div class="social-item">
+                                    <div class="social-icon mastodon">🐘</div>
+                                    <div class="social-name">Mastodon</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-section">
+                            <h4 class="form-section-title">
+                                <span style="color: var(--color-step-share);">⏰</span>
+                                Best time to share your link
+                            </h4>
+                            <div style="background: var(--color-bg-white); border: 1px solid var(--color-border-light); border-radius: var(--radius-base); padding: var(--space-md);">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-sm);">
+                                    <span class="small-text font-medium">Country</span>
+                                    <span class="small-text font-medium">Optimal time</span>
+                                    <span class="small-text font-medium">CTR</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; align-items: center; padding: var(--space-xs) 0; border-bottom: 1px solid var(--color-border-light);">
+                                    <span class="text-sm">United Kingdom</span>
+                                    <span class="text-sm">7 AM UTC</span>
+                                    <span class="text-sm step-share">+33.33%</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; align-items: center; padding: var(--space-xs) 0; border-bottom: 1px solid var(--color-border-light);">
+                                    <span class="text-sm">United States</span>
+                                    <span class="text-sm">8 AM UTC</span>
+                                    <span class="text-sm step-share">+38.12%</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; align-items: center; padding: var(--space-xs) 0;">
+                                    <span class="text-sm">Spain</span>
+                                    <span class="text-sm">10 AM UTC</span>
+                                    <span class="text-sm step-share">+42.81%</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button class="btn-website-secondary">Back to Customize</button>
+                            <button class="btn-website-primary">Continue to Track</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Track Section -->
+        <section id="track" class="section-website bg-step-track">
+            <div class="container">
+                <h2 class="section-title text-center">Track</h2>
+                <div class="workflow-content">
+                    <!-- Track Features -->
+                    <div class="workflow-card">
+                        <div class="workflow-card-header">
+                            <div class="step-icon track" style="width: 32px; height: 32px; font-size: 16px;">↗</div>
+                            <h3 class="workflow-card-title">Analytics & Insights</h3>
+                        </div>
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                            <li style="display: flex; align-items: center; gap: var(--space-xs); margin-bottom: var(--space-xs); color: var(--color-text-secondary);">
+                                <span style="color: var(--color-step-track);">✓</span> See clicks over time
+                            </li>
+                            <li style="display: flex; align-items: center; gap: var(--space-xs); margin-bottom: var(--space-xs); color: var(--color-text-secondary);">
+                                <span style="color: var(--color-step-track);">✓</span> Get geographic and device insights
+                            </li>
+                            <li style="display: flex; align-items: center; gap: var(--space-xs); color: var(--color-text-secondary);">
+                                <span style="color: var(--color-step-track);">✓</span> Access real-time reporting dashboards
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Analytics Dashboard -->
+                    <div class="analytics-card">
+                        <div class="analytics-header">
+                            <h4 class="analytics-title">Overall Performance</h4>
+                            <div class="analytics-period">3 hours ago</div>
+                        </div>
+                        
+                        <div class="metrics-row">
+                            <div class="metric-item">
+                                <div class="metric-value">97,541</div>
+                                <div class="metric-label">Total clicks</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-value">8,543</div>
+                                <div class="metric-label">QR code scan</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-value">1335</div>
+                                <div class="metric-label">Clicks today</div>
+                            </div>
+                        </div>
+
+                        <div class="chart-container">
+                            <div class="chart-bars">
+                                <div class="chart-bar" style="height: 30%;"></div>
+                                <div class="chart-bar" style="height: 45%;"></div>
+                                <div class="chart-bar" style="height: 60%;"></div>
+                                <div class="chart-bar" style="height: 40%;"></div>
+                                <div class="chart-bar" style="height: 70%;"></div>
+                                <div class="chart-bar" style="height: 85%;"></div>
+                                <div class="chart-bar" style="height: 90%;"></div>
+                                <div class="chart-bar" style="height: 100%;"></div>
+                                <div class="chart-bar" style="height: 95%;"></div>
+                                <div class="chart-bar" style="height: 80%;"></div>
+                                <div class="chart-bar" style="height: 75%;"></div>
+                                <div class="chart-bar" style="height: 85%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Analytics -->
+                <div class="analytics-grid">
+                    <div class="analytics-card">
+                        <div class="analytics-header">
+                            <h4 class="analytics-title">Top social</h4>
+                        </div>
+                        <div style="space-y: var(--space-sm);">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-sm);">
+                                <div style="display: flex; align-items: center; gap: var(--space-xs);">
+                                    <div class="social-icon linkedin" style="width: 20px; height: 20px; font-size: 12px;">in</div>
+                                    <span class="text-sm">LinkedIn</span>
+                                </div>
+                                <div class="progress-bar" style="width: 100px; margin: 0;">
+                                    <div class="progress-fill" style="width: 64.6%;"></div>
+                                </div>
+                                <span class="text-sm font-medium">64.60%</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-sm);">
+                                <div style="display: flex; align-items: center; gap: var(--space-xs);">
+                                    <div class="social-icon instagram" style="width: 20px; height: 20px; font-size: 12px;">📷</div>
+                                    <span class="text-sm">Instagram</span>
+                                </div>
+                                <div class="progress-bar" style="width: 100px; margin: 0;">
+                                    <div class="progress-fill" style="width: 58.17%;"></div>
+                                </div>
+                                <span class="text-sm font-medium">58.17%</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div style="display: flex; align-items: center; gap: var(--space-xs);">
+                                    <div class="social-icon facebook" style="width: 20px; height: 20px; font-size: 12px;">f</div>
+                                    <span class="text-sm">Facebook</span>
+                                </div>
+                                <div class="progress-bar" style="width: 100px; margin: 0;">
+                                    <div class="progress-fill" style="width: 41.45%;"></div>
+                                </div>
+                                <span class="text-sm font-medium">41.45%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="analytics-card">
+                        <div class="analytics-header">
+                            <h4 class="analytics-title">Top languages</h4>
+                        </div>
+                        <div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-sm);">
+                                <span class="text-sm">English</span>
+                                <div style="display: flex; align-items: center; gap: var(--space-xs);">
+                                    <div class="progress-bar" style="width: 80px; margin: 0;">
+                                        <div class="progress-fill" style="width: 72.45%;"></div>
+                                    </div>
+                                    <span class="text-sm font-medium">72.45%</span>
+                                </div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-sm);">
+                                <span class="text-sm">Spanish</span>
+                                <div style="display: flex; align-items: center; gap: var(--space-xs);">
+                                    <div class="progress-bar" style="width: 80px; margin: 0;">
+                                        <div class="progress-fill" style="width: 31.5%;"></div>
+                                    </div>
+                                    <span class="text-sm font-medium">31.5%</span>
+                                </div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <span class="text-sm">Italian</span>
+                                <div style="display: flex; align-items: center; gap: var(--space-xs);">
+                                    <div class="progress-bar" style="width: 80px; margin: 0;">
+                                        <div class="progress-fill" style="width: 3.95%;"></div>
+                                    </div>
+                                    <span class="text-sm font-medium">3.95%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Summary -->
+        <div class="section-website text-center">
+            <h2 class="section-title">No Gradients, Pure Design System</h2>
+            <p class="section-subtitle">All gradient colors removed, using solid colors from the design system</p>
+            <div class="flex gap-md justify-center flex-wrap">
+                <button class="btn-website-primary">Primary Yellow (No Gradient)</button>
+                <button class="btn-website-secondary">Secondary Charcoal (No Gradient)</button>
+                <button class="btn-website-blue">Blue Action (No Gradient)</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simple scroll-to-section functionality
+        document.querySelectorAll('.workflow-step').forEach(step => {
+            step.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.querySelector(step.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                    
+                    // Update active state
+                    document.querySelectorAll('.workflow-step').forEach(s => s.classList.remove('active'));
+                    step.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

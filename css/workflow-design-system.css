@@ -1,0 +1,500 @@
+/**
+ * Workflow Design System
+ * Based on Rebrandly's Create/Customize/Share/Track workflow design
+ */
+
+:root {
+  /* ==========================================================================
+     WORKFLOW STEP COLORS - No Gradients, Solid Colors Only
+     ========================================================================== */
+
+  /* Step Colors from Design */
+  --color-step-create: #A248EA;      /* Purple */
+  --color-step-customize: #3A928D;   /* Teal */
+  --color-step-share: #E83095;       /* Pink */
+  --color-step-track: #1F68F9;       /* Blue */
+
+  /* Step Background Colors (Light versions) */
+  --color-step-create-bg: #F3E8FF;
+  --color-step-customize-bg: #E6FFFA;
+  --color-step-share-bg: #FCE7F3;
+  --color-step-track-bg: #EBF4FF;
+
+  /* Data Visualization Colors */
+  --color-chart-primary: #1F68F9;
+  --color-chart-secondary: #93C5FD;
+  --color-chart-tertiary: #DBEAFE;
+
+  /* Social Platform Colors */
+  --color-linkedin: #0077B5;
+  --color-facebook: #1877F2;
+  --color-twitter: #1DA1F2;
+  --color-instagram: #E4405F;
+  --color-tiktok: #000000;
+  --color-mastodon: #6364FF;
+}
+
+/* ==========================================================================
+   REMOVE ALL GRADIENTS - UPDATE EXISTING BUTTONS
+   ========================================================================== */
+
+/* Override any existing gradient buttons */
+.btn-primary,
+.btn-website-primary {
+  background: var(--color-btn-yellow) !important;
+  background-image: none !important;
+  border: 2px solid var(--color-border-btn);
+}
+
+.btn-secondary,
+.btn-website-secondary {
+  background: var(--color-btn-charcoal) !important;
+  background-image: none !important;
+  border: 2px solid var(--color-btn-charcoal);
+}
+
+/* Remove gradients from navigation */
+.nav-item.active {
+  background: var(--color-bg-blue-01) !important;
+  background-image: none !important;
+  color: var(--color-text-blue);
+}
+
+/* Remove gradients from any other elements */
+* {
+  background-image: none !important;
+}
+
+/* Exception: Keep background images that aren't gradients */
+.form-select,
+.hamburger-menu,
+.form-file-label {
+  background-image: url("data:image/svg+xml...") !important;
+}
+
+/* ==========================================================================
+   WORKFLOW STEP COMPONENTS
+   ========================================================================== */
+
+/* Step Navigation Sidebar */
+.workflow-steps {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  background: var(--color-bg-white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.workflow-step {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm);
+  border-radius: var(--radius-base);
+  transition: all var(--transition-base);
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--color-text-secondary);
+}
+
+.workflow-step:hover {
+  background: var(--color-bg-charcoal-01);
+  transform: translateY(-1px);
+}
+
+.workflow-step.active {
+  background: var(--color-bg-blue-01);
+  color: var(--color-text-blue);
+}
+
+/* Step Icons */
+.step-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 600;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.step-icon.create { background: var(--color-step-create); }
+.step-icon.customize { background: var(--color-step-customize); }
+.step-icon.share { background: var(--color-step-share); }
+.step-icon.track { background: var(--color-step-track); }
+
+.step-content {
+  flex: 1;
+}
+
+.step-title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin-bottom: 4px;
+}
+
+.step-description {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-base);
+}
+
+/* ==========================================================================
+   WORKFLOW CONTENT CARDS
+   ========================================================================== */
+
+.workflow-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-xl);
+}
+
+.workflow-card {
+  background: var(--color-bg-white);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-border-light);
+  transition: all var(--transition-base);
+}
+
+.workflow-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.workflow-card-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+
+.workflow-card-icon {
+  width: 24px;
+  height: 24px;
+  color: var(--color-text-secondary);
+}
+
+.workflow-card-title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+/* ==========================================================================
+   FORM COMPONENTS (MATCHING DESIGN IMAGES)
+   ========================================================================== */
+
+.workflow-form {
+  background: var(--color-bg-white);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-border-light);
+}
+
+.form-section {
+  margin-bottom: var(--space-lg);
+}
+
+.form-section:last-child {
+  margin-bottom: 0;
+}
+
+.form-section-title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-sm);
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+/* Form Controls Matching Design */
+.form-control-group {
+  display: flex;
+  gap: var(--space-sm);
+  align-items: end;
+}
+
+.form-control-group .form-group {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+.form-url-builder {
+  display: flex;
+  align-items: center;
+  background: var(--color-bg-white);
+  border: 2px solid var(--color-border-charcoal);
+  border-radius: var(--radius-base);
+  overflow: hidden;
+}
+
+.form-url-prefix {
+  background: var(--color-bg-charcoal-01);
+  padding: 12px 16px;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  border-right: 1px solid var(--color-border-charcoal);
+}
+
+.form-url-input {
+  border: none;
+  padding: 12px 16px;
+  flex: 1;
+  font-size: var(--font-size-sm);
+  background: transparent;
+}
+
+.form-url-input:focus {
+  outline: none;
+}
+
+.form-url-builder:focus-within {
+  border-color: var(--color-btn-blue-01);
+  box-shadow: 0 0 0 3px var(--color-bg-blue-01);
+}
+
+/* ==========================================================================
+   DATA VISUALIZATION COMPONENTS
+   ========================================================================== */
+
+/* Analytics Cards */
+.analytics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+.analytics-card {
+  background: var(--color-bg-white);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-border-light);
+}
+
+.analytics-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-md);
+}
+
+.analytics-title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.analytics-period {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+/* Metrics Display */
+.metrics-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--space-md);
+}
+
+.metric-item {
+  text-align: center;
+}
+
+.metric-value {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.metric-label {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Chart Placeholder */
+.chart-container {
+  height: 200px;
+  background: var(--color-bg-charcoal-01);
+  border-radius: var(--radius-base);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--space-md);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Simple Bar Chart Simulation */
+.chart-bars {
+  display: flex;
+  align-items: end;
+  gap: 4px;
+  height: 100px;
+  padding: var(--space-sm);
+}
+
+.chart-bar {
+  background: var(--color-chart-primary);
+  border-radius: 2px 2px 0 0;
+  min-width: 12px;
+  transition: all var(--transition-base);
+}
+
+.chart-bar:hover {
+  background: var(--color-chart-secondary);
+}
+
+/* ==========================================================================
+   SOCIAL SHARING COMPONENTS
+   ========================================================================== */
+
+.social-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--space-sm);
+}
+
+.social-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm);
+  background: var(--color-bg-white);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-base);
+  transition: all var(--transition-base);
+  cursor: pointer;
+}
+
+.social-item:hover {
+  border-color: var(--color-border-charcoal);
+  box-shadow: var(--shadow-xs);
+}
+
+.social-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.social-icon.linkedin { background: var(--color-linkedin); }
+.social-icon.facebook { background: var(--color-facebook); }
+.social-icon.twitter { background: var(--color-twitter); }
+.social-icon.instagram { background: var(--color-instagram); }
+.social-icon.tiktok { background: var(--color-tiktok); }
+.social-icon.mastodon { background: var(--color-mastodon); }
+
+.social-name {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+}
+
+/* ==========================================================================
+   PROGRESS INDICATORS
+   ========================================================================== */
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: var(--color-bg-charcoal-01);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  margin-bottom: var(--space-sm);
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--color-chart-primary);
+  border-radius: var(--radius-full);
+  transition: width var(--transition-slow);
+}
+
+.progress-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .workflow-content {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+  
+  .workflow-steps {
+    flex-direction: row;
+    overflow-x: auto;
+    gap: var(--space-xs);
+  }
+  
+  .workflow-step {
+    flex-shrink: 0;
+    min-width: 200px;
+  }
+  
+  .analytics-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .metrics-row {
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+  
+  .form-control-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .social-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   UTILITY CLASSES
+   ========================================================================== */
+
+.step-create { color: var(--color-step-create); }
+.step-customize { color: var(--color-step-customize); }
+.step-share { color: var(--color-step-share); }
+.step-track { color: var(--color-step-track); }
+
+.bg-step-create { background: var(--color-step-create-bg); }
+.bg-step-customize { background: var(--color-step-customize-bg); }
+.bg-step-share { background: var(--color-step-share-bg); }
+.bg-step-track { background: var(--color-step-track-bg); }
