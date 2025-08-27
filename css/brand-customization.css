@@ -1,7 +1,17 @@
 /**
  * Brand Customization Updates
  * Blue 700 logo background and purple buttons
+ * Add custom Blue 700 color
  */
+
+/* ==========================================================================
+   CUSTOM COLOR DEFINITIONS
+   ========================================================================== */
+
+:root {
+  /* Custom Blue 700 for hero section */
+  --color-blue-700-custom: #023CB1;
+}
 
 /* ==========================================================================
    LOGO BACKGROUND UPDATE - Blue 700

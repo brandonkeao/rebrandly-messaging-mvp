@@ -1,7 +1,87 @@
 /**
  * Getting Started Improvements
  * Ensure Quick Actions and Pro Tips cards display properly
+ * Update hero section to Blue 700
  */
+
+/* ==========================================================================
+   HERO SECTION UPDATE - Blue 700
+   ========================================================================== */
+
+.hero-section {
+  background: #023CB1 !important; /* Blue 700 as specified */
+  background-image: none !important; /* Remove any gradients */
+  border-radius: 16px;
+  padding: 48px 32px;
+  margin-bottom: 32px;
+  color: #FFFFFF; /* Ensure white text for proper contrast */
+}
+
+.hero-content {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero-title {
+  color: #FFFFFF !important; /* White text on blue background */
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-md);
+  line-height: var(--line-height-tight);
+}
+
+.hero-subtitle {
+  color: rgba(255, 255, 255, 0.9) !important; /* Slightly transparent white */
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-regular);
+  margin-bottom: var(--space-lg);
+  line-height: var(--line-height-base);
+}
+
+.hero-badges {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+.hero-badges .badge {
+  background: rgba(255, 255, 255, 0.2) !important; /* Semi-transparent white */
+  color: #FFFFFF !important; /* White text */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+.hero-badges .badge:hover {
+  background: rgba(255, 255, 255, 0.3) !important;
+  transform: translateY(-1px);
+}
+
+/* Mobile hero adjustments */
+@media (max-width: 767px) {
+  .hero-section {
+    padding: 32px 20px;
+    margin-bottom: var(--space-lg);
+  }
+  
+  .hero-title {
+    font-size: var(--font-size-2xl);
+  }
+  
+  .hero-subtitle {
+    font-size: var(--font-size-base);
+  }
+  
+  .hero-badges {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .hero-badges .badge {
+    width: fit-content;
+  }
+}
 
 /* ==========================================================================
    QUICK ACTIONS GRID IMPROVEMENTS
