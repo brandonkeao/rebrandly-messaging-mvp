@@ -90,10 +90,6 @@
                 <div class="height-indicator">72px</div>
                 <div class="header-content">
                     <h1 class="app-title-website">Header Alignment Demo</h1>
-                    <div class="header-actions">
-                        <button class="btn-website-secondary btn-sm">Save Draft</button>
-                        <button class="btn-website-primary">Continue</button>
-                    </div>
                 </div>
             </header>
             
@@ -110,7 +106,7 @@
                                 <li><strong>Height:</strong> 72px (fixed)</li>
                                 <li><strong>Padding:</strong> var(--space-md) var(--space-lg)</li>
                                 <li><strong>Display:</strong> flex with align-items: center</li>
-                                <li><strong>Content:</strong> Page title + action buttons</li>
+                                <li><strong>Content:</strong> Page title only (actions removed)</li>
                                 <li><strong>Position:</strong> Sticky top header</li>
                             </ul>
                         </div>
@@ -179,6 +175,14 @@
   align-items: center;
 }
 
+/* Page title takes full width without actions */
+.top-header .app-title-website {
+  margin: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
 /* Mobile responsive */
 @media (max-width: 768px) {
   .top-header {
@@ -196,7 +200,8 @@
                             <li><strong>Fixed Heights:</strong> Both headers use min-height for consistency</li>
                             <li><strong>Flexbox Alignment:</strong> Vertical centering with align-items: center</li>
                             <li><strong>Responsive Design:</strong> Smaller heights on mobile devices</li>
-                            <li><strong>Content Alignment:</strong> All content properly centered</li>
+                            <li><strong>Content Alignment:</strong> Page title and logo properly centered</li>
+                            <li><strong>Clean Layout:</strong> Simplified header without action buttons</li>
                             <li><strong>Visual Consistency:</strong> Perfect horizontal alignment</li>
                         </ul>
                     </div>

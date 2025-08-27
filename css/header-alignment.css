@@ -21,13 +21,24 @@
   align-items: center;
 }
 
-/* Ensure header content is vertically centered */
+/* Ensure header content is properly aligned without actions */
 .header-content {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   width: 100%;
   height: 100%;
+}
+
+/* Page title should take full width when no actions present */
+.top-header .app-title-website,
+.top-header .app-heading-1,
+.top-header #pageTitle {
+  margin: 0;
+  line-height: 1.2;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 100%;
 }
 
 /* Ensure logo is vertically centered */
@@ -95,32 +106,6 @@
 }
 
 /* ==========================================================================
-   HEADER ACTIONS ALIGNMENT
-   ========================================================================== */
-
-.header-actions {
-  display: flex;
-  align-items: center;
-  gap: var(--space-sm);
-  height: 100%;
-}
-
-.header-actions .btn {
-  flex-shrink: 0;
-}
-
-/* Page title alignment */
-.app-title-website,
-.app-heading-1,
-#pageTitle {
-  margin: 0;
-  line-height: 1.2;
-  display: flex;
-  align-items: center;
-  height: 100%;
-}
-
-/* ==========================================================================
    VISUAL CONSISTENCY
    ========================================================================== */
 
@@ -162,7 +147,6 @@
    ========================================================================== */
 
 /* Ensure focus states work properly with new heights */
-.header-actions .btn:focus-visible,
 .logo:focus-visible {
   outline: 2px solid var(--color-primary-500);
   outline-offset: 2px;
