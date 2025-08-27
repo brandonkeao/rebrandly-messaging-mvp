@@ -904,8 +904,6 @@ class Views {
                 </div>
                 
                 <div class="card message-preview-container">
-                    <h2 class="card-title" style="margin-bottom: 20px;">Preview</h2>
-                    
                     <div class="phone-preview">
                         <div class="phone-screen">
                             <div class="phone-header">

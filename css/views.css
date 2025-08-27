@@ -191,21 +191,6 @@
 .message-preview-container {
     position: sticky;
     top: 20px;
-    display: flex !important;
-    flex-direction: column !important;
-}
-
-.message-preview-container .card-title {
-    margin-bottom: 20px !important;
-    order: 1 !important;
-    display: block !important;
-    width: 100% !important;
-}
-
-.message-preview-container .phone-preview {
-    order: 2 !important;
-    display: block !important;
-    width: 100% !important;
 }
 
 /* Button Groups */
