@@ -191,6 +191,17 @@
 .message-preview-container {
     position: sticky;
     top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.message-preview-container .card-title {
+    margin-bottom: 20px;
+    order: 1;
+}
+
+.message-preview-container .phone-preview {
+    order: 2;
 }
 
 /* Button Groups */
