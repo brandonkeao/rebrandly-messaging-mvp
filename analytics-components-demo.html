@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Analytics Components Demo - Rebrandly Messaging</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/views.css">
+    <link rel="stylesheet" href="css/design-system.css">
+    <link rel="stylesheet" href="css/color-system-v2.css">
+    <link rel="stylesheet" href="css/website-color-system.css">
+    <link rel="stylesheet" href="css/website-typography.css">
+    <link rel="stylesheet" href="css/workflow-design-system.css">
+    <link rel="stylesheet" href="css/buttons.css">
+    <link rel="stylesheet" href="css/forms.css">
+    <link rel="stylesheet" href="css/navigation.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/app-overrides.css">
+    <link rel="stylesheet" href="css/accessibility-fixes.css">
+    <link rel="stylesheet" href="css/brand-customization.css">
+    <link rel="stylesheet" href="css/getting-started-improvements.css">
+    <link rel="stylesheet" href="css/header-alignment.css">
+    <link rel="stylesheet" href="css/modal-system.css">
+    <link rel="stylesheet" href="css/data-table-system.css">
+    <link rel="stylesheet" href="css/links-view.css">
+    <link rel="stylesheet" href="css/contact-avatars.css">
+    <link rel="stylesheet" href="css/loading-error-states.css">
+    <link rel="stylesheet" href="css/review-send-view.css">
+    <link rel="stylesheet" href="css/analytics-components.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container" style="padding: var(--space-lg);">
+        <h1 class="hero-title">Advanced Analytics Components Demo</h1>
+        <p class="hero-subtitle">Comprehensive charts, metrics, and reporting interface</p>
+
+        <!-- Analytics Dashboard -->
+        <section class="section-website">
+            <div class="analytics-container">
+                <!-- Filters -->
+                <div id="analyticsFilters"></div>
+
+                <!-- Metrics Grid -->
+                <div class="metrics-grid" id="metricsGrid">
+                    <!-- Metrics will be populated here -->
+                </div>
+
+                <!-- Charts Grid -->
+                <div class="analytics-grid">
+                    <div class="analytics-row">
+                        <div id="mainChart">
+                            <!-- Main chart will be populated here -->
+                        </div>
+                        <div id="sideChart">
+                            <!-- Side chart will be populated here -->
+                        </div>
+                    </div>
+                    
+                    <div class="analytics-full-width" id="dataTable">
+                        <!-- Data table will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Individual Component Demos -->
+        <section class="section-website-light">
+            <div class="container">
+                <h2 class="section-title">Individual Component Demos</h2>
+                
+                <!-- Metric Cards -->
+                <div class="card-website">
+                    <h3 class="card-website-title">📊 Metric Cards</h3>
+                    <div class="metrics-grid" id="individualMetrics">
+                        <!-- Individual metrics will be populated here -->
+                    </div>
+                    <div class="flex gap-sm flex-wrap" style="margin-top: var(--space-md);">
+                        <button class="btn-website-primary" onclick="updateMetrics()">Update Metrics</button>
+                        <button class="btn-website-secondary" onclick="addMetric()">Add Metric</button>
+                        <button class="btn-website-secondary" onclick="clearMetrics()">Clear All</button>
+                    </div>
+                </div>
+
+                <!-- Chart Types -->
+                <div class="grid grid-cols-2 gap-lg">
+                    <div class="card-website">
+                        <h3 class="card-website-title">📊 Bar Charts</h3>
+                        <div id="barChartDemo">
+                            <!-- Bar chart demo will be populated here -->
+                        </div>
+                        <div class="flex gap-sm flex-wrap" style="margin-top: var(--space-md);">
+                            <button class="btn-website-primary" onclick="updateBarChart()">Update Data</button>
+                            <button class="btn-website-secondary" onclick="animateBarChart()">Animate</button>
+                        </div>
+                    </div>
+
+                    <div class="card-website">
+                        <h3 class="card-website-title">📈 Line Charts</h3>
+                        <div id="lineChartDemo">
+                            <!-- Line chart demo will be populated here -->
+                        </div>
+                        <div class="flex gap-sm flex-wrap" style="margin-top: var(--space-md);">
+                            <button class="btn-website-primary" onclick="updateLineChart()">Update Data</button>
+                            <button class="btn-website-secondary" onclick="animateLineChart()">Animate</button>
+                        </div>
+                    </div>
+
+                    <div class="card-website">
+                        <h3 class="card-website-title">🍩 Donut Charts</h3>
+                        <div id="donutChartDemo">
+                            <!-- Donut chart demo will be populated here -->
+                        </div>
+                        <div class="flex gap-sm flex-wrap" style="margin-top: var(--space-md);">
+                            <button class="btn-website-primary" onclick="updateDonutChart()">Update Progress</button>
+                            <button class="btn-website-secondary" onclick="animateDonutChart()">Animate</button>
+                        </div>
+                    </div>
+
+                    <div class="card-website">
+                        <h3 class="card-website-title">📅 Date Range Picker</h3>
+                        <div id="dateRangeDemo" style="margin-bottom: var(--space-md);">
+                            <!-- Date range picker will be populated here -->
+                        </div>
+                        <div class="flex gap-sm flex-wrap">
+                            <button class="btn-website-primary" onclick="setDateRange()">Set Range</button>
+                            <button class="btn-website-secondary" onclick="getDateRange()">Get Range</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Data Table Demo -->
+                <div class="card-website">
+                    <h3 class="card-website-title">📋 Analytics Data Table</h3>
+                    <div id="tableDemo">
+                        <!-- Table demo will be populated here -->
+                    </div>
+                    <div class="flex gap-sm flex-wrap" style="margin-top: var(--space-md);">
+                        <button class="btn-website-primary" onclick="updateTableData()">Update Data</button>
+                        <button class="btn-website-secondary" onclick="addTableRow()">Add Row</button>
+                        <button class="btn-website-blue" onclick="exportTable()">Export CSV</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Feature Highlights -->
+        <section class="section-website">
+            <h2 class="section-title">Analytics Components Features</h2>
+            <div class="grid grid-cols-2 gap-lg">
+                <div class="card-website">
+                    <h3 class="card-website-title">📊 Metric Cards</h3>
+                    <ul style="list-style: disc; margin-left: 20px; font-size: 14px; color: var(--color-text-secondary); line-height: 1.6;">
+                        <li><strong>Trend Indicators:</strong> Positive, negative, and neutral trend arrows</li>
+                        <li><strong>Color Coding:</strong> Success, warning, error, and info variants</li>
+                        <li><strong>Real-time Updates:</strong> Dynamic value and trend updates</li>
+                        <li><strong>Hover Effects:</strong> Interactive card animations</li>
+                    </ul>
+                </div>
+                
+                <div class="card-website">
+                    <h3 class="card-website-title">📈 Chart Types</h3>
+                    <ul style="list-style: disc; margin-left: 20px; font-size: 14px; color: var(--color-text-secondary); line-height: 1.6;">
+                        <li><strong>Bar Charts:</strong> Interactive bars with hover values</li>
+                        <li><strong>Line Charts:</strong> Trend visualization with gradients</li>
+                        <li><strong>Donut Charts:</strong> Progress indicators with percentages</li>
+                        <li><strong>Export Options:</strong> PNG and CSV export functionality</li>
+                    </ul>
+                </div>
+                
+                <div class="card-website">
+                    <h3 class="card-website-title">🔧 Interactive Controls</h3>
+                    <ul style="list-style: disc; margin-left: 20px; font-size: 14px; color: var(--color-text-secondary); line-height: 1.6;">
+                        <li><strong>Date Range Picker:</strong> Custom date selection for filtering</li>
+                        <li><strong>Filter Controls:</strong> Campaign, status, and channel filters</li>
+                        <li><strong>Export Controls:</strong> Chart and data export options</li>
+                        <li><strong>Real-time Updates:</strong> Dynamic data refresh capabilities</li>
+                    </ul>
+                </div>
+                
+                <div class="card-website">
+                    <h3 class="card-website-title">📋 Data Tables</h3>
+                    <ul style="list-style: disc; margin-left: 20px; font-size: 14px; color: var(--color-text-secondary); line-height: 1.6;">
+                        <li><strong>Sortable Columns:</strong> Click headers to sort data</li>
+                        <li><strong>Responsive Design:</strong> Mobile-friendly table layouts</li>
+                        <li><strong>Row Highlighting:</strong> Hover effects for better UX</li>
+                        <li><strong>Export Ready:</strong> CSV export functionality</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Demo Controls -->
+        <section class="section-website-light">
+            <div class="container">
+                <h2 class="section-title">Interactive Demo Controls</h2>
+                <div class="card-website">
+                    <h3 class="card-website-title">Test Analytics Features</h3>
+                    <div class="flex gap-sm flex-wrap" style="margin-bottom: var(--space-md);">
+                        <button class="btn-website-primary" onclick="refreshDashboard()">Refresh Dashboard</button>
+                        <button class="btn-website-secondary" onclick="simulateRealTimeData()">Simulate Real-time</button>
+                        <button class="btn-website-blue" onclick="exportAllData()">Export All</button>
+                        <button class="btn-website-secondary" onclick="resetDashboard()">Reset Dashboard</button>
+                    </div>
+                    <div class="flex gap-sm flex-wrap">
+                        <button class="btn-website-primary" onclick="showCampaignAnalytics()">Campaign Analytics</button>
+                        <button class="btn-website-secondary" onclick="showLinkAnalytics()">Link Analytics</button>
+                        <button class="btn-website-blue" onclick="showContactAnalytics()">Contact Analytics</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Implementation -->
+        <section class="section-website">
+            <h2 class="section-title">Technical Implementation</h2>
+            <div class="card-website">
+                <h3 class="card-website-title">AnalyticsComponents Class Architecture</h3>
+                <div style="background: var(--color-neutral-100); padding: var(--space-md); border-radius: var(--radius-base); margin-bottom: var(--space-md); font-family: monospace; font-size: 14px;">
+<pre style="margin: 0; color: var(--color-text-primary);">// Create metric cards
+const metric = createMetricCard('#container', {
+  title: 'Total Campaigns',
+  value: '24',
+  subtitle: 'Active campaigns',
+  trend: { direction: 'positive', value: '+12%' },
+  type: 'success'
+});
+
+// Create bar chart
+const barChart = createBarChart('#container', {
+  title: 'Monthly Performance',
+  data: [
+    { label: 'Jan', value: 120 },
+    { label: 'Feb', value: 190 },
+    { label: 'Mar', value: 300 }
+  ],
+  colors: ['primary', 'success', 'warning']
+});
+
+// Create donut chart
+const donutChart = createDonutChart('#container', {
+  title: 'Campaign Progress',
+  value: 78,
+  max: 100
+});
+
+// Update charts dynamically
+metric.update({ value: '28', trend: { direction: 'positive', value: '+16%' } });
+barChart.update([{ label: 'Jan', value: 150 }]);
+donutChart.update(85, 100);</pre>
+                </div>
+                
+                <h4 style="font-size: 16px; font-weight: 600; margin-bottom: 8px;">Key Integration Features:</h4>
+                <div class="grid grid-cols-2 gap-md">
+                    <div>
+                        <ul style="list-style: disc; margin-left: 20px; font-size: 14px; color: var(--color-text-secondary); line-height: 1.6;">
+                            <li><strong>Modular Design:</strong> Independent chart and metric components</li>
+                            <li><strong>Real-time Updates:</strong> Dynamic data refresh capabilities</li>
+                            <li><strong>Export Functionality:</strong> PNG and CSV export options</li>
+                            <li><strong>Responsive Charts:</strong> Mobile-optimized visualizations</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <ul style="list-style: disc; margin-left: 20px; font-size: 14px; color: var(--color-text-secondary); line-height: 1.6;">
+                            <li><strong>Accessibility:</strong> ARIA labels and keyboard navigation</li>
+                            <li><strong>Color System:</strong> Consistent with design system colors</li>
+                            <li><strong>Animation Support:</strong> Smooth transitions and hover effects</li>
+                            <li><strong>Filter Integration:</strong> Date range and category filtering</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/modal-system.js"></script>
+    <script src="js/loading-error-states.js"></script>
+    <script src="js/analytics-components.js"></script>
+    <script>
+        // Demo variables
+        let demoMetrics = [];
+        let demoBarChart = null;
+        let demoLineChart = null;
+        let demoDonutChart = null;
+        let demoTable = null;
+        let demoDateRange = null;
+
+        // Initialize demo when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeDashboard();
+            initializeIndividualDemos();
+        });
+
+        function initializeDashboard() {
+            // Create filters
+            createAnalyticsFilters('#analyticsFilters', {
+                filters: [
+                    {
+                        key: 'campaign',
+                        label: 'Campaign',
+                        options: [
+                            { value: 'all', label: 'All Campaigns', selected: true },
+                            { value: 'active', label: 'Active Only' },
+                            { value: 'completed', label: 'Completed' }
+                        ]
+                    },
+                    {
+                        key: 'status',
+                        label: 'Status',
+                        options: [
+                            { value: 'all', label: 'All Status', selected: true },
+                            { value: 'sent', label: 'Sent' },
+                            { value: 'delivered', label: 'Delivered' }
+                        ]
+                    }
+                ],
+                onChange: (filters) => {
+                    console.log('Filters changed:', filters);
+                    showToast({ title: 'Filters Updated', message: 'Dashboard data refreshed', type: 'info' });
+                }
+            });
+
+            // Create dashboard metrics
+            window.AnalyticsComponents.createDemoMetrics('#metricsGrid');
+
+            // Create dashboard charts
+            window.AnalyticsComponents.createDemoCharts('#mainChart');
+            window.AnalyticsComponents.createDemoCharts('#sideChart');
+
+            // Create dashboard table
+            window.AnalyticsComponents.createDemoTable('#dataTable');
+        }
+
+        function initializeIndividualDemos() {
+            // Individual metrics
+            const sampleMetrics = [
+                { title: 'Open Rate', value: '24.5%', subtitle: 'Email campaigns', trend: { direction: 'positive', value: '+3.2%' }, type: 'success' },
+                { title: 'Bounce Rate', value: '2.1%', subtitle: 'Message delivery', trend: { direction: 'negative', value: '-0.5%' }, type: 'warning' },
+                { title: 'Unsubscribes', value: '0.8%', subtitle: 'Monthly rate', trend: { direction: 'neutral', value: '0.0%' }, type: 'error' }
+            ];
+
+            sampleMetrics.forEach(metric => {
+                const metricCard = createMetricCard('#individualMetrics', metric);
+                demoMetrics.push(metricCard);
+            });
+
+            // Bar chart demo
+            demoBarChart = createBarChart('#barChartDemo', {
+                title: 'Weekly Performance',
+                subtitle: 'Messages sent per day',
+                data: [
+                    { label: 'Mon', value: 45 },
+                    { label: 'Tue', value: 67 },
+                    { label: 'Wed', value: 89 },
+                    { label: 'Thu', value: 56 },
+                    { label: 'Fri', value: 78 }
+                ],
+                colors: ['primary', 'success', 'warning', 'error', 'info']
+            });
+
+            // Line chart demo
+            demoLineChart = createLineChart('#lineChartDemo', {
+                title: 'Engagement Trend',
+                subtitle: 'Click-through rate over time'
+            });
+
+            // Donut chart demo
+            demoDonutChart = createDonutChart('#donutChartDemo', {
+                title: 'Goal Progress',
+                subtitle: 'Monthly target',
+                value: 65,
+                max: 100
+            });
+
+            // Date range picker demo
+            demoDateRange = createDateRangePicker('#dateRangeDemo', {
+                onChange: (start, end) => {
+                    showToast({ 
+                        title: 'Date Range Updated', 
+                        message: `${start.toDateString()} to ${end.toDateString()}`, 
+                        type: 'info' 
+                    });
+                }
+            });
+
+            // Table demo
+            demoTable = createAnalyticsTable('#tableDemo', {
+                title: 'Top Performing Campaigns',
+                columns: [
+                    { key: 'name', label: 'Campaign Name' },
+                    { key: 'sent', label: 'Messages Sent' },
+                    { key: 'opened', label: 'Opened' },
+                    { key: 'clicked', label: 'Clicked' },
+                    { key: 'rate', label: 'CTR' }
+                ],
+                data: [
+                    { name: 'Summer Sale', sent: 1500, opened: 1200, clicked: 180, rate: '15.0%' },
+                    { name: 'Product Launch', sent: 2200, opened: 1800, clicked: 234, rate: '13.0%' },
+                    { name: 'Newsletter', sent: 890, opened: 720, clicked: 86, rate: '11.9%' }
+                ]
+            });
+        }
+
+        // Demo functions
+        function updateMetrics() {
+            demoMetrics.forEach((metric, index) => {
+                const newValue = Math.floor(Math.random() * 100) + '%';
+                const trendValue = (Math.random() * 10 - 5).toFixed(1) + '%';
+                const direction = parseFloat(trendValue) > 0 ? 'positive' : 'negative';
+                
+                metric.update({
+                    value: newValue,
+                    trend: { direction, value: trendValue }
+                });
+            });
+            showToast({ title: 'Metrics Updated', message: 'All metrics refreshed with new data', type: 'success' });
+        }
+
+        function addMetric() {
+            const newMetric = createMetricCard('#individualMetrics', {
+                title: 'New Metric',
+                value: Math.floor(Math.random() * 1000),
+                subtitle: 'Random data',
+                trend: { direction: 'positive', value: '+5.2%' },
+                type: 'info'
+            });
+            demoMetrics.push(newMetric);
+            showToast({ title: 'Metric Added', message: 'New metric card created', type: 'success' });
+        }
+
+        function clearMetrics() {
+            demoMetrics.forEach(metric => metric.remove());
+            demoMetrics = [];
+            showToast({ title: 'Metrics Cleared', message: 'All metric cards removed', type: 'info' });
+        }
+
+        function updateBarChart() {
+            const newData = [
+                { label: 'Mon', value: Math.floor(Math.random() * 100) },
+                { label: 'Tue', value: Math.floor(Math.random() * 100) },
+                { label: 'Wed', value: Math.floor(Math.random() * 100) },
+                { label: 'Thu', value: Math.floor(Math.random() * 100) },
+                { label: 'Fri', value: Math.floor(Math.random() * 100) }
+            ];
+            demoBarChart.update(newData);
+            showToast({ title: 'Bar Chart Updated', message: 'Chart data refreshed', type: 'success' });
+        }
+
+        function animateBarChart() {
+            showToast({ title: 'Animation Started', message: 'Bar chart animation in progress', type: 'info' });
+        }
+
+        function updateLineChart() {
+            showToast({ title: 'Line Chart Updated', message: 'Trend data refreshed', type: 'success' });
+        }
+
+        function animateLineChart() {
+            showToast({ title: 'Animation Started', message: 'Line chart animation in progress', type: 'info' });
+        }
+
+        function updateDonutChart() {
+            const newValue = Math.floor(Math.random() * 100);
+            demoDonutChart.update(newValue, 100);
+            showToast({ title: 'Progress Updated', message: `Progress set to ${newValue}%`, type: 'success' });
+        }
+
+        function animateDonutChart() {
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += 5;
+                demoDonutChart.update(progress, 100);
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    showToast({ title: 'Animation Complete', message: 'Donut chart reached 100%', type: 'success' });
+                }
+            }, 100);
+        }
+
+        function setDateRange() {
+            const start = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000); // 7 days ago
+            const end = new Date();
+            demoDateRange.setRange(start, end);
+        }
+
+        function getDateRange() {
+            const range = demoDateRange.getRange();
+            showToast({ 
+                title: 'Current Range', 
+                message: `${range.start.toDateString()} to ${range.end.toDateString()}`, 
+                type: 'info' 
+            });
+        }
+
+        function updateTableData() {
+            const newData = [
+                { name: 'Flash Sale', sent: 1800, opened: 1400, clicked: 210, rate: '15.0%' },
+                { name: 'Holiday Campaign', sent: 2500, opened: 2000, clicked: 300, rate: '15.0%' },
+                { name: 'Weekly Update', sent: 950, opened: 760, clicked: 91, rate: '12.0%' }
+            ];
+            demoTable.update(newData);
+            showToast({ title: 'Table Updated', message: 'Campaign data refreshed', type: 'success' });
+        }
+
+        function addTableRow() {
+            showToast({ title: 'Row Added', message: 'New campaign row added to table', type: 'success' });
+        }
+
+        function exportTable() {
+            showToast({ title: 'Export Started', message: 'Downloading CSV file...', type: 'info' });
+        }
+
+        function refreshDashboard() {
+            showToast({ title: 'Dashboard Refreshed', message: 'All components updated with latest data', type: 'success' });
+        }
+
+        function simulateRealTimeData() {
+            showToast({ title: 'Real-time Mode', message: 'Simulating live data updates...', type: 'info' });
+            
+            let updates = 0;
+            const interval = setInterval(() => {
+                updates++;
+                if (updates <= 5) {
+                    updateMetrics();
+                    updateBarChart();
+                    updateDonutChart();
+                } else {
+                    clearInterval(interval);
+                    showToast({ title: 'Simulation Complete', message: 'Real-time updates finished', type: 'success' });
+                }
+            }, 1000);
+        }
+
+        function exportAllData() {
+            showToast({ title: 'Export Started', message: 'Preparing comprehensive analytics report...', type: 'info' });
+        }
+
+        function resetDashboard() {
+            showToast({ title: 'Dashboard Reset', message: 'All components restored to default state', type: 'info' });
+        }
+
+        function showCampaignAnalytics() {
+            showToast({ title: 'Campaign Analytics', message: 'Loading campaign performance data...', type: 'info' });
+        }
+
+        function showLinkAnalytics() {
+            showToast({ title: 'Link Analytics', message: 'Loading link click and engagement data...', type: 'info' });
+        }
+
+        function showContactAnalytics() {
+            showToast({ title: 'Contact Analytics', message: 'Loading contact engagement metrics...', type: 'info' });
+        }
+    </script>
+</body>
+</html>
