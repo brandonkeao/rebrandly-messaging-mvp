@@ -176,6 +176,14 @@ body {
     justify-content: space-between;
 }
 
+.heading-1 {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+    flex: 1;
+}
+
 .header-title {
     font-size: 20px;
     font-weight: 600;
@@ -185,6 +193,7 @@ body {
 .header-actions {
     display: flex;
     gap: 12px;
+    flex-shrink: 0;
 }
 
 /* Buttons */
