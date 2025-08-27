@@ -1019,242 +1019,259 @@ class Views {
 
     static getReviewView() {
         return `
-            <!-- Progress Steps -->
-            <div class="progress-container">
-                <div class="progress-steps">
-                    <div class="progress-line"></div>
-                    <div class="progress-line-active step-4"></div>
-                    
-                    <div class="step completed">
-                        <div class="step-number">✓</div>
-                        <div class="step-label">Select Contacts</div>
+            <div class="review-send-container">
+                <!-- Review Header -->
+                <div class="view-header">
+                    <div class="view-header-content">
+                        <h1 class="view-title">📋 Review & Send Campaign</h1>
+                        <p class="view-subtitle">Review your campaign details before sending to contacts</p>
                     </div>
-                    
-                    <div class="step completed">
-                        <div class="step-number">✓</div>
-                        <div class="step-label">Select Links</div>
-                    </div>
-                    
-                    <div class="step completed">
-                        <div class="step-number">✓</div>
-                        <div class="step-label">Compose Message</div>
-                    </div>
-                    
-                    <div class="step active">
-                        <div class="step-number">4</div>
-                        <div class="step-label">Review & Send</div>
+                    <div class="view-header-actions">
+                        <button class="btn-website-secondary" onclick="saveDraft()">
+                            <span class="btn-icon-left">💾</span>
+                            Save Draft
+                        </button>
+                        <button class="btn-website-primary" onclick="sendCampaign()" id="sendCampaignBtn">
+                            <span class="btn-icon-left">🚀</span>
+                            Send Campaign
+                        </button>
                     </div>
                 </div>
-            </div>
-            
-            <div class="card">
-                <div class="card-header">
-                    <h2 class="card-title">Review Your Campaign</h2>
-                    <div style="color: var(--text-secondary); font-size: 14px;">
-                        Review all details before sending your SMS campaign
+
+                <!-- Campaign Summary Cards -->
+                <div class="campaign-summary-grid">
+                    <div class="summary-card">
+                        <div class="summary-icon">👥</div>
+                        <div class="summary-content">
+                            <div class="summary-value" id="contactCount">4</div>
+                            <div class="summary-label">Contacts Selected</div>
+                            <div class="summary-detail">Ready to receive messages</div>
+                        </div>
+                        <button class="summary-action" onclick="editContacts()">Edit</button>
+                    </div>
+
+                    <div class="summary-card">
+                        <div class="summary-icon">🔗</div>
+                        <div class="summary-content">
+                            <div class="summary-value" id="linkCount">2</div>
+                            <div class="summary-label">Links Included</div>
+                            <div class="summary-detail">Branded short links</div>
+                        </div>
+                        <button class="summary-action" onclick="editLinks()">Edit</button>
+                    </div>
+
+                    <div class="summary-card">
+                        <div class="summary-icon">💬</div>
+                        <div class="summary-content">
+                            <div class="summary-value" id="messageLength">142</div>
+                            <div class="summary-label">Characters</div>
+                            <div class="summary-detail">Message length</div>
+                        </div>
+                        <button class="summary-action" onclick="editMessage()">Edit</button>
+                    </div>
+
+                    <div class="summary-card">
+                        <div class="summary-icon">💰</div>
+                        <div class="summary-content">
+                            <div class="summary-value" id="estimatedCost">$0.12</div>
+                            <div class="summary-label">Estimated Cost</div>
+                            <div class="summary-detail">Based on contact count</div>
+                        </div>
+                        <button class="summary-action" onclick="viewPricing()">Details</button>
                     </div>
                 </div>
-                
-                <div class="two-column">
-                    <!-- Left Column - Campaign Summary -->
-                    <div>
-                        <!-- Campaign Overview -->
-                        <div class="card" style="background: #f8fafc; margin-bottom: 20px;">
-                            <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 16px; color: var(--text-primary);">
-                                📊 Campaign Overview
-                            </h3>
-                            
-                            <div class="review-stat">
-                                <div class="review-stat-label">Campaign Name:</div>
-                                <div class="review-stat-value">Product Demo Campaign</div>
-                            </div>
-                            
-                            <div class="review-stat">
-                                <div class="review-stat-label">Recipients:</div>
-                                <div class="review-stat-value">4 contacts selected</div>
-                            </div>
-                            
-                            <div class="review-stat">
-                                <div class="review-stat-label">Links Included:</div>
-                                <div class="review-stat-value">2 short links</div>
-                            </div>
-                            
-                            <div class="review-stat">
-                                <div class="review-stat-label">Estimated Cost:</div>
-                                <div class="review-stat-value">$0.12 (4 messages × $0.03)</div>
+
+                <!-- Message Preview -->
+                <div class="message-preview-section">
+                    <h2 class="section-title">Message Preview</h2>
+                    <div class="message-preview-container">
+                        <div class="phone-mockup">
+                            <div class="phone-screen">
+                                <div class="message-bubble">
+                                    <div class="message-content" id="previewMessage">
+                                        Hi Sarah! 👋 Check out our new product demo at rbly.co/demo-2024 and see our pricing at rbly.co/pricing. Let me know what you think!
+                                    </div>
+                                    <div class="message-time">Now</div>
+                                </div>
                             </div>
                         </div>
-                        
-                        <!-- Selected Contacts -->
-                        <div class="card" style="margin-bottom: 20px;">
-                            <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 16px; color: var(--text-primary);">
-                                👥 Selected Contacts (4)
-                            </h3>
-                            
-                            <div class="review-contacts-list">
-                                <div class="review-contact-item">
-                                    <div class="contact-avatar-small">S</div>
-                                    <div class="review-contact-info">
-                                        <div class="review-contact-name">Sarah Johnson</div>
-                                        <div class="review-contact-details">TechCorp • +1 (555) 123-4567</div>
-                                    </div>
-                                </div>
-                                
-                                <div class="review-contact-item">
-                                    <div class="contact-avatar-small">M</div>
-                                    <div class="review-contact-info">
-                                        <div class="review-contact-name">Mike Chen</div>
-                                        <div class="review-contact-details">StartupXYZ • +1 (555) 234-5678</div>
-                                    </div>
-                                </div>
-                                
-                                <div class="review-contact-item">
-                                    <div class="contact-avatar-small">B</div>
-                                    <div class="review-contact-info">
-                                        <div class="review-contact-name">Brandon Keao</div>
-                                        <div class="review-contact-details">Tech Solutions • +1 (555) 345-6789</div>
-                                    </div>
-                                </div>
-                                
-                                <div class="review-contact-item">
-                                    <div class="contact-avatar-small">A</div>
-                                    <div class="review-contact-info">
-                                        <div class="review-contact-name">Alison Charles</div>
-                                        <div class="review-contact-details">Marketing Inc • +1 (555) 456-7890</div>
-                                    </div>
-                                </div>
+                        <div class="preview-details">
+                            <h3>Message Details</h3>
+                            <div class="detail-row">
+                                <span class="detail-label">From:</span>
+                                <span class="detail-value">Your Business Name</span>
                             </div>
-                            
-                            <button class="btn btn-secondary" style="width: 100%; margin-top: 12px;" onclick="window.RebrandlyApp.navigateToView('select-contacts')">
-                                ← Edit Contacts
-                            </button>
-                        </div>
-                        
-                        <!-- Selected Links -->
-                        <div class="card">
-                            <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 16px; color: var(--text-primary);">
-                                🔗 Selected Links (2)
-                            </h3>
-                            
-                            <div class="review-links-list">
-                                <div class="review-link-item">
-                                    <div class="review-link-info">
-                                        <div class="review-link-short">rbly.co/demo-2024</div>
-                                        <div class="review-link-original">https://rebrandly.com/products/demo-2024</div>
-                                    </div>
-                                </div>
-                                
-                                <div class="review-link-item">
-                                    <div class="review-link-info">
-                                        <div class="review-link-short">rbly.co/pricing</div>
-                                        <div class="review-link-original">https://rebrandly.com/pricing</div>
-                                    </div>
-                                </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Type:</span>
+                                <span class="detail-value">SMS Text Message</span>
                             </div>
-                            
-                            <button class="btn btn-secondary" style="width: 100%; margin-top: 12px;" onclick="window.RebrandlyApp.navigateToView('select-links')">
-                                ← Edit Links
-                            </button>
+                            <div class="detail-row">
+                                <span class="detail-label">Delivery:</span>
+                                <span class="detail-value">Immediate</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Variables:</span>
+                                <span class="detail-value" id="variableCount">1 personalization variable</span>
+                            </div>
                         </div>
                     </div>
-                    
-                    <!-- Right Column - Message Preview & Send -->
-                    <div>
-                        <!-- Message Preview -->
-                        <div class="card" style="margin-bottom: 20px;">
-                            <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 16px; color: var(--text-primary);">
-                                📱 Message Preview
-                            </h3>
-                            
-                            <div class="phone-preview">
-                                <div class="phone-header">
-                                    <div class="phone-time">9:41</div>
-                                    <div class="phone-signal">📶 📶 📶</div>
-                                </div>
-                                <div class="phone-content">
-                                    <div class="message-bubble preview">
-                                        <div class="message-text">
-                                            Hi Sarah! 👋 Check out our new product demo at rbly.co/demo-2024 and see our pricing at rbly.co/pricing. Let me know what you think!
-                                        </div>
-                                        <div class="message-time">Now</div>
-                                    </div>
-                                </div>
+                </div>
+
+                <!-- Contact List Preview -->
+                <div class="contact-list-section">
+                    <h2 class="section-title">Selected Contacts</h2>
+                    <div class="contact-list-preview">
+                        <div class="contact-list-header">
+                            <div class="contact-list-stats">
+                                <span class="stat-item">
+                                    <span class="stat-value" id="totalContacts">4</span>
+                                    <span class="stat-label">Total</span>
+                                </span>
+                                <span class="stat-item">
+                                    <span class="stat-value" id="validContacts">4</span>
+                                    <span class="stat-label">Valid</span>
+                                </span>
+                                <span class="stat-item">
+                                    <span class="stat-value" id="invalidContacts">0</span>
+                                    <span class="stat-label">Invalid</span>
+                                </span>
                             </div>
-                            
-                            <div style="margin-top: 16px; padding: 12px; background: #f8fafc; border-radius: 8px; font-size: 14px;">
-                                <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-                                    <span>Message Length:</span>
-                                    <span style="color: var(--success-color); font-weight: 500;">142/160 characters</span>
-                                </div>
-                                <div style="display: flex; justify-content: space-between;">
-                                    <span>Variables:</span>
-                                    <span style="color: var(--info-color);">{{name}} will be personalized</span>
-                                </div>
-                            </div>
-                            
-                            <button class="btn btn-secondary" style="width: 100%; margin-top: 12px;" onclick="window.RebrandlyApp.navigateToView('compose')">
-                                ← Edit Message
-                            </button>
+                            <button class="btn-website-secondary btn-sm" onclick="viewAllContacts()">View All</button>
                         </div>
-                        
-                        <!-- Send Options -->
-                        <div class="card" style="background: #f0f9ff; border: 1px solid #bae6fd;">
-                            <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 16px; color: #0369a1;">
-                                🚀 Send Campaign
-                            </h3>
-                            
-                            <div class="send-options">
-                                <div class="send-option">
-                                    <input type="radio" id="sendNow" name="sendOption" value="now" checked>
-                                    <label for="sendNow" class="send-option-label">
-                                        <div class="send-option-title">📤 Send Now</div>
-                                        <div class="send-option-desc">Send immediately to all selected contacts</div>
-                                    </label>
+                        <div class="contact-list-items" id="contactPreviewList">
+                            <div class="contact-preview-item">
+                                <div class="contact-avatar-small contact-avatar-primary">S</div>
+                                <div class="contact-info">
+                                    <div class="contact-name">Sarah Johnson</div>
+                                    <div class="contact-details">TechCorp • +1 (555) 123-4567</div>
                                 </div>
-                                
-                                <div class="send-option">
-                                    <input type="radio" id="sendLater" name="sendOption" value="later">
-                                    <label for="sendLater" class="send-option-label">
-                                        <div class="send-option-title">⏰ Schedule for Later</div>
-                                        <div class="send-option-desc">Choose a specific date and time</div>
-                                    </label>
+                                <div class="contact-status valid">✓</div>
+                            </div>
+                            <div class="contact-preview-item">
+                                <div class="contact-avatar-small contact-avatar-info">M</div>
+                                <div class="contact-info">
+                                    <div class="contact-name">Mike Chen</div>
+                                    <div class="contact-details">StartupXYZ • +1 (555) 234-5678</div>
                                 </div>
-                                
-                                <div class="send-option">
-                                    <input type="radio" id="sendTest" name="sendOption" value="test">
-                                    <label for="sendTest" class="send-option-label">
-                                        <div class="send-option-title">🧪 Send Test Message</div>
-                                        <div class="send-option-desc">Send to yourself first to test</div>
-                                    </label>
+                                <div class="contact-status valid">✓</div>
+                            </div>
+                            <div class="contact-preview-item">
+                                <div class="contact-avatar-small contact-avatar-success">B</div>
+                                <div class="contact-info">
+                                    <div class="contact-name">Brandon Keao</div>
+                                    <div class="contact-details">Tech Solutions • +1 (555) 345-6789</div>
+                                </div>
+                                <div class="contact-status valid">✓</div>
+                            </div>
+                            <div class="contact-preview-item">
+                                <div class="contact-avatar-small contact-avatar-warning">A</div>
+                                <div class="contact-info">
+                                    <div class="contact-name">Alison Charles</div>
+                                    <div class="contact-details">Marketing Inc • +1 (555) 456-7890</div>
+                                </div>
+                                <div class="contact-status valid">✓</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Send Options -->
+                <div class="send-options-section">
+                    <h2 class="section-title">Send Options</h2>
+                    <div class="send-options-grid">
+                        <div class="send-option-card">
+                            <div class="option-header">
+                                <input type="radio" name="sendOption" value="immediate" id="sendImmediate" checked>
+                                <label for="sendImmediate" class="option-title">Send Immediately</label>
+                            </div>
+                            <p class="option-description">Send the campaign to all contacts right now</p>
+                        </div>
+
+                        <div class="send-option-card">
+                            <div class="option-header">
+                                <input type="radio" name="sendOption" value="scheduled" id="sendScheduled">
+                                <label for="sendScheduled" class="option-title">Schedule for Later</label>
+                            </div>
+                            <p class="option-description">Choose a specific date and time to send</p>
+                            <div class="schedule-inputs" id="scheduleInputs" style="display: none;">
+                                <div class="input-group">
+                                    <label for="scheduleDate">Date:</label>
+                                    <input type="date" id="scheduleDate" class="form-input">
+                                </div>
+                                <div class="input-group">
+                                    <label for="scheduleTime">Time:</label>
+                                    <input type="time" id="scheduleTime" class="form-input">
                                 </div>
                             </div>
-                            
-                            <div class="schedule-options" id="scheduleOptions" style="display: none; margin-top: 16px; padding: 16px; background: white; border-radius: 8px;">
-                                <div class="form-group">
-                                    <label class="form-label">Send Date</label>
-                                    <input type="date" class="form-input">
-                                </div>
-                                <div class="form-group">
-                                    <label class="form-label">Send Time</label>
-                                    <input type="time" class="form-input">
-                                </div>
+                        </div>
+
+                        <div class="send-option-card">
+                            <div class="option-header">
+                                <input type="radio" name="sendOption" value="test" id="sendTest">
+                                <label for="sendTest" class="option-title">Send Test Message</label>
                             </div>
-                            
-                            <div class="test-options" id="testOptions" style="display: none; margin-top: 16px; padding: 16px; background: white; border-radius: 8px;">
-                                <div class="form-group">
-                                    <label class="form-label">Test Phone Number</label>
-                                    <input type="tel" class="form-input" placeholder="+1 (555) 123-4567">
+                            <p class="option-description">Send a test message to yourself first</p>
+                            <div class="test-inputs" id="testInputs" style="display: none;">
+                                <div class="input-group">
+                                    <label for="testPhone">Your Phone Number:</label>
+                                    <input type="tel" id="testPhone" class="form-input" placeholder="+1 (555) 123-4567">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                
-                <div class="button-group right" style="margin-top: 24px;">
-                    <button class="btn btn-secondary" onclick="window.RebrandlyApp.navigateToView('compose')">← Back to Compose</button>
-                    <button class="btn btn-success" id="sendCampaignBtn" style="background: var(--success-color); padding: 12px 24px; font-weight: 600;">
-                        🚀 Send Campaign
-                    </button>
+
+                <!-- Pre-send Checklist -->
+                <div class="checklist-section">
+                    <h2 class="section-title">Pre-send Checklist</h2>
+                    <div class="checklist-container">
+                        <div class="checklist-item">
+                            <input type="checkbox" id="check1" class="checklist-checkbox">
+                            <label for="check1" class="checklist-label">
+                                <span class="checklist-title">Message content reviewed</span>
+                                <span class="checklist-description">Spelling, grammar, and links verified</span>
+                            </label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="check2" class="checklist-checkbox">
+                            <label for="check2" class="checklist-label">
+                                <span class="checklist-title">Contact list verified</span>
+                                <span class="checklist-description">All phone numbers are valid and opted-in</span>
+                            </label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="check3" class="checklist-checkbox">
+                            <label for="check3" class="checklist-label">
+                                <span class="checklist-title">Compliance confirmed</span>
+                                <span class="checklist-description">Message follows SMS marketing regulations</span>
+                            </label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="check4" class="checklist-checkbox">
+                            <label for="check4" class="checklist-label">
+                                <span class="checklist-title">Budget approved</span>
+                                <span class="checklist-description">Campaign cost fits within budget</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Campaign Actions -->
+                <div class="campaign-actions">
+                    <div class="actions-left">
+                        <button class="btn-website-secondary" onclick="goBack()">
+                            <span class="btn-icon-left">←</span>
+                            Back to Compose
+                        </button>
+                        <button class="btn-website-secondary" onclick="saveDraft()">Save as Draft</button>
+                    </div>
+                    <div class="actions-right">
+                        <button class="btn-website-blue" onclick="sendTestMessage()" id="testBtn">Send Test</button>
+                        <button class="btn-website-primary" onclick="confirmSend()" id="finalSendBtn">
+                            <span class="btn-icon-left">🚀</span>
+                            Send Campaign
+                        </button>
+                    </div>
                 </div>
             </div>
         `;
