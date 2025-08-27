@@ -21,7 +21,6 @@ class LinksView {
     }
 
     init() {
-        this.updateStats();
         this.initializeDataTable();
     }
 
@@ -173,7 +172,6 @@ class LinksView {
         
         this.linksData.unshift(newLink);
         this.dataTable.updateData(this.linksData);
-        this.updateStats();
         
         return newLink;
     }
@@ -192,14 +190,12 @@ class LinksView {
         if (linkIndex !== -1) {
             this.linksData[linkIndex] = { ...this.linksData[linkIndex], ...updates };
             this.dataTable.updateData(this.linksData);
-            this.updateStats();
         }
     }
 
     deleteLink(id) {
         this.linksData = this.linksData.filter(link => link.id != id);
         this.dataTable.updateData(this.linksData);
-        this.updateStats();
     }
 
     getLinkById(id) {
@@ -208,7 +204,6 @@ class LinksView {
 
     refreshData() {
         this.dataTable.updateData(this.linksData);
-        this.updateStats();
     }
 }
 
