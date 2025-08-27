@@ -1028,11 +1028,9 @@ class Views {
                     </div>
                     <div class="view-header-actions">
                         <button class="btn-website-secondary" onclick="saveDraft()">
-                            <span class="btn-icon-left">💾</span>
                             Save Draft
                         </button>
                         <button class="btn-website-primary" onclick="sendCampaign()" id="sendCampaignBtn">
-                            <span class="btn-icon-left">🚀</span>
                             Send Campaign
                         </button>
                     </div>
@@ -1256,7 +1254,6 @@ class Views {
                 <div class="campaign-actions">
                     <div class="actions-left">
                         <button class="btn-website-secondary" onclick="goBack()">
-                            <span class="btn-icon-left">←</span>
                             Back to Compose
                         </button>
                         <button class="btn-website-secondary" onclick="saveDraft()">Save as Draft</button>
@@ -1264,7 +1261,6 @@ class Views {
                     <div class="actions-right">
                         <button class="btn-website-blue" onclick="sendTestMessage()" id="testBtn">Send Test</button>
                         <button class="btn-website-primary" onclick="confirmSend()" id="finalSendBtn">
-                            <span class="btn-icon-left">🚀</span>
                             Send Campaign
                         </button>
                     </div>

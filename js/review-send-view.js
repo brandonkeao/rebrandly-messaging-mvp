@@ -147,15 +147,15 @@ class ReviewSendView {
 
         switch (this.sendOptions.type) {
             case 'immediate':
-                sendBtn.innerHTML = '<span class="btn-icon-left">🚀</span>Send Campaign';
+                sendBtn.innerHTML = 'Send Campaign';
                 testBtn.style.display = 'none';
                 break;
             case 'scheduled':
-                sendBtn.innerHTML = '<span class="btn-icon-left">⏰</span>Schedule Campaign';
+                sendBtn.innerHTML = 'Schedule Campaign';
                 testBtn.style.display = 'none';
                 break;
             case 'test':
-                sendBtn.innerHTML = '<span class="btn-icon-left">🧪</span>Send Test';
+                sendBtn.innerHTML = 'Send Test';
                 testBtn.style.display = 'inline-flex';
                 break;
         }
