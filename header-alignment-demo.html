@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header Alignment Demo - Rebrandly Messaging</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/views.css">
+    <link rel="stylesheet" href="css/design-system.css">
+    <link rel="stylesheet" href="css/color-system-v2.css">
+    <link rel="stylesheet" href="css/website-color-system.css">
+    <link rel="stylesheet" href="css/website-typography.css">
+    <link rel="stylesheet" href="css/workflow-design-system.css">
+    <link rel="stylesheet" href="css/buttons.css">
+    <link rel="stylesheet" href="css/forms.css">
+    <link rel="stylesheet" href="css/navigation.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/app-overrides.css">
+    <link rel="stylesheet" href="css/accessibility-fixes.css">
+    <link rel="stylesheet" href="css/brand-customization.css">
+    <link rel="stylesheet" href="css/getting-started-improvements.css">
+    <link rel="stylesheet" href="css/header-alignment.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* Demo-specific styles to show alignment */
+        .demo-container {
+            display: flex;
+            height: 100vh;
+        }
+        .demo-sidebar {
+            width: 280px;
+            background: var(--color-surface);
+            border-right: 1px solid var(--color-border);
+        }
+        .demo-main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .alignment-guide {
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: red;
+            z-index: 1000;
+            opacity: 0.5;
+        }
+        .height-indicator {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <!-- Demo Sidebar -->
+        <div class="demo-sidebar">
+            <div class="sidebar-header" style="position: relative;">
+                <div class="alignment-guide" style="top: 0;"></div>
+                <div class="alignment-guide" style="bottom: 0;"></div>
+                <div class="height-indicator">72px</div>
+                <div class="logo">
+                    <div class="logo-icon">R</div>
+                    <div>
+                        <div class="logo-text">Rebrandly</div>
+                        <div class="logo-subtitle">Messaging</div>
+                    </div>
+                </div>
+            </div>
+            <div style="padding: var(--space-md);">
+                <p class="small-text">Sidebar content area</p>
+            </div>
+        </div>
+
+        <!-- Demo Main Area -->
+        <div class="demo-main">
+            <header class="top-header nav-website" style="position: relative;">
+                <div class="alignment-guide" style="top: 0;"></div>
+                <div class="alignment-guide" style="bottom: 0;"></div>
+                <div class="height-indicator">72px</div>
+                <div class="header-content">
+                    <h1 class="app-title-website">Header Alignment Demo</h1>
+                    <div class="header-actions">
+                        <button class="btn-website-secondary btn-sm">Save Draft</button>
+                        <button class="btn-website-primary">Continue</button>
+                    </div>
+                </div>
+            </header>
+            
+            <main style="flex: 1; padding: var(--space-lg);">
+                <h2 class="section-title">Header Alignment Testing</h2>
+                <p class="section-subtitle">Both headers now have the same height (72px) and are perfectly aligned</p>
+
+                <!-- Alignment Details -->
+                <div class="section-website">
+                    <div class="grid grid-cols-2 gap-lg">
+                        <div class="card-website">
+                            <h3 class="card-website-title">✅ Top Header</h3>
+                            <ul style="list-style: disc; margin-left: 20px; font-size: 14px; color: var(--color-text-secondary); line-height: 1.6;">
+                                <li><strong>Height:</strong> 72px (fixed)</li>
+                                <li><strong>Padding:</strong> var(--space-md) var(--space-lg)</li>
+                                <li><strong>Display:</strong> flex with align-items: center</li>
+                                <li><strong>Content:</strong> Page title + action buttons</li>
+                                <li><strong>Position:</strong> Sticky top header</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="card-website">
+                            <h3 class="card-website-title">✅ Sidebar Header</h3>
+                            <ul style="list-style: disc; margin-left: 20px; font-size: 14px; color: var(--color-text-secondary); line-height: 1.6;">
+                                <li><strong>Height:</strong> 72px (fixed - same as top header)</li>
+                                <li><strong>Padding:</strong> var(--space-md)</li>
+                                <li><strong>Display:</strong> flex with align-items: center</li>
+                                <li><strong>Content:</strong> Logo icon + brand text</li>
+                                <li><strong>Position:</strong> Fixed sidebar header</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile Alignment -->
+                <div class="section-website-light">
+                    <div class="container">
+                        <h3 class="section-title">Mobile Alignment</h3>
+                        <div class="card-website">
+                            <h4 class="card-website-title">📱 Mobile Responsive Behavior</h4>
+                            <div class="grid grid-cols-2 gap-md">
+                                <div>
+                                    <h5 style="font-size: 16px; font-weight: 600; margin-bottom: 8px;">Desktop (768px+)</h5>
+                                    <ul style="list-style: disc; margin-left: 20px; font-size: 14px; color: var(--color-text-secondary); line-height: 1.6;">
+                                        <li>Height: 72px</li>
+                                        <li>Logo icon: 40px</li>
+                                        <li>Full padding</li>
+                                        <li>Standard font sizes</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h5 style="font-size: 16px; font-weight: 600; margin-bottom: 8px;">Mobile (767px-)</h5>
+                                    <ul style="list-style: disc; margin-left: 20px; font-size: 14px; color: var(--color-text-secondary); line-height: 1.6;">
+                                        <li>Height: 60px</li>
+                                        <li>Logo icon: 36px</li>
+                                        <li>Reduced padding</li>
+                                        <li>Smaller font sizes</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technical Implementation -->
+                <div class="section-website">
+                    <h3 class="section-title">Technical Implementation</h3>
+                    <div class="card-website">
+                        <h4 class="card-website-title">CSS Implementation</h4>
+                        <div style="background: var(--color-neutral-100); padding: var(--space-md); border-radius: var(--radius-base); margin-bottom: var(--space-md); font-family: monospace; font-size: 14px;">
+<pre style="margin: 0; color: var(--color-text-primary);">/* Header Height Alignment */
+.top-header {
+  padding: var(--space-md) var(--space-lg) !important;
+  min-height: 72px; /* Fixed height */
+  display: flex;
+  align-items: center;
+}
+
+.sidebar-header {
+  padding: var(--space-md) !important;
+  min-height: 72px; /* Same height as top-header */
+  display: flex;
+  align-items: center;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .top-header {
+    min-height: 60px; /* Smaller on mobile */
+  }
+  
+  .sidebar-header {
+    min-height: 60px; /* Same height as mobile top-header */
+  }
+}</pre>
+                        </div>
+                        
+                        <h5 style="font-size: 16px; font-weight: 600; margin-bottom: 8px;">Key Features:</h5>
+                        <ul style="list-style: disc; margin-left: 20px; font-size: 14px; color: var(--color-text-secondary); line-height: 1.6;">
+                            <li><strong>Fixed Heights:</strong> Both headers use min-height for consistency</li>
+                            <li><strong>Flexbox Alignment:</strong> Vertical centering with align-items: center</li>
+                            <li><strong>Responsive Design:</strong> Smaller heights on mobile devices</li>
+                            <li><strong>Content Alignment:</strong> All content properly centered</li>
+                            <li><strong>Visual Consistency:</strong> Perfect horizontal alignment</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Testing Instructions -->
+                <div class="section-website-light">
+                    <div class="container">
+                        <h3 class="section-title">Testing Instructions</h3>
+                        <div class="card-website">
+                            <h4 class="card-website-title">How to Verify Alignment</h4>
+                            <div style="margin-bottom: 24px;">
+                                <h5 style="font-size: 16px; font-weight: 600; margin-bottom: 8px;">Visual Inspection:</h5>
+                                <ul style="list-style: disc; margin-left: 20px; font-size: 14px; color: var(--color-text-secondary); line-height: 1.6;">
+                                    <li>Look at the red alignment guides in this demo</li>
+                                    <li>Both headers should have identical top and bottom edges</li>
+                                    <li>Logo and page title should be at the same vertical level</li>
+                                    <li>Height indicators show both headers are 72px</li>
+                                </ul>
+                            </div>
+                            
+                            <div style="margin-bottom: 24px;">
+                                <h5 style="font-size: 16px; font-weight: 600; margin-bottom: 8px;">Browser DevTools:</h5>
+                                <ul style="list-style: disc; margin-left: 20px; font-size: 14px; color: var(--color-text-secondary); line-height: 1.6;">
+                                    <li>Inspect .top-header and .sidebar-header elements</li>
+                                    <li>Check computed height values (should be 72px)</li>
+                                    <li>Verify min-height CSS properties are applied</li>
+                                    <li>Test responsive behavior at 768px breakpoint</li>
+                                </ul>
+                            </div>
+                            
+                            <div>
+                                <h5 style="font-size: 16px; font-weight: 600; margin-bottom: 8px;">Responsive Testing:</h5>
+                                <ul style="list-style: disc; margin-left: 20px; font-size: 14px; color: var(--color-text-secondary); line-height: 1.6;">
+                                    <li>Resize browser window to test mobile breakpoint</li>
+                                    <li>Both headers should reduce to 60px on mobile</li>
+                                    <li>Logo icon should scale from 40px to 36px</li>
+                                    <li>Alignment should be maintained at all screen sizes</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // Add height indicators dynamically
+        function updateHeightIndicators() {
+            const topHeader = document.querySelector('.top-header');
+            const sidebarHeader = document.querySelector('.sidebar-header');
+            
+            if (topHeader && sidebarHeader) {
+                const topHeight = topHeader.offsetHeight;
+                const sidebarHeight = sidebarHeader.offsetHeight;
+                
+                document.querySelectorAll('.height-indicator').forEach((indicator, index) => {
+                    if (index === 0) {
+                        indicator.textContent = `${sidebarHeight}px`;
+                    } else {
+                        indicator.textContent = `${topHeight}px`;
+                    }
+                });
+            }
+        }
+        
+        updateHeightIndicators();
+        window.addEventListener('resize', updateHeightIndicators);
+    </script>
+</body>
+</html>
