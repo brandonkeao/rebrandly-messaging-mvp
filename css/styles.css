@@ -1,4 +1,7 @@
-/* Base Styles */
+/* Updated Legacy Styles - Using Design System Tokens */
+
+/* Remove conflicting base styles - design-system.css handles these */
+/*
 * {
     margin: 0;
     padding: 0;
@@ -14,22 +17,24 @@ body {
     height: 100vh;
     overflow: hidden;
 }
+*/
 
-/* Color Variables */
+/* Legacy Color Variables - Updated to use design system tokens */
 :root {
-    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    --primary-color: #667eea;
-    --secondary-color: #764ba2;
-    --success-color: #10b981;
-    --warning-color: #f59e0b;
-    --error-color: #ef4444;
-    --background-color: #f5f7fa;
-    --text-primary: #2c3e50;
-    --text-secondary: #64748b;
-    --text-muted: #94a3b8;
-    --border-color: #e1e8ed;
-    --border-light: #f1f5f9;
-    --card-background: #ffffff;
+    /* Keep legacy variable names for compatibility, but use design system values */
+    --primary-gradient: var(--color-primary-gradient);
+    --primary-color: var(--color-primary-start);
+    --secondary-color: var(--color-primary-end);
+    --success-color: var(--color-success);
+    --warning-color: var(--color-warning);
+    --error-color: var(--color-error);
+    --background-color: var(--color-background);
+    --text-primary: var(--color-text-primary);
+    --text-secondary: var(--color-text-secondary);
+    --text-muted: var(--color-text-muted);
+    --border-color: var(--color-border);
+    --border-light: var(--color-border-light);
+    --card-background: var(--color-surface);
 }
 
 /* Layout - DISABLED: Using design-system layout instead */
@@ -166,37 +171,38 @@ body {
     font-weight: 600;
 }
 
-/* Top Header */
+/* Top Header - Updated to use design system */
 .top-header {
-    background: var(--card-background);
-    border-bottom: 1px solid var(--border-color);
-    padding: 16px 24px;
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    padding: var(--space-md) var(--space-lg);
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
 .heading-1 {
-    font-size: 24px;
-    font-weight: 600;
-    color: var(--text-primary);
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
     margin: 0;
     flex: 1;
 }
 
 .header-title {
-    font-size: 20px;
-    font-weight: 600;
-    color: var(--text-primary);
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
 }
 
 .header-actions {
     display: flex;
-    gap: 12px;
+    gap: var(--space-sm);
     flex-shrink: 0;
 }
 
-/* Buttons */
+/* Buttons - DISABLED: Using design-system buttons.css instead */
+/*
 .btn {
     padding: 12px 24px;
     border-radius: 8px;
@@ -230,6 +236,7 @@ body {
 .btn-secondary:hover {
     background: #f8fafc;
 }
+*/
 
 /* Utility Classes */
 .hidden {
