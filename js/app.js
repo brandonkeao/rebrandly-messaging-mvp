@@ -69,6 +69,7 @@ class RebrandlyApp {
     }
 
     updateHeaderTitle(viewName) {
+        console.log('Updating title for view:', viewName); // Debug log
         const titles = {
             campaigns: 'Campaigns',
             contacts: 'Contacts',
@@ -87,8 +88,10 @@ class RebrandlyApp {
         };
         
         const titleElement = document.getElementById('pageTitle');
+        const newTitle = titles[viewName] || 'Rebrandly Messaging';
+        console.log('Setting title to:', newTitle); // Debug log
         if (titleElement) {
-            titleElement.textContent = titles[viewName] || 'Rebrandly Messaging';
+            titleElement.textContent = newTitle;
         }
     }
 
