@@ -195,7 +195,105 @@ class Views {
         `;
     }
 
-    static getCampaignsView() {
+    static getLinksView() {
+        return `
+            <div class="links-view-container">
+                <!-- Links Header -->
+                <div class="view-header">
+                    <div class="view-header-content">
+                        <h1 class="view-title">🔗 Manage Links</h1>
+                        <p class="view-subtitle">Create, manage, and track your branded short links</p>
+                    </div>
+                    <div class="view-header-actions">
+                        <button class="btn-website-secondary" onclick="importLinks()">
+                            <span class="btn-icon-left">📥</span>
+                            Import Links
+                        </button>
+                        <button class="btn-website-primary" onclick="createNewLink()">
+                            <span class="btn-icon-left">➕</span>
+                            Create Link
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Links Stats -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">🔗</div>
+                        <div class="stat-content">
+                            <div class="stat-value" id="totalLinks">0</div>
+                            <div class="stat-label">Total Links</div>
+                            <div class="stat-change positive">+12% this month</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">👆</div>
+                        <div class="stat-content">
+                            <div class="stat-value" id="totalClicks">0</div>
+                            <div class="stat-label">Total Clicks</div>
+                            <div class="stat-change positive">+8.5% this week</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">📊</div>
+                        <div class="stat-content">
+                            <div class="stat-value" id="avgCtr">0%</div>
+                            <div class="stat-label">Avg. CTR</div>
+                            <div class="stat-change negative">-2.1% this week</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">⚡</div>
+                        <div class="stat-content">
+                            <div class="stat-value" id="activeLinks">0</div>
+                            <div class="stat-label">Active Links</div>
+                            <div class="stat-change positive">+5 this month</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Links Table Container -->
+                <div class="links-table-section">
+                    <div id="linksDataTable"></div>
+                </div>
+
+                <!-- Quick Actions Panel -->
+                <div class="quick-actions-panel">
+                    <h3 class="panel-title">Quick Actions</h3>
+                    <div class="quick-actions-grid">
+                        <button class="quick-action-card" onclick="bulkCreateLinks()">
+                            <div class="action-icon">📋</div>
+                            <div class="action-content">
+                                <h4>Bulk Create</h4>
+                                <p>Create multiple links at once</p>
+                            </div>
+                        </button>
+                        <button class="quick-action-card" onclick="exportAnalytics()">
+                            <div class="action-icon">📊</div>
+                            <div class="action-content">
+                                <h4>Export Analytics</h4>
+                                <p>Download link performance data</p>
+                            </div>
+                        </button>
+                        <button class="quick-action-card" onclick="linkSettings()">
+                            <div class="action-icon">⚙️</div>
+                            <div class="action-content">
+                                <h4>Link Settings</h4>
+                                <p>Configure default link options</p>
+                            </div>
+                        </button>
+                        <button class="quick-action-card" onclick="viewReports()">
+                            <div class="action-icon">📈</div>
+                            <div class="action-content">
+                                <h4>View Reports</h4>
+                                <p>Detailed analytics and insights</p>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
         return `
             <div class="campaign-stats">
                 <div class="stat-card">

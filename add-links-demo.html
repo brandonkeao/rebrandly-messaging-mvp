@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Links View Demo - Rebrandly Messaging</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/views.css">
+    <link rel="stylesheet" href="css/design-system.css">
+    <link rel="stylesheet" href="css/color-system-v2.css">
+    <link rel="stylesheet" href="css/website-color-system.css">
+    <link rel="stylesheet" href="css/website-typography.css">
+    <link rel="stylesheet" href="css/workflow-design-system.css">
+    <link rel="stylesheet" href="css/buttons.css">
+    <link rel="stylesheet" href="css/forms.css">
+    <link rel="stylesheet" href="css/navigation.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/app-overrides.css">
+    <link rel="stylesheet" href="css/accessibility-fixes.css">
+    <link rel="stylesheet" href="css/brand-customization.css">
+    <link rel="stylesheet" href="css/getting-started-improvements.css">
+    <link rel="stylesheet" href="css/header-alignment.css">
+    <link rel="stylesheet" href="css/modal-system.css">
+    <link rel="stylesheet" href="css/data-table-system.css">
+    <link rel="stylesheet" href="css/links-view.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container" style="padding: var(--space-lg);">
+        <h1 class="hero-title">Add Links View Demo</h1>
+        <p class="hero-subtitle">Complete link management interface with stats, table, and quick actions</p>
+
+        <!-- Add Links View -->
+        <section class="section-website">
+            <div class="links-view-container">
+                <!-- Links Header -->
+                <div class="view-header">
+                    <div class="view-header-content">
+                        <h1 class="view-title">🔗 Manage Links</h1>
+                        <p class="view-subtitle">Create, manage, and track your branded short links</p>
+                    </div>
+                    <div class="view-header-actions">
+                        <button class="btn-website-secondary" onclick="importLinks()">
+                            <span class="btn-icon-left">📥</span>
+                            Import Links
+                        </button>
+                        <button class="btn-website-primary" onclick="createNewLink()">
+                            <span class="btn-icon-left">➕</span>
+                            Create Link
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Links Stats -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">🔗</div>
+                        <div class="stat-content">
+                            <div class="stat-value" id="totalLinks">8</div>
+                            <div class="stat-label">Total Links</div>
+                            <div class="stat-change positive">+12% this month</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">👆</div>
+                        <div class="stat-content">
+                            <div class="stat-value" id="totalClicks">7,665</div>
+                            <div class="stat-label">Total Clicks</div>
+                            <div class="stat-change positive">+8.5% this week</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">📊</div>
+                        <div class="stat-content">
+                            <div class="stat-value" id="avgCtr">12.8%</div>
+                            <div class="stat-label">Avg. CTR</div>
+                            <div class="stat-change negative">-2.1% this week</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">⚡</div>
+                        <div class="stat-content">
+                            <div class="stat-value" id="activeLinks">6</div>
+                            <div class="stat-label">Active Links</div>
+                            <div class="stat-change positive">+5 this month</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Links Table Container -->
+                <div class="links-table-section">
+                    <div id="linksDataTable"></div>
+                </div>
+
+                <!-- Quick Actions Panel -->
+                <div class="quick-actions-panel">
+                    <h3 class="panel-title">Quick Actions</h3>
+                    <div class="quick-actions-grid">
+                        <button class="quick-action-card" onclick="bulkCreateLinks()">
+                            <div class="action-icon">📋</div>
+                            <div class="action-content">
+                                <h4>Bulk Create</h4>
+                                <p>Create multiple links at once</p>
+                            </div>
+                        </button>
+                        <button class="quick-action-card" onclick="exportAnalytics()">
+                            <div class="action-icon">📊</div>
+                            <div class="action-content">
+                                <h4>Export Analytics</h4>
+                                <p>Download link performance data</p>
+                            </div>
+                        </button>
+                        <button class="quick-action-card" onclick="linkSettings()">
+                            <div class="action-icon">⚙️</div>
+                            <div class="action-content">
+                                <h4>Link Settings</h4>
+                                <p>Configure default link options</p>
+                            </div>
+                        </button>
+                        <button class="quick-action-card" onclick="viewReports()">
+                            <div class="action-icon">📈</div>
+                            <div class="action-content">
+                                <h4>View Reports</h4>
+                                <p>Detailed analytics and insights</p>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Feature Highlights -->
+        <section class="section-website-light">
+            <div class="container">
+                <h2 class="section-title">Add Links View Features</h2>
+                <div class="grid grid-cols-2 gap-lg">
+                    <div class="card-website">
+                        <h3 class="card-website-title">📊 Analytics Dashboard</h3>
+                        <ul style="list-style: disc; margin-left: 20px; font-size: 14px; color: var(--color-text-secondary); line-height: 1.6;">
+                            <li><strong>Real-time Stats:</strong> Total links, clicks, CTR, and active links</li>
+                            <li><strong>Trend Indicators:</strong> Positive/negative change indicators</li>
+                            <li><strong>Performance Metrics:</strong> Click-through rates and engagement</li>
+                            <li><strong>Visual Cards:</strong> Easy-to-read stat cards with icons</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="card-website">
+                        <h3 class="card-website-title">🔗 Link Management</h3>
+                        <ul style="list-style: disc; margin-left: 20px; font-size: 14px; color: var(--color-text-secondary); line-height: 1.6;">
+                            <li><strong>Create Links:</strong> Form modal with URL validation</li>
+                            <li><strong>Edit Links:</strong> Update titles, URLs, and status</li>
+                            <li><strong>Bulk Actions:</strong> Export, pause, or delete multiple links</li>
+                            <li><strong>Status Management:</strong> Active, paused, inactive states</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="card-website">
+                        <h3 class="card-website-title">📈 Advanced Analytics</h3>
+                        <ul style="list-style: disc; margin-left: 20px; font-size: 14px; color: var(--color-text-secondary); line-height: 1.6;">
+                            <li><strong>Click Analytics:</strong> Detailed click tracking and trends</li>
+                            <li><strong>Geographic Data:</strong> Location-based click analysis</li>
+                            <li><strong>Referrer Tracking:</strong> Source attribution and analysis</li>
+                            <li><strong>Export Options:</strong> Download analytics data</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="card-website">
+                        <h3 class="card-website-title">⚡ Quick Actions</h3>
+                        <ul style="list-style: disc; margin-left: 20px; font-size: 14px; color: var(--color-text-secondary); line-height: 1.6;">
+                            <li><strong>Bulk Creation:</strong> Create multiple links efficiently</li>
+                            <li><strong>Import/Export:</strong> CSV import and data export</li>
+                            <li><strong>Link Settings:</strong> Configure default options</li>
+                            <li><strong>Detailed Reports:</strong> Comprehensive analytics views</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Demo Controls -->
+        <section class="section-website">
+            <h2 class="section-title">Interactive Demo Controls</h2>
+            <div class="card-website">
+                <h3 class="card-website-title">Test Link Management Features</h3>
+                <div class="flex gap-sm flex-wrap" style="margin-bottom: var(--space-md);">
+                    <button class="btn-website-primary" onclick="createNewLink()">Create New Link</button>
+                    <button class="btn-website-secondary" onclick="addSampleLink()">Add Sample Link</button>
+                    <button class="btn-website-blue" onclick="showAnalyticsDemo()">View Analytics</button>
+                    <button class="btn-website-secondary" onclick="testBulkActions()">Test Bulk Actions</button>
+                </div>
+                <div class="flex gap-sm flex-wrap">
+                    <button class="btn-website-primary" onclick="copyRandomLink()">Copy Random Link</button>
+                    <button class="btn-website-secondary" onclick="pauseRandomLink()">Pause Random Link</button>
+                    <button class="btn-website-blue" onclick="refreshStats()">Refresh Stats</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Implementation -->
+        <section class="section-website-light">
+            <div class="container">
+                <h2 class="section-title">Technical Implementation</h2>
+                <div class="card-website">
+                    <h3 class="card-website-title">LinksView Class Architecture</h3>
+                    <div style="background: var(--color-neutral-100); padding: var(--space-md); border-radius: var(--radius-base); margin-bottom: var(--space-md); font-family: monospace; font-size: 14px;">
+<pre style="margin: 0; color: var(--color-text-primary);">// Initialize Links View
+const linksView = new LinksView();
+
+// Create new link
+const newLink = linksView.createLink({
+  title: 'Product Launch',
+  url: 'https://example.com/product',
+  customSlug: 'launch'
+});
+
+// Update link
+linksView.updateLink(linkId, {
+  title: 'Updated Title',
+  status: 'paused'
+});
+
+// View analytics
+viewLinkAnalytics(linkId);
+
+// Bulk operations
+const selected = dataTable.getSelectedRows();
+exportSelectedLinks(selected);</pre>
+                    </div>
+                    
+                    <h4 style="font-size: 16px; font-weight: 600; margin-bottom: 8px;">Key Components Integration:</h4>
+                    <div class="grid grid-cols-2 gap-md">
+                        <div>
+                            <ul style="list-style: disc; margin-left: 20px; font-size: 14px; color: var(--color-text-secondary); line-height: 1.6;">
+                                <li><strong>Modal System:</strong> Create/edit link forms</li>
+                                <li><strong>Data Table:</strong> Sortable, filterable link list</li>
+                                <li><strong>Toast Notifications:</strong> Success/error feedback</li>
+                                <li><strong>Confirmation Dialogs:</strong> Delete confirmations</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul style="list-style: disc; margin-left: 20px; font-size: 14px; color: var(--color-text-secondary); line-height: 1.6;">
+                                <li><strong>Stats Dashboard:</strong> Real-time metrics</li>
+                                <li><strong>Quick Actions:</strong> Bulk operations panel</li>
+                                <li><strong>Analytics Modal:</strong> Detailed link insights</li>
+                                <li><strong>Clipboard API:</strong> Copy link functionality</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/modal-system.js"></script>
+    <script src="js/data-table-system.js"></script>
+    <script src="js/links-view.js"></script>
+    <script>
+        // Demo-specific functions
+        function addSampleLink() {
+            const sampleLinks = [
+                { title: 'Holiday Sale', url: 'https://example.com/holiday-sale', customSlug: 'holiday' },
+                { title: 'New Product Demo', url: 'https://example.com/demo', customSlug: 'demo' },
+                { title: 'Customer Survey', url: 'https://example.com/survey', customSlug: 'survey' }
+            ];
+            
+            const randomLink = sampleLinks[Math.floor(Math.random() * sampleLinks.length)];
+            const newLink = linksView.createLink(randomLink);
+            
+            showToast({ 
+                title: 'Sample Link Added', 
+                message: `Added "${newLink.title}"`, 
+                type: 'success' 
+            });
+        }
+
+        function showAnalyticsDemo() {
+            if (linksView && linksView.linksData.length > 0) {
+                const randomLink = linksView.linksData[Math.floor(Math.random() * linksView.linksData.length)];
+                viewLinkAnalytics(randomLink.id);
+            } else {
+                showToast({ 
+                    title: 'No Links', 
+                    message: 'Create some links first to view analytics', 
+                    type: 'info' 
+                });
+            }
+        }
+
+        function testBulkActions() {
+            if (linksView && linksView.dataTable) {
+                const selected = linksView.dataTable.getSelectedRows();
+                if (selected.length === 0) {
+                    showToast({ 
+                        title: 'No Selection', 
+                        message: 'Select some links first to test bulk actions', 
+                        type: 'warning' 
+                    });
+                } else {
+                    showToast({ 
+                        title: 'Bulk Actions Available', 
+                        message: `${selected.length} links selected. Use the bulk action buttons in the table.`, 
+                        type: 'info' 
+                    });
+                }
+            }
+        }
+
+        function copyRandomLink() {
+            if (linksView && linksView.linksData.length > 0) {
+                const randomLink = linksView.linksData[Math.floor(Math.random() * linksView.linksData.length)];
+                copyToClipboard(`https://${randomLink.shortUrl}`);
+            } else {
+                showToast({ 
+                    title: 'No Links', 
+                    message: 'Create some links first', 
+                    type: 'info' 
+                });
+            }
+        }
+
+        function pauseRandomLink() {
+            if (linksView && linksView.linksData.length > 0) {
+                const activeLinks = linksView.linksData.filter(link => link.status === 'active');
+                if (activeLinks.length > 0) {
+                    const randomLink = activeLinks[Math.floor(Math.random() * activeLinks.length)];
+                    pauseLink(randomLink.id);
+                } else {
+                    showToast({ 
+                        title: 'No Active Links', 
+                        message: 'No active links to pause', 
+                        type: 'info' 
+                    });
+                }
+            }
+        }
+
+        function refreshStats() {
+            if (linksView) {
+                linksView.updateStats();
+                showToast({ 
+                    title: 'Stats Refreshed', 
+                    message: 'Statistics have been updated', 
+                    type: 'success' 
+                });
+            }
+        }
+
+        // Initialize demo when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // LinksView will be initialized automatically by the included script
+        });
+    </script>
+</body>
+</html>

@@ -20,7 +20,9 @@ class Navigation {
             case 'getting-started':
                 this.loadGettingStartedView();
                 break;
-            case 'campaigns':
+            case 'links':
+                this.loadLinksView();
+                break;
                 this.loadCampaignsView();
                 break;
             case 'contacts':
@@ -69,6 +71,24 @@ class Navigation {
         const viewContainer = document.getElementById('viewContainer');
         viewContainer.innerHTML = Views.getGettingStartedView();
         this.bindGettingStartedEvents();
+    }
+
+    static loadLinksView() {
+        const viewContainer = document.getElementById('viewContainer');
+        viewContainer.innerHTML = Views.getLinksView();
+        
+        // Update page title
+        const pageTitle = document.getElementById('pageTitle');
+        if (pageTitle) {
+            pageTitle.textContent = 'Manage Links';
+        }
+        
+        // Initialize links view after content is loaded
+        setTimeout(() => {
+            if (typeof LinksView !== 'undefined') {
+                window.linksView = new LinksView();
+            }
+        }, 100);
     }
 
     static loadCampaignsView() {
