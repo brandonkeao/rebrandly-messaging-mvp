@@ -30,7 +30,7 @@
         <!-- Updated Hero Section -->
         <div class="hero-section">
             <div class="hero-content">
-                <h1 class="hero-title">📱 Rebrandly Messaging</h1>
+                <h1 class="hero-title">Rebrandly Messaging</h1>
                 <p class="hero-subtitle">Create personalized SMS campaigns with branded short links</p>
                 <div class="hero-badges">
                     <span class="badge badge-primary">SMS Marketing</span>
@@ -82,7 +82,7 @@
                     <h3 class="app-section-title-website">Standard Hero (Current)</h3>
                     <div class="hero-section">
                         <div class="hero-content">
-                            <h1 class="hero-title">📱 Rebrandly Messaging</h1>
+                            <h1 class="hero-title">Rebrandly Messaging</h1>
                             <p class="hero-subtitle">Create personalized SMS campaigns with branded short links</p>
                             <div class="hero-badges">
                                 <span class="badge badge-primary">SMS Marketing</span>
@@ -98,7 +98,7 @@
                     <h3 class="app-section-title-website">Compact Hero (Alternative)</h3>
                     <div class="hero-section" style="padding: 32px;">
                         <div class="hero-content">
-                            <h1 class="hero-title" style="font-size: var(--font-size-2xl); margin-bottom: var(--space-sm);">🚀 Quick Campaign Builder</h1>
+                            <h1 class="hero-title" style="margin-bottom: var(--space-sm);">Quick Campaign Builder</h1>
                             <p class="hero-subtitle" style="font-size: var(--font-size-base); margin-bottom: var(--space-md);">Get started with SMS marketing in minutes</p>
                             <button class="btn-website-primary">Start Building</button>
                         </div>
@@ -110,7 +110,7 @@
                     <h3 class="app-section-title-website">Hero with Call-to-Action</h3>
                     <div class="hero-section">
                         <div class="hero-content">
-                            <h1 class="hero-title">📈 Boost Your Marketing</h1>
+                            <h1 class="hero-title">Boost Your Marketing</h1>
                             <p class="hero-subtitle">Reach customers directly with personalized SMS campaigns and track every click with branded short links</p>
                             <div style="display: flex; gap: var(--space-sm); justify-content: center; flex-wrap: wrap; margin-bottom: var(--space-md);">
                                 <button class="btn-website-primary">Create Campaign</button>
@@ -142,7 +142,7 @@
 
 .hero-title {
   color: #FFFFFF !important;
-  font-size: var(--font-size-3xl);
+  font-size: var(--font-size-section-title) !important; /* 32px - same as section-title */
   font-weight: var(--font-weight-bold);
 }
 
@@ -151,10 +151,17 @@
   font-size: var(--font-size-lg);
 }
 
-.hero-badges .badge {
-  background: rgba(255, 255, 255, 0.2) !important;
-  color: #FFFFFF !important;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+/* Mobile responsive */
+@media (max-width: 767px) {
+  .hero-title {
+    font-size: 24px !important; /* Match section-title mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 20px !important; /* Match section-title extra small */
+  }
 }</pre>
                 </div>
                 
@@ -176,7 +183,7 @@
                 <div style="max-width: 375px; margin: 0 auto; border: 2px solid var(--color-border); border-radius: 20px; padding: 20px; background: var(--color-surface);">
                     <div class="hero-section" style="padding: 32px 20px; margin-bottom: 16px;">
                         <div class="hero-content">
-                            <h1 class="hero-title" style="font-size: var(--font-size-2xl);">📱 Rebrandly Messaging</h1>
+                            <h1 class="hero-title">Rebrandly Messaging</h1>
                             <p class="hero-subtitle" style="font-size: var(--font-size-base);">Create personalized SMS campaigns with branded short links</p>
                             <div class="hero-badges" style="flex-direction: column; align-items: center;">
                                 <span class="badge badge-primary">SMS Marketing</span>
@@ -185,7 +192,7 @@
                             </div>
                         </div>
                     </div>
-                    <p class="text-center small-text">Mobile view with stacked badges and adjusted spacing</p>
+                    <p class="text-center small-text">Mobile view with stacked badges and section-title font size</p>
                 </div>
             </div>
         </div>

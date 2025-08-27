@@ -10,7 +10,7 @@ class Views {
                 <!-- Hero Section -->
                 <div class="hero-section">
                     <div class="hero-content">
-                        <h1 class="hero-title">📱 Rebrandly Messaging</h1>
+                        <h1 class="hero-title">Rebrandly Messaging</h1>
                         <p class="hero-subtitle">Create personalized SMS campaigns with branded short links</p>
                         <div class="hero-badges">
                             <span class="badge badge-primary">SMS Marketing</span>
