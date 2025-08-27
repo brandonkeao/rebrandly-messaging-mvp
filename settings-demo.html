@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings Demo - Rebrandly Messaging</title>
+    
+    <!-- All CSS files -->
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/views.css">
+    <link rel="stylesheet" href="css/design-system.css">
+    <link rel="stylesheet" href="css/color-system-v2.css">
+    <link rel="stylesheet" href="css/website-color-system.css">
+    <link rel="stylesheet" href="css/website-typography.css">
+    <link rel="stylesheet" href="css/workflow-design-system.css">
+    <link rel="stylesheet" href="css/buttons.css">
+    <link rel="stylesheet" href="css/forms.css">
+    <link rel="stylesheet" href="css/navigation.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/app-overrides.css">
+    <link rel="stylesheet" href="css/accessibility-fixes.css">
+    <link rel="stylesheet" href="css/brand-customization.css">
+    <link rel="stylesheet" href="css/getting-started-improvements.css">
+    <link rel="stylesheet" href="css/header-alignment.css">
+    <link rel="stylesheet" href="css/modal-system.css">
+    <link rel="stylesheet" href="css/data-table-system.css">
+    <link rel="stylesheet" href="css/links-view.css">
+    <link rel="stylesheet" href="css/contact-avatars.css">
+    <link rel="stylesheet" href="css/loading-error-states.css">
+    <link rel="stylesheet" href="css/review-send-view.css">
+    <link rel="stylesheet" href="css/settings.css">
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: var(--background-light);
+        }
+        
+        .demo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .demo-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 40px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: var(--border-radius-lg);
+        }
+        
+        .demo-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin: 0 0 16px 0;
+        }
+        
+        .demo-subtitle {
+            font-size: 18px;
+            opacity: 0.9;
+            margin: 0;
+        }
+        
+        .demo-section {
+            margin-bottom: 60px;
+        }
+        
+        .section-header {
+            margin-bottom: 30px;
+        }
+        
+        .section-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 0 0 8px 0;
+        }
+        
+        .section-description {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+        
+        .demo-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--border-color);
+        }
+        
+        .demo-tab {
+            padding: 12px 24px;
+            background: none;
+            border: none;
+            border-bottom: 3px solid transparent;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+        }
+        
+        .demo-tab.active {
+            color: var(--primary-color);
+            border-bottom-color: var(--primary-color);
+        }
+        
+        .demo-tab:hover {
+            color: var(--primary-color);
+        }
+        
+        .demo-content {
+            background: white;
+            border-radius: var(--border-radius-lg);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <div class="demo-header">
+            <h1 class="demo-title">Settings System Demo</h1>
+            <p class="demo-subtitle">Comprehensive integration and configuration management for strategic partnerships</p>
+        </div>
+        
+        <div class="demo-section">
+            <div class="section-header">
+                <h2 class="section-title">Settings Views</h2>
+                <p class="section-description">Three core settings areas designed for strategic partnerships and vertical specialization</p>
+            </div>
+            
+            <div class="demo-tabs">
+                <button class="demo-tab active" onclick="showTab('link-management')">Link Management</button>
+                <button class="demo-tab" onclick="showTab('sms-messaging')">SMS Messaging</button>
+                <button class="demo-tab" onclick="showTab('contact-list')">Contact List</button>
+            </div>
+            
+            <div class="demo-content">
+                <div id="link-management" class="tab-content active">
+                    <!-- Link Management content will be loaded here -->
+                </div>
+                
+                <div id="sms-messaging" class="tab-content">
+                    <!-- SMS Messaging content will be loaded here -->
+                </div>
+                
+                <div id="contact-list" class="tab-content">
+                    <!-- Contact List content will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include the Views class -->
+    <script src="js/views.js"></script>
+    
+    <script>
+        // Load initial content
+        document.addEventListener('DOMContentLoaded', function() {
+            loadTabContent();
+            setupInteractivity();
+        });
+        
+        function showTab(tabName) {
+            // Update tab buttons
+            document.querySelectorAll('.demo-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Update tab content
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.getElementById(tabName).classList.add('active');
+        }
+        
+        function loadTabContent() {
+            // Load Link Management view
+            document.getElementById('link-management').innerHTML = Views.getLinkManagementView();
+            
+            // Load SMS Messaging view
+            document.getElementById('sms-messaging').innerHTML = Views.getSmsMessagingView();
+            
+            // Load Contact List view
+            document.getElementById('contact-list').innerHTML = Views.getContactListView();
+        }
+        
+        function setupInteractivity() {
+            // Mock notification system
+            window.RebrandlyApp = {
+                showNotification: function(message, type) {
+                    // Create notification element
+                    const notification = document.createElement('div');
+                    notification.style.cssText = `
+                        position: fixed;
+                        top: 20px;
+                        right: 20px;
+                        padding: 16px 24px;
+                        border-radius: 8px;
+                        color: white;
+                        font-weight: 500;
+                        z-index: 10000;
+                        animation: slideIn 0.3s ease;
+                    `;
+                    
+                    // Set background color based on type
+                    switch(type) {
+                        case 'success':
+                            notification.style.backgroundColor = '#10b981';
+                            break;
+                        case 'error':
+                            notification.style.backgroundColor = '#ef4444';
+                            break;
+                        case 'info':
+                            notification.style.backgroundColor = '#3b82f6';
+                            break;
+                        default:
+                            notification.style.backgroundColor = '#6b7280';
+                    }
+                    
+                    notification.textContent = message;
+                    document.body.appendChild(notification);
+                    
+                    // Remove after 3 seconds
+                    setTimeout(() => {
+                        notification.remove();
+                    }, 3000);
+                }
+            };
+            
+            // Setup all interactive functions
+            setupLinkManagementFunctions();
+            setupSmsMessagingFunctions();
+            setupContactListFunctions();
+        }
+        
+        function setupLinkManagementFunctions() {
+            // API Key visibility toggle
+            window.toggleApiKeyVisibility = () => {
+                const apiKeyInput = document.getElementById('apiKey');
+                const toggleBtn = apiKeyInput.nextElementSibling;
+                
+                if (apiKeyInput.type === 'password') {
+                    apiKeyInput.type = 'text';
+                    toggleBtn.textContent = 'Hide';
+                } else {
+                    apiKeyInput.type = 'password';
+                    toggleBtn.textContent = 'Show';
+                }
+            };
+
+            // Connect Rebrandly account
+            window.connectRebrandly = () => {
+                const apiKey = document.getElementById('apiKey').value;
+                if (!apiKey) {
+                    window.RebrandlyApp.showNotification('Please enter your API key', 'error');
+                    return;
+                }
+                
+                window.RebrandlyApp.showNotification('Connecting to Rebrandly...', 'info');
+                setTimeout(() => {
+                    const statusElement = document.querySelector('.connection-status');
+                    statusElement.className = 'connection-status connected';
+                    statusElement.innerHTML = '<span class="status-indicator"></span><span class="status-text">Connected</span>';
+                    window.RebrandlyApp.showNotification('Successfully connected to Rebrandly!', 'success');
+                }, 2000);
+            };
+
+            // Test connection
+            window.testConnection = () => {
+                window.RebrandlyApp.showNotification('Testing connection...', 'info');
+                setTimeout(() => {
+                    window.RebrandlyApp.showNotification('Connection test successful!', 'success');
+                }, 1500);
+            };
+
+            // Sync now
+            window.syncNow = () => {
+                window.RebrandlyApp.showNotification('Syncing links...', 'info');
+                setTimeout(() => {
+                    document.querySelector('.metric-card:nth-child(1) .metric-value').textContent = '24';
+                    document.querySelector('.metric-card:nth-child(2) .metric-value').textContent = '8';
+                    document.querySelector('.metric-card:nth-child(3) .metric-value').textContent = '156';
+                    window.RebrandlyApp.showNotification('Links synced successfully!', 'success');
+                }, 2000);
+            };
+
+            window.manageLinkCategories = () => {
+                window.RebrandlyApp.showNotification('Link categories management coming soon!', 'info');
+            };
+
+            window.viewLinkAnalytics = () => {
+                window.RebrandlyApp.showNotification('Opening analytics dashboard...', 'info');
+            };
+        }
+        
+        function setupSmsMessagingFunctions() {
+            window.connectProvider = (provider) => {
+                window.RebrandlyApp.showNotification(`Connecting to ${provider}...`, 'info');
+                
+                setTimeout(() => {
+                    const statusElement = document.querySelector('#sms-messaging .connection-status');
+                    statusElement.className = 'connection-status connected';
+                    statusElement.innerHTML = `<span class="status-indicator"></span><span class="status-text">Connected to ${provider}</span>`;
+                    
+                    const providerCard = document.querySelector(`[data-provider="${provider}"]`);
+                    providerCard.classList.add('connected');
+                    
+                    window.RebrandlyApp.showNotification(`Successfully connected to ${provider}!`, 'success');
+                }, 2000);
+            };
+        }
+        
+        function setupContactListFunctions() {
+            window.addNewIntegration = () => {
+                window.RebrandlyApp.showNotification('Integration marketplace coming soon!', 'info');
+            };
+
+            window.connectPlatform = (platform) => {
+                window.RebrandlyApp.showNotification(`Connecting to ${platform}...`, 'info');
+                
+                setTimeout(() => {
+                    const integrationItems = document.querySelectorAll('#contact-list .integration-item');
+                    integrationItems.forEach(item => {
+                        const name = item.querySelector('.integration-name').textContent.toLowerCase();
+                        if (name.includes(platform.toLowerCase())) {
+                            const statusElement = item.querySelector('.integration-status');
+                            statusElement.className = 'integration-status connected';
+                            statusElement.innerHTML = '<span class="status-indicator"></span><span class="status-text">Connected</span>';
+                        }
+                    });
+                    
+                    window.RebrandlyApp.showNotification(`Successfully connected to ${platform}!`, 'success');
+                }, 2000);
+            };
+
+            window.configurePlatform = (platform) => {
+                window.RebrandlyApp.showNotification(`${platform} configuration panel coming soon!`, 'info');
+            };
+
+            window.saveFieldMapping = () => {
+                window.RebrandlyApp.showNotification('Field mapping saved successfully!', 'success');
+            };
+
+            window.testSync = () => {
+                window.RebrandlyApp.showNotification('Testing sync configuration...', 'info');
+                setTimeout(() => {
+                    window.RebrandlyApp.showNotification('Sync test completed successfully!', 'success');
+                }, 2000);
+            };
+        }
+        
+        // Add slide-in animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
