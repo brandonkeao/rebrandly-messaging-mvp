@@ -695,6 +695,13 @@ class Navigation {
     static loadLinkManagementView() {
         const viewContainer = document.getElementById('viewContainer');
         viewContainer.innerHTML = Views.getLinkManagementView();
+        
+        // Update page title
+        const pageTitle = document.getElementById('pageTitle');
+        if (pageTitle) {
+            pageTitle.textContent = 'Link Management Settings';
+        }
+        
         this.updateProgressSteps(0); // No progress steps for settings
         this.bindLinkManagementEvents();
     }
@@ -702,6 +709,13 @@ class Navigation {
     static loadSmsMessagingView() {
         const viewContainer = document.getElementById('viewContainer');
         viewContainer.innerHTML = Views.getSmsMessagingView();
+        
+        // Update page title
+        const pageTitle = document.getElementById('pageTitle');
+        if (pageTitle) {
+            pageTitle.textContent = 'SMS Messaging Settings';
+        }
+        
         this.updateProgressSteps(0);
         this.bindSmsMessagingEvents();
     }
@@ -709,6 +723,13 @@ class Navigation {
     static loadContactListView() {
         const viewContainer = document.getElementById('viewContainer');
         viewContainer.innerHTML = Views.getContactListView();
+        
+        // Update page title
+        const pageTitle = document.getElementById('pageTitle');
+        if (pageTitle) {
+            pageTitle.textContent = 'Contact List Settings';
+        }
+        
         this.updateProgressSteps(0);
         this.bindContactListEvents();
     }
