@@ -294,6 +294,8 @@ class Views {
             </div>
         `;
     }
+
+    static getCampaignsView() {
         return `
             <div class="campaign-stats">
                 <div class="stat-card">
