@@ -1041,7 +1041,6 @@ class Views {
                 <!-- Campaign Summary Cards -->
                 <div class="campaign-summary-grid">
                     <div class="summary-card">
-                        <div class="summary-icon">👥</div>
                         <div class="summary-content">
                             <div class="summary-value" id="contactCount">4</div>
                             <div class="summary-label">Contacts Selected</div>
@@ -1051,7 +1050,6 @@ class Views {
                     </div>
 
                     <div class="summary-card">
-                        <div class="summary-icon">🔗</div>
                         <div class="summary-content">
                             <div class="summary-value" id="linkCount">2</div>
                             <div class="summary-label">Links Included</div>
@@ -1061,7 +1059,6 @@ class Views {
                     </div>
 
                     <div class="summary-card">
-                        <div class="summary-icon">💬</div>
                         <div class="summary-content">
                             <div class="summary-value" id="messageLength">142</div>
                             <div class="summary-label">Characters</div>
@@ -1071,7 +1068,6 @@ class Views {
                     </div>
 
                     <div class="summary-card">
-                        <div class="summary-icon">💰</div>
                         <div class="summary-content">
                             <div class="summary-value" id="estimatedCost">$0.12</div>
                             <div class="summary-label">Estimated Cost</div>
