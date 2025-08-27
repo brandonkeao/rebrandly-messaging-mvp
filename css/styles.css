@@ -32,7 +32,8 @@ body {
     --card-background: #ffffff;
 }
 
-/* Layout */
+/* Layout - DISABLED: Using design-system layout instead */
+/*
 .sidebar {
     width: 240px;
     background: var(--card-background);
@@ -59,6 +60,7 @@ body {
     max-width: 1200px;
     margin: 0 auto;
 }
+*/
 
 /* Sidebar Header */
 .sidebar-header {
