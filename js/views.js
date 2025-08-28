@@ -1016,6 +1016,34 @@ class Views {
     static getReviewView() {
         return `
             <div class="review-send-container">
+                <!-- Progress Stepper -->
+                <div class="progress-container">
+                    <div class="progress-steps">
+                        <div class="progress-line"></div>
+                        <div class="progress-line-active step-4"></div>
+                        
+                        <div class="step completed">
+                            <div class="step-number">✓</div>
+                            <div class="step-label">Select Contacts</div>
+                        </div>
+                        
+                        <div class="step completed">
+                            <div class="step-number">✓</div>
+                            <div class="step-label">Select Links</div>
+                        </div>
+                        
+                        <div class="step completed">
+                            <div class="step-number">✓</div>
+                            <div class="step-label">Compose Message</div>
+                        </div>
+                        
+                        <div class="step active">
+                            <div class="step-number">4</div>
+                            <div class="step-label">Review &amp; Send</div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Review Header -->
                 <div class="view-header">
                     <div class="view-header-content">
