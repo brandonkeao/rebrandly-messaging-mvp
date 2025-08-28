@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading & Error States v2 Demo - Rebrandly Messaging MVP</title>
+    <link rel="stylesheet" href="css/design-system.css">
+    <link rel="stylesheet" href="css/buttons.css">
+    <link rel="stylesheet" href="css/modal-system-v2.css">
+    <link rel="stylesheet" href="css/loading-error-states-v2.css">
+</head>
+<body>
+    <div class="container">
+        <header class="demo-header">
+            <h1>Loading & Error States v2 Demo</h1>
+            <p>Enhanced loading indicators, error handling, and empty states</p>
+        </header>
+
+        <div class="demo-section">
+            <h2>Loading Overlays</h2>
+            <div class="button-group">
+                <button class="btn btn-primary" onclick="showLoadingOverlay()">Show Loading Overlay</button>
+                <button class="btn btn-primary" onclick="showProgressDemo()">Progress Bar Demo</button>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2>Skeleton Loading</h2>
+            <div class="button-group">
+                <button class="btn btn-secondary" onclick="showSkeleton('skeletonDemo', 'default')">Default Skeleton</button>
+                <button class="btn btn-secondary" onclick="showSkeleton('skeletonDemo', 'card')">Card Skeleton</button>
+                <button class="btn btn-secondary" onclick="showSkeleton('skeletonDemo', 'table')">Table Skeleton</button>
+                <button class="btn btn-secondary" onclick="showSkeleton('skeletonDemo', 'list')">List Skeleton</button>
+            </div>
+            <div id="skeletonDemo" style="margin-top: 20px; min-height: 200px; background: white; padding: 20px; border-radius: 8px;"></div>
+        </div>
+
+        <div class="demo-section">
+            <h2>Error States</h2>
+            <div class="button-group">
+                <button class="btn btn-danger" onclick="showGenericError()">Generic Error</button>
+                <button class="btn btn-danger" onclick="showNetworkError()">Network Error</button>
+                <button class="btn btn-warning" onclick="showNotFoundError()">Not Found</button>
+            </div>
+            <div id="errorDemo" style="margin-top: 20px; min-height: 200px; background: white; padding: 20px; border-radius: 8px;"></div>
+        </div>
+
+        <div class="demo-section">
+            <h2>Empty States</h2>
+            <div class="button-group">
+                <button class="btn btn-info" onclick="showEmptyContacts()">Empty Contacts</button>
+                <button class="btn btn-info" onclick="showEmptySearch()">Empty Search</button>
+                <button class="btn btn-info" onclick="showEmptyCampaigns()">Empty Campaigns</button>
+            </div>
+            <div id="emptyDemo" style="margin-top: 20px; min-height: 200px; background: white; padding: 20px; border-radius: 8px;"></div>
+        </div>
+
+        <div class="demo-section">
+            <h2>Button & Input Loading States</h2>
+            <div class="button-group">
+                <button id="loadingBtn" class="btn btn-primary" onclick="simulateButtonLoading()">Click to Load</button>
+                <button class="btn btn-success" onclick="simulateAsyncOperation()">Async Operation</button>
+            </div>
+            <div style="margin-top: 20px;">
+                <input id="loadingInput" type="text" class="form-control" placeholder="Type to search..." style="max-width: 300px;">
+                <button class="btn btn-secondary" onclick="simulateInputLoading()" style="margin-left: 10px;">Search</button>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2>Progress Bar</h2>
+            <div id="progressDemo" style="margin-top: 20px;"></div>
+            <button class="btn btn-primary" onclick="startProgressDemo()" style="margin-top: 10px;">Start Progress</button>
+        </div>
+    </div>
+
+    <script src="js/modal-system-v2.js"></script>
+    <script src="js/loading-error-states-v2.js"></script>
+    <script>
+        // Demo functions
+        function showLoadingOverlay() {
+            const overlay = loadingManager.showOverlay('Processing your request...');
+            setTimeout(() => {
+                loadingManager.hideOverlay();
+                showToast('Loading complete!', 'success');
+            }, 3000);
+        }
+
+        function showProgressDemo() {
+            const overlay = loadingManager.showOverlay();
+            const content = overlay.querySelector('.loading-content');
+            content.innerHTML = `
+                <div class="progress-bar" style="width: 300px; margin-bottom: 16px;">
+                    <div class="progress-fill" style="width: 0%;"></div>
+                </div>
+                <p>Uploading files...</p>
+            `;
+
+            const progressFill = content.querySelector('.progress-fill');
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += Math.random() * 15;
+                if (progress >= 100) {
+                    progress = 100;
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        loadingManager.hideOverlay();
+                        showToast('Upload complete!', 'success');
+                    }, 500);
+                }
+                loadingManager.updateProgress(progressFill, progress, progress === 100 ? 'success' : 'default');
+            }, 200);
+        }
+
+        function showGenericError() {
+            loadingManager.showError('errorDemo', {
+                title: 'Failed to Load Data',
+                message: 'An unexpected error occurred while fetching your data. Please try again.',
+                onRetry: () => {
+                    showLoading('errorDemo', 'default');
+                    setTimeout(() => {
+                        document.getElementById('errorDemo').innerHTML = '<p style="text-align: center; color: #10b981; padding: 40px;">✅ Data loaded successfully!</p>';
+                    }, 2000);
+                }
+            });
+        }
+
+        function showNetworkError() {
+            loadingManager.showNetworkError('errorDemo', () => {
+                showLoading('errorDemo', 'default');
+                setTimeout(() => {
+                    showToast('Connection restored!', 'success');
+                    document.getElementById('errorDemo').innerHTML = '<p style="text-align: center; color: #10b981; padding: 40px;">🌐 Connected successfully!</p>';
+                }, 2000);
+            });
+        }
+
+        function showNotFoundError() {
+            loadingManager.showError('errorDemo', {
+                icon: '🔍',
+                title: 'Page Not Found',
+                message: 'The page you are looking for does not exist or has been moved.',
+                showRetry: false
+            });
+        }
+
+        function showEmptyContacts() {
+            loadingManager.showEmpty('emptyDemo', {
+                icon: '👥',
+                title: 'No contacts yet',
+                message: 'Start building your contact list by adding your first contact.',
+                actionText: 'Add Contact',
+                onAction: () => {
+                    showToast('Opening contact form...', 'info');
+                }
+            });
+        }
+
+        function showEmptySearch() {
+            loadingManager.showEmpty('emptyDemo', {
+                icon: '🔍',
+                title: 'No results found',
+                message: 'Try adjusting your search terms or filters to find what you\'re looking for.',
+                actionText: 'Clear Filters',
+                onAction: () => {
+                    showToast('Filters cleared!', 'info');
+                }
+            });
+        }
+
+        function showEmptyCampaigns() {
+            loadingManager.showEmpty('emptyDemo', {
+                icon: '📱',
+                title: 'No campaigns created',
+                message: 'Create your first SMS campaign to start reaching your audience.',
+                actionText: 'Create Campaign',
+                onAction: () => {
+                    showToast('Opening campaign builder...', 'info');
+                }
+            });
+        }
+
+        function simulateButtonLoading() {
+            const btn = document.getElementById('loadingBtn');
+            loadingManager.setButtonLoading(btn, true);
+            
+            setTimeout(() => {
+                loadingManager.setButtonLoading(btn, false);
+                showToast('Operation completed!', 'success');
+            }, 3000);
+        }
+
+        function simulateInputLoading() {
+            const input = document.getElementById('loadingInput');
+            loadingManager.setInputLoading(input, true);
+            
+            setTimeout(() => {
+                loadingManager.setInputLoading(input, false);
+                showToast('Search completed!', 'success');
+            }, 2000);
+        }
+
+        async function simulateAsyncOperation() {
+            try {
+                await loadingManager.simulateAsync(
+                    async (onProgress) => {
+                        // Simulate work with progress updates
+                        for (let i = 0; i <= 100; i += 10) {
+                            await new Promise(resolve => setTimeout(resolve, 200));
+                            if (onProgress) onProgress(i);
+                        }
+                        return 'Success!';
+                    },
+                    {
+                        showOverlay: true,
+                        overlayMessage: 'Processing data...',
+                        button: event.target
+                    }
+                );
+                showToast('Async operation completed!', 'success');
+            } catch (error) {
+                showToast('Operation failed!', 'error');
+            }
+        }
+
+        function startProgressDemo() {
+            const progressFill = loadingManager.showProgress('progressDemo', 0);
+            let progress = 0;
+            
+            const interval = setInterval(() => {
+                progress += Math.random() * 10;
+                if (progress >= 100) {
+                    progress = 100;
+                    clearInterval(interval);
+                    loadingManager.updateProgress(progressFill, progress, 'success');
+                    showToast('Progress complete!', 'success');
+                } else {
+                    loadingManager.updateProgress(progressFill, progress);
+                }
+            }, 300);
+        }
+
+        // Initialize with skeleton demo
+        showLoading('skeletonDemo', 'card');
+    </script>
+
+    <style>
+        .demo-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 40px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 12px;
+        }
+
+        .demo-section {
+            margin-bottom: 40px;
+            padding: 24px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .demo-section h2 {
+            margin-bottom: 20px;
+            color: #1f2937;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .form-control {
+            padding: 8px 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+    </style>
+</body>
+</html>
