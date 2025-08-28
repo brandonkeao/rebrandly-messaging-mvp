@@ -42,13 +42,18 @@
   width: 40px;
   height: 40px;
   background: var(--color-primary-gradient);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* Fallback */
   color: var(--color-white);
+  color: white; /* Fallback */
   border-radius: var(--radius-base);
+  border-radius: 8px; /* Fallback */
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: var(--font-size-xl);
+  font-size: 1.25rem; /* Fallback */
   font-weight: var(--font-weight-bold);
+  font-weight: 700; /* Fallback */
   flex-shrink: 0;
 }
 
