@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Links View v2 Demo - Rebrandly Messaging MVP</title>
+    <link rel="stylesheet" href="css/design-system.css">
+    <link rel="stylesheet" href="css/buttons.css">
+    <link rel="stylesheet" href="css/modal-system-v2.css">
+    <link rel="stylesheet" href="css/loading-error-states-v2.css">
+    <link rel="stylesheet" href="css/add-links-view-v2.css">
+</head>
+<body>
+    <div class="container">
+        <header class="demo-header">
+            <h1>Add Links View v2 Demo</h1>
+            <p>Enhanced link management with analytics and bulk operations</p>
+        </header>
+
+        <!-- Links Header with Stats -->
+        <div class="links-header">
+            <div class="links-stats">
+                <div class="stat-item">
+                    <span class="stat-value" id="totalLinks">0</span>
+                    <span class="stat-label">Total Links</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value" id="totalClicks">0</span>
+                    <span class="stat-label">Total Clicks</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value" id="activeLinks">0</span>
+                    <span class="stat-label">Active Links</span>
+                </div>
+            </div>
+            <button class="btn btn-primary" onclick="linksManager.showAddForm()">
+                + Add New Link
+            </button>
+        </div>
+
+        <!-- Add Link Form -->
+        <div class="add-link-form">
+            <h3 style="margin-bottom: 20px;">Create New Link</h3>
+            <form id="addLinkForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="linkTitle">Link Title *</label>
+                        <input type="text" id="linkTitle" class="form-control" 
+                               placeholder="e.g., Product Launch 2025" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="linkCategory">Category</label>
+                        <select id="linkCategory" class="form-control">
+                            <option value="marketing">Marketing</option>
+                            <option value="sales">Sales</option>
+                            <option value="social">Social Media</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group" style="flex: 0 0 auto;">
+                        <button type="submit" class="btn btn-primary">Create Link</button>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="originalUrl">Original URL *</label>
+                    <input type="url" id="originalUrl" class="form-control" 
+                           placeholder="https://example.com/your-long-url" required>
+                    <div id="urlPreview" class="url-preview">Enter a URL to see preview</div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Short URL Preview</label>
+                    <div id="shortUrlPreview" class="url-preview">Generated short URL will appear here</div>
+                </div>
+            </form>
+        </div>
+
+        <!-- Category Filters -->
+        <div class="category-filter">
+            <button class="category-btn active" data-category="all">All Links</button>
+            <button class="category-btn" data-category="marketing">Marketing</button>
+            <button class="category-btn" data-category="sales">Sales</button>
+            <button class="category-btn" data-category="social">Social Media</button>
+            <button class="category-btn" data-category="other">Other</button>
+        </div>
+
+        <!-- Bulk Actions Bar -->
+        <div id="bulkActionsBar" class="bulk-actions-bar">
+            <div class="bulk-info">0 links selected</div>
+            <div class="bulk-buttons">
+                <button class="btn btn-sm btn-secondary" onclick="linksManager.exportSelected()">Export</button>
+                <button class="btn btn-sm btn-danger" onclick="linksManager.deleteSelected()">Delete Selected</button>
+                <button class="btn btn-sm btn-secondary" onclick="linksManager.clearSelection()">Clear Selection</button>
+            </div>
+        </div>
+
+        <!-- Links Container -->
+        <div id="linksContainer">
+            <!-- Links will be rendered here -->
+        </div>
+    </div>
+
+    <script src="js/modal-system-v2.js"></script>
+    <script src="js/loading-error-states-v2.js"></script>
+    <script src="js/add-links-view-v2.js"></script>
+
+    <style>
+        .demo-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 40px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 12px;
+        }
+
+        .link-card {
+            position: relative;
+        }
+
+        .link-card.selected {
+            border: 2px solid #3b82f6;
+            background: #f0f9ff;
+        }
+
+        .status-badge {
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 500;
+            text-transform: capitalize;
+        }
+
+        .status-badge.active {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .status-badge.inactive {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .form-row {
+            margin-bottom: 16px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-control {
+            transition: all 0.2s ease;
+        }
+
+        .form-control:focus {
+            transform: translateY(-1px);
+        }
+
+        .url-preview.error {
+            background: #fee2e2;
+            border-color: #ef4444;
+            color: #dc2626;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #6b7280;
+        }
+
+        .empty-state-icon {
+            font-size: 64px;
+            margin-bottom: 24px;
+            opacity: 0.3;
+        }
+
+        .empty-state-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 12px;
+        }
+
+        .empty-state-message {
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+    </style>
+</body>
+</html>
