@@ -33,11 +33,11 @@ npm run dev
 - [x] Enhanced features: confirmations, toasts, form modals
 - [ ] Integration with existing components
 
-### 2. Data Table Components ⏳
-- [ ] Sortable table system (`css/data-table-system.css`)
-- [ ] Table JavaScript functionality (`js/data-table-system.js`)
-- [ ] Demo page (`data-table-demo.html`)
-- [ ] Pagination and filtering
+### 2. Data Table Components ✅
+- [x] Sortable table system (`css/data-table-system-v2.css`)
+- [x] Table JavaScript functionality (`js/data-table-system-v2.js`)
+- [x] Demo page (`data-table-v2-demo.html`)
+- [x] Pagination, filtering, search, bulk actions, row actions
 
 ### 3. Loading & Error States ⏳
 - [ ] Loading states CSS (`css/loading-error-states.css`)

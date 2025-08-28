@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Table v2 Demo - Rebrandly Messaging MVP</title>
+    <link rel="stylesheet" href="css/design-system.css">
+    <link rel="stylesheet" href="css/buttons.css">
+    <link rel="stylesheet" href="css/modal-system-v2.css">
+    <link rel="stylesheet" href="css/data-table-system-v2.css">
+</head>
+<body>
+    <div class="container">
+        <header class="demo-header">
+            <h1>Data Table v2 Demo</h1>
+            <p>Enhanced data table with sorting, pagination, search, and bulk actions</p>
+        </header>
+
+        <div class="demo-section">
+            <h2>Contacts Table</h2>
+            <div id="contactsTable"></div>
+        </div>
+
+        <div class="demo-section">
+            <h2>Links Table</h2>
+            <div id="linksTable"></div>
+        </div>
+
+        <div class="demo-section">
+            <h2>Campaigns Table</h2>
+            <div id="campaignsTable"></div>
+        </div>
+    </div>
+
+    <script src="js/modal-system-v2.js"></script>
+    <script src="js/data-table-system-v2.js"></script>
+    <script>
+        // Sample data
+        const contactsData = [
+            { id: '1', name: 'John Doe', phone: '+1234567890', email: 'john@example.com', status: 'Active', created: '2025-01-15' },
+            { id: '2', name: 'Jane Smith', phone: '+1234567891', email: 'jane@example.com', status: 'Active', created: '2025-01-20' },
+            { id: '3', name: 'Bob Johnson', phone: '+1234567892', email: 'bob@example.com', status: 'Inactive', created: '2025-02-01' },
+            { id: '4', name: 'Alice Brown', phone: '+1234567893', email: 'alice@example.com', status: 'Pending', created: '2025-02-05' },
+            { id: '5', name: 'Charlie Wilson', phone: '+1234567894', email: 'charlie@example.com', status: 'Active', created: '2025-02-10' }
+        ];
+
+        const linksData = [
+            { id: '1', title: 'Product Launch', url: 'https://rebrand.ly/product', clicks: 1250, status: 'Active', created: '2025-01-10' },
+            { id: '2', title: 'Special Offer', url: 'https://rebrand.ly/offer', clicks: 890, status: 'Active', created: '2025-01-15' },
+            { id: '3', title: 'Newsletter', url: 'https://rebrand.ly/news', clicks: 456, status: 'Inactive', created: '2025-01-20' },
+            { id: '4', title: 'Event Registration', url: 'https://rebrand.ly/event', clicks: 2100, status: 'Active', created: '2025-02-01' },
+            { id: '5', title: 'Survey Form', url: 'https://rebrand.ly/survey', clicks: 678, status: 'Pending', created: '2025-02-05' }
+        ];
+
+        const campaignsData = [
+            { id: '1', name: 'Welcome Series', contacts: 150, sent: 150, delivered: 148, status: 'Completed', created: '2025-01-05' },
+            { id: '2', name: 'Product Update', contacts: 89, sent: 89, delivered: 87, status: 'Completed', created: '2025-01-12' },
+            { id: '3', name: 'Holiday Sale', contacts: 245, sent: 200, delivered: 195, status: 'Active', created: '2025-01-18' },
+            { id: '4', name: 'Feedback Request', contacts: 67, sent: 0, delivered: 0, status: 'Pending', created: '2025-02-01' },
+            { id: '5', name: 'Event Reminder', contacts: 123, sent: 123, delivered: 120, status: 'Completed', created: '2025-02-08' }
+        ];
+
+        // Initialize tables
+        const contactsTable = new DataTable('contactsTable', {
+            title: 'Contacts',
+            data: contactsData,
+            columns: [
+                { key: 'name', label: 'Name', sortable: true },
+                { key: 'phone', label: 'Phone', sortable: true },
+                { key: 'email', label: 'Email', sortable: true },
+                { key: 'status', label: 'Status', sortable: true, type: 'status' },
+                { key: 'created', label: 'Created', sortable: true, type: 'date' }
+            ],
+            pageSize: 5,
+            selectable: true,
+            actions: true,
+            showAddButton: true
+        });
+
+        const linksTable = new DataTable('linksTable', {
+            title: 'Branded Links',
+            data: linksData,
+            columns: [
+                { key: 'title', label: 'Title', sortable: true },
+                { key: 'url', label: 'Short URL', sortable: true },
+                { key: 'clicks', label: 'Clicks', sortable: true },
+                { key: 'status', label: 'Status', sortable: true, type: 'status' },
+                { key: 'created', label: 'Created', sortable: true, type: 'date' }
+            ],
+            pageSize: 5,
+            selectable: true,
+            actions: true,
+            showAddButton: true
+        });
+
+        const campaignsTable = new DataTable('campaignsTable', {
+            title: 'SMS Campaigns',
+            data: campaignsData,
+            columns: [
+                { key: 'name', label: 'Campaign Name', sortable: true },
+                { key: 'contacts', label: 'Contacts', sortable: true },
+                { key: 'sent', label: 'Sent', sortable: true },
+                { key: 'delivered', label: 'Delivered', sortable: true },
+                { key: 'status', label: 'Status', sortable: true, type: 'status' },
+                { key: 'created', label: 'Created', sortable: true, type: 'date' }
+            ],
+            pageSize: 5,
+            selectable: true,
+            actions: true,
+            showAddButton: true
+        });
+
+        // Store references globally for action methods
+        window.dataTable = contactsTable;
+    </script>
+
+    <style>
+        .demo-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 40px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 12px;
+        }
+
+        .demo-section {
+            margin-bottom: 40px;
+        }
+
+        .demo-section h2 {
+            margin-bottom: 20px;
+            color: #1f2937;
+        }
+    </style>
+</body>
+</html>
