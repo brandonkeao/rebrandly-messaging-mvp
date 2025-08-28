@@ -200,10 +200,8 @@ class Views {
             <div class="links-view-container">
                 <!-- Links Header -->
                 <div class="view-header">
-                    <div class="view-header-content">
-                        <h1 class="view-title">🔗 Manage Links</h1>
-                        <p class="view-subtitle">Create, manage, and track your branded short links</p>
-                    </div>
+                    <h1 class="view-title">🔗 Manage Links</h1>
+                    <p class="view-subtitle">Create, manage, and track your branded short links</p>
                 </div>
 
                 <!-- Links Table Container -->
