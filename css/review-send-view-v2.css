@@ -1,0 +1,411 @@
+/* Review & Send View v2 - Enhanced Components */
+
+/* Campaign Review Layout */
+.review-container {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+.review-main {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.review-sidebar {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 24px;
+    height: fit-content;
+}
+
+/* Message Preview */
+.message-preview {
+    padding: 24px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.preview-header {
+    display: flex;
+    justify-content: between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.preview-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin: 0;
+}
+
+.character-count {
+    font-size: 0.875rem;
+    color: #6b7280;
+}
+
+.character-count.warning {
+    color: #f59e0b;
+}
+
+.character-count.error {
+    color: #ef4444;
+}
+
+.phone-mockup {
+    max-width: 300px;
+    margin: 0 auto;
+    background: #1f2937;
+    border-radius: 20px;
+    padding: 20px 16px;
+    position: relative;
+}
+
+.phone-screen {
+    background: white;
+    border-radius: 12px;
+    padding: 16px;
+    min-height: 200px;
+}
+
+.message-bubble {
+    background: #3b82f6;
+    color: white;
+    padding: 12px 16px;
+    border-radius: 18px;
+    border-bottom-right-radius: 4px;
+    margin-bottom: 8px;
+    max-width: 85%;
+    margin-left: auto;
+    word-wrap: break-word;
+    line-height: 1.4;
+}
+
+.message-time {
+    font-size: 0.75rem;
+    color: #9ca3af;
+    text-align: right;
+    margin-top: 4px;
+}
+
+/* Campaign Summary */
+.campaign-summary {
+    margin-bottom: 24px;
+}
+
+.summary-item {
+    display: flex;
+    justify-content: between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #f3f4f6;
+}
+
+.summary-item:last-child {
+    border-bottom: none;
+}
+
+.summary-label {
+    color: #6b7280;
+    font-size: 0.875rem;
+}
+
+.summary-value {
+    font-weight: 600;
+    color: #1f2937;
+}
+
+.summary-value.highlight {
+    color: #3b82f6;
+}
+
+/* Contact List Preview */
+.contacts-preview {
+    padding: 24px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.contacts-header {
+    display: flex;
+    justify-content: between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.contacts-count {
+    background: #dbeafe;
+    color: #1d4ed8;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.contact-list {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 0;
+    border-bottom: 1px solid #f9fafb;
+}
+
+.contact-item:last-child {
+    border-bottom: none;
+}
+
+.contact-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #f3f4f6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 600;
+    color: #6b7280;
+}
+
+.contact-info {
+    flex: 1;
+}
+
+.contact-name {
+    font-weight: 500;
+    color: #1f2937;
+    font-size: 0.875rem;
+}
+
+.contact-phone {
+    color: #6b7280;
+    font-size: 0.75rem;
+}
+
+/* Send Actions */
+.send-actions {
+    padding: 24px;
+    background: #f9fafb;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+.send-options {
+    margin-bottom: 20px;
+}
+
+.send-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.send-option:hover {
+    background: #f3f4f6;
+}
+
+.send-option.selected {
+    border-color: #3b82f6;
+    background: #f0f9ff;
+}
+
+.send-option input[type="radio"] {
+    margin: 0;
+}
+
+.send-option-content {
+    flex: 1;
+}
+
+.send-option-title {
+    font-weight: 500;
+    color: #1f2937;
+    margin-bottom: 2px;
+}
+
+.send-option-desc {
+    font-size: 0.875rem;
+    color: #6b7280;
+}
+
+/* Schedule Options */
+.schedule-options {
+    margin-top: 16px;
+    padding: 16px;
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+}
+
+.datetime-input {
+    display: flex;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.datetime-input input {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+/* Cost Estimate */
+.cost-estimate {
+    background: #f0f9ff;
+    border: 1px solid #bfdbfe;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 20px;
+}
+
+.cost-breakdown {
+    display: flex;
+    justify-content: between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.cost-label {
+    color: #1e40af;
+    font-size: 0.875rem;
+}
+
+.cost-value {
+    font-weight: 600;
+    color: #1e40af;
+}
+
+.total-cost {
+    border-top: 1px solid #bfdbfe;
+    padding-top: 8px;
+    margin-top: 8px;
+}
+
+.total-cost .cost-value {
+    font-size: 1.125rem;
+}
+
+/* Send Button */
+.send-button {
+    width: 100%;
+    padding: 16px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.send-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Progress Tracking */
+.send-progress {
+    margin-top: 20px;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+    display: none;
+}
+
+.send-progress.show {
+    display: block;
+}
+
+.progress-header {
+    display: flex;
+    justify-content: between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.progress-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 16px;
+}
+
+.progress-stat {
+    text-align: center;
+}
+
+.progress-stat-value {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1f2937;
+    display: block;
+}
+
+.progress-stat-label {
+    font-size: 0.875rem;
+    color: #6b7280;
+}
+
+/* Success State */
+.send-success {
+    text-align: center;
+    padding: 40px 20px;
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-radius: 12px;
+    margin-top: 20px;
+}
+
+.success-icon {
+    font-size: 48px;
+    margin-bottom: 16px;
+}
+
+.success-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #166534;
+    margin-bottom: 8px;
+}
+
+.success-message {
+    color: #15803d;
+    margin-bottom: 24px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .review-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .review-sidebar {
+        order: -1;
+    }
+    
+    .phone-mockup {
+        max-width: 250px;
+    }
+    
+    .datetime-input {
+        flex-direction: column;
+    }
+    
+    .progress-stats {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+}

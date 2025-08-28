@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review & Send View v2 Demo - Rebrandly Messaging MVP</title>
+    <link rel="stylesheet" href="css/design-system.css">
+    <link rel="stylesheet" href="css/buttons.css">
+    <link rel="stylesheet" href="css/modal-system-v2.css">
+    <link rel="stylesheet" href="css/loading-error-states-v2.css">
+    <link rel="stylesheet" href="css/review-send-view-v2.css">
+</head>
+<body>
+    <div class="container">
+        <header class="demo-header">
+            <h1>Review & Send View v2 Demo</h1>
+            <p>Campaign preview, scheduling, and sending with real-time progress</p>
+        </header>
+
+        <div class="review-container">
+            <!-- Main Review Content -->
+            <div class="review-main">
+                <!-- Message Preview -->
+                <div class="message-preview">
+                    <div class="preview-header">
+                        <h3 class="preview-title">Message Preview</h3>
+                        <div>
+                            <span id="characterCount" class="character-count">0/160 characters</span>
+                            <button class="btn btn-sm btn-secondary" onclick="reviewSendManager.editMessage()" style="margin-left: 12px;">Edit</button>
+                        </div>
+                    </div>
+                    <div id="messagePreview">
+                        <!-- Phone mockup will be rendered here -->
+                    </div>
+                </div>
+
+                <!-- Contacts Preview -->
+                <div class="contacts-preview">
+                    <div class="contacts-header">
+                        <h3 style="margin: 0;">Recipients</h3>
+                        <div>
+                            <span id="contactsCount" class="contacts-count">0 recipients</span>
+                            <button class="btn btn-sm btn-secondary" onclick="reviewSendManager.editContacts()" style="margin-left: 12px;">Edit</button>
+                        </div>
+                    </div>
+                    <div id="contactsList" class="contact-list">
+                        <!-- Contacts will be rendered here -->
+                    </div>
+                </div>
+
+                <!-- Send Actions -->
+                <div class="send-actions">
+                    <div class="send-options">
+                        <h4 style="margin-bottom: 16px;">Send Options</h4>
+                        
+                        <label class="send-option selected">
+                            <input type="radio" name="sendOption" value="now" checked>
+                            <div class="send-option-content">
+                                <div class="send-option-title">Send Now</div>
+                                <div class="send-option-desc">Send immediately to all recipients</div>
+                            </div>
+                        </label>
+                        
+                        <label class="send-option">
+                            <input type="radio" name="sendOption" value="schedule">
+                            <div class="send-option-content">
+                                <div class="send-option-title">Schedule Send</div>
+                                <div class="send-option-desc">Schedule for a specific date and time</div>
+                            </div>
+                        </label>
+                        
+                        <div id="scheduleOptions" class="schedule-options" style="display: none;">
+                            <h5 style="margin-bottom: 12px;">Schedule Details</h5>
+                            <div class="datetime-input">
+                                <input type="date" id="scheduleDate" required>
+                                <input type="time" id="scheduleTime" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button id="sendButton" class="btn btn-primary send-button">
+                        🚀 Send Campaign
+                    </button>
+                </div>
+
+                <!-- Send Progress (Hidden initially) -->
+                <div id="sendProgress" class="send-progress">
+                    <div class="progress-header">
+                        <h4 style="margin: 0;">Sending Campaign...</h4>
+                        <button class="btn btn-sm btn-secondary" onclick="this.style.display='none'">Minimize</button>
+                    </div>
+                    
+                    <div class="progress-bar">
+                        <div id="sendProgressBar" class="progress-fill"></div>
+                    </div>
+                    
+                    <div class="progress-stats">
+                        <div class="progress-stat">
+                            <span id="sentCount" class="progress-stat-value">0</span>
+                            <span class="progress-stat-label">Sent</span>
+                        </div>
+                        <div class="progress-stat">
+                            <span id="deliveredCount" class="progress-stat-value">0</span>
+                            <span class="progress-stat-label">Delivered</span>
+                        </div>
+                        <div class="progress-stat">
+                            <span id="failedCount" class="progress-stat-value">0</span>
+                            <span class="progress-stat-label">Failed</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="review-sidebar">
+                <!-- Campaign Summary -->
+                <div class="campaign-summary">
+                    <h4 style="margin-bottom: 16px;">Campaign Summary</h4>
+                    <div id="campaignSummary">
+                        <!-- Summary items will be rendered here -->
+                    </div>
+                </div>
+
+                <!-- Cost Estimate -->
+                <div id="costEstimate" class="cost-estimate">
+                    <!-- Cost breakdown will be rendered here -->
+                </div>
+
+                <!-- Quick Actions -->
+                <div style="margin-top: 24px;">
+                    <h5 style="margin-bottom: 12px;">Quick Actions</h5>
+                    <div style="display: flex; flex-direction: column; gap: 8px;">
+                        <button class="btn btn-sm btn-secondary" onclick="reviewSendManager.previewOnDevice()">
+                            📱 Preview on Device
+                        </button>
+                        <button class="btn btn-sm btn-secondary" onclick="reviewSendManager.saveAsDraft()">
+                            💾 Save as Draft
+                        </button>
+                        <button class="btn btn-sm btn-secondary" onclick="reviewSendManager.exportCampaign()">
+                            📤 Export Campaign
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Compliance Notice -->
+                <div style="margin-top: 24px; padding: 16px; background: #fef3c7; border-radius: 8px; border: 1px solid #fbbf24;">
+                    <h6 style="margin: 0 0 8px 0; color: #92400e;">📋 Compliance Notice</h6>
+                    <p style="margin: 0; font-size: 0.875rem; color: #92400e; line-height: 1.4;">
+                        Ensure your message complies with SMS regulations and includes opt-out instructions where required.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/modal-system-v2.js"></script>
+    <script src="js/loading-error-states-v2.js"></script>
+    <script src="js/review-send-view-v2.js"></script>
+
+    <script>
+        // Additional demo functions
+        ReviewSendManager.prototype.previewOnDevice = function() {
+            showModal({
+                title: 'Preview on Device',
+                size: 'small',
+                content: `
+                    <div style="text-align: center; padding: 20px;">
+                        <div style="font-size: 48px; margin-bottom: 16px;">📱</div>
+                        <p>Send a test message to your device?</p>
+                        <input type="tel" placeholder="Your phone number" class="form-control" style="margin: 16px 0;">
+                    </div>
+                `,
+                buttons: [
+                    { text: 'Cancel', class: 'btn-secondary' },
+                    { text: 'Send Test', class: 'btn-primary', onclick: 'closeModal(); showToast("Test message sent!", "success");' }
+                ]
+            });
+        };
+
+        ReviewSendManager.prototype.saveAsDraft = function() {
+            localStorage.setItem('rebrandly_campaign_draft', JSON.stringify(this.campaign));
+            showToast('Campaign saved as draft!', 'success');
+        };
+
+        ReviewSendManager.prototype.exportCampaign = function() {
+            const data = {
+                campaign: this.campaign,
+                summary: {
+                    recipients: this.campaign.contacts.length,
+                    messageLength: this.campaign.message.length,
+                    segments: Math.ceil(this.campaign.message.length / 160),
+                    estimatedCost: (this.campaign.contacts.length * Math.ceil(this.campaign.message.length / 160) * 0.05).toFixed(2)
+                },
+                exportedAt: new Date().toISOString()
+            };
+            
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'campaign-export.json';
+            a.click();
+            URL.revokeObjectURL(url);
+            
+            showToast('Campaign exported successfully!', 'success');
+        };
+
+        // Handle send option changes
+        document.addEventListener('change', (e) => {
+            if (e.target.name === 'sendOption') {
+                document.querySelectorAll('.send-option').forEach(option => {
+                    option.classList.remove('selected');
+                });
+                e.target.closest('.send-option').classList.add('selected');
+            }
+        });
+    </script>
+
+    <style>
+        .demo-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 40px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 12px;
+        }
+
+        .form-control {
+            padding: 8px 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 14px;
+            width: 100%;
+        }
+
+        .send-option input[type="radio"] {
+            width: 16px;
+            height: 16px;
+        }
+
+        .send-option-title {
+            font-size: 0.875rem;
+        }
+
+        .send-option-desc {
+            font-size: 0.75rem;
+        }
+
+        h4, h5, h6 {
+            color: #1f2937;
+        }
+    </style>
+</body>
+</html>
