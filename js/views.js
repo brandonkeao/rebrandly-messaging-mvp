@@ -198,12 +198,6 @@ class Views {
     static getLinksView() {
         return `
             <div class="links-view-container">
-                <!-- Links Header -->
-                <div class="view-header">
-                    <h1 class="view-title">🔗 Manage Links</h1>
-                    <p class="view-subtitle">Create, manage, and track your branded short links</p>
-                </div>
-
                 <!-- Links Table Container -->
                 <div class="links-table-section">
                     <div id="linksDataTable"></div>
