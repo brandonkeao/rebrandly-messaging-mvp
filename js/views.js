@@ -1038,22 +1038,6 @@ class Views {
                     </div>
                 </div>
 
-                <!-- Review Header -->
-                <div class="view-header">
-                    <div class="view-header-content">
-                        <h1 class="view-title">📋 Review & Send Campaign</h1>
-                        <p class="view-subtitle">Review your campaign details before sending to contacts</p>
-                    </div>
-                    <div class="view-header-actions">
-                        <button class="btn-website-secondary" onclick="saveDraft()">
-                            Save Draft
-                        </button>
-                        <button class="btn-website-primary" onclick="sendCampaign()" id="sendCampaignBtn">
-                            Send Campaign
-                        </button>
-                    </div>
-                </div>
-
                 <!-- Campaign Summary Cards -->
                 <div class="campaign-summary-grid">
                     <div class="summary-card">
