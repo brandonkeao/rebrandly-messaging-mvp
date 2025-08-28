@@ -34,6 +34,15 @@
   position: sticky;
   top: 0;
   z-index: var(--z-sticky);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
 }
 
 .header-content {

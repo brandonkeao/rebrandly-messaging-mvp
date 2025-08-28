@@ -93,6 +93,32 @@ class RebrandlyApp {
         if (titleElement) {
             titleElement.textContent = newTitle;
         }
+
+        // Update header actions for Campaign Builder pages
+        this.updateHeaderActions(viewName);
+    }
+
+    updateHeaderActions(viewName) {
+        const headerActions = document.getElementById('headerActions');
+        const saveDraftBtn = document.getElementById('saveDraftBtn');
+        const sendCampaignBtn = document.getElementById('sendCampaignBtn');
+        
+        // Campaign Builder pages that should show Save Draft button
+        const campaignBuilderPages = ['select-contacts', 'select-links', 'compose', 'review', 'import', 'campaign-links'];
+        
+        if (campaignBuilderPages.includes(viewName)) {
+            headerActions.style.display = 'flex';
+            saveDraftBtn.style.display = 'block';
+            
+            // Show Send Campaign button only on Review & Send page
+            if (viewName === 'review') {
+                sendCampaignBtn.style.display = 'block';
+            } else {
+                sendCampaignBtn.style.display = 'none';
+            }
+        } else {
+            headerActions.style.display = 'none';
+        }
     }
 
     updateActiveNavigation(viewName) {
