@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal System v2 Demo - Rebrandly Messaging MVP</title>
+    <link rel="stylesheet" href="css/design-system.css">
+    <link rel="stylesheet" href="css/buttons.css">
+    <link rel="stylesheet" href="css/modal-system-v2.css">
+</head>
+<body>
+    <div class="container">
+        <header class="demo-header">
+            <h1>Modal System v2 Demo</h1>
+            <p>Enhanced modal, dialog, and toast notification system</p>
+        </header>
+
+        <div class="demo-section">
+            <h2>Basic Modals</h2>
+            <div class="button-group">
+                <button class="btn btn-primary" onclick="showBasicModal()">Small Modal</button>
+                <button class="btn btn-primary" onclick="showMediumModal()">Medium Modal</button>
+                <button class="btn btn-primary" onclick="showLargeModal()">Large Modal</button>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2>Confirmation Dialogs</h2>
+            <div class="button-group">
+                <button class="btn btn-warning" onclick="showWarningConfirm()">Warning Confirm</button>
+                <button class="btn btn-danger" onclick="showDangerConfirm()">Delete Confirm</button>
+                <button class="btn btn-success" onclick="showSuccessConfirm()">Success Confirm</button>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2>Toast Notifications</h2>
+            <div class="button-group">
+                <button class="btn btn-info" onclick="showToast('Info message', 'info')">Info Toast</button>
+                <button class="btn btn-success" onclick="showToast('Success message', 'success')">Success Toast</button>
+                <button class="btn btn-warning" onclick="showToast('Warning message', 'warning')">Warning Toast</button>
+                <button class="btn btn-danger" onclick="showToast('Error message', 'error')">Error Toast</button>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2>Form Modal Example</h2>
+            <button class="btn btn-primary" onclick="showFormModal()">Contact Form Modal</button>
+        </div>
+    </div>
+
+    <script src="js/modal-system-v2.js"></script>
+    <script>
+        // Demo functions
+        function showBasicModal() {
+            showModal({
+                title: 'Small Modal',
+                size: 'small',
+                content: '<p>This is a small modal with basic content.</p>'
+            });
+        }
+
+        function showMediumModal() {
+            showModal({
+                title: 'Medium Modal',
+                size: 'medium',
+                content: `
+                    <p>This is a medium-sized modal with more content.</p>
+                    <p>It can contain multiple paragraphs and other elements.</p>
+                    <ul>
+                        <li>Feature 1</li>
+                        <li>Feature 2</li>
+                        <li>Feature 3</li>
+                    </ul>
+                `
+            });
+        }
+
+        function showLargeModal() {
+            showModal({
+                title: 'Large Modal',
+                size: 'large',
+                content: `
+                    <h3>Large Modal Content</h3>
+                    <p>This modal has plenty of space for complex content.</p>
+                    <div style="height: 300px; background: #f3f4f6; border-radius: 8px; padding: 20px; margin: 16px 0;">
+                        <p>Scrollable content area</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+                    </div>
+                `
+            });
+        }
+
+        function showWarningConfirm() {
+            confirmAction({
+                title: 'Warning',
+                message: 'This action may have consequences. Continue?',
+                type: 'warning',
+                onConfirm: () => showToast('Action confirmed!', 'success')
+            });
+        }
+
+        function showDangerConfirm() {
+            confirmAction({
+                title: 'Delete Item',
+                message: 'This action cannot be undone. Delete permanently?',
+                type: 'danger',
+                confirmText: 'Delete',
+                onConfirm: () => showToast('Item deleted!', 'success'),
+                onCancel: () => showToast('Deletion cancelled', 'info')
+            });
+        }
+
+        function showSuccessConfirm() {
+            confirmAction({
+                title: 'Complete Action',
+                message: 'Ready to complete this action?',
+                type: 'success',
+                confirmText: 'Complete',
+                onConfirm: () => showToast('Action completed!', 'success')
+            });
+        }
+
+        function showFormModal() {
+            showModal({
+                title: 'Add New Contact',
+                size: 'medium',
+                content: `
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="contactName">Name</label>
+                            <input type="text" id="contactName" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactPhone">Phone</label>
+                            <input type="tel" id="contactPhone" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactEmail">Email</label>
+                            <input type="email" id="contactEmail" class="form-control">
+                        </div>
+                    </form>
+                `,
+                buttons: [
+                    {
+                        text: 'Cancel',
+                        class: 'btn-secondary'
+                    },
+                    {
+                        text: 'Add Contact',
+                        class: 'btn-primary',
+                        onclick: 'submitContactForm()'
+                    }
+                ]
+            });
+        }
+
+        function submitContactForm() {
+            const name = document.getElementById('contactName').value;
+            const phone = document.getElementById('contactPhone').value;
+            
+            if (name && phone) {
+                closeModal();
+                showToast(`Contact "${name}" added successfully!`, 'success');
+            } else {
+                showToast('Please fill in required fields', 'warning');
+            }
+        }
+    </script>
+
+    <style>
+        .demo-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 40px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 12px;
+        }
+
+        .demo-section {
+            margin-bottom: 40px;
+            padding: 24px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .demo-section h2 {
+            margin-bottom: 20px;
+            color: #1f2937;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #374151;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: border-color 0.2s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+    </style>
+</body>
+</html>
